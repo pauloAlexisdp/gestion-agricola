@@ -81,7 +81,7 @@ public class VistaSupervisor extends javax.swing.JFrame {
         Titulo2.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Titulo2.setForeground(new java.awt.Color(255, 255, 255));
         Titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frutap.png"))); // NOI18N
+        Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo2.setText("LOG IN  ");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);

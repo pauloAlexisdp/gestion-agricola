@@ -52,7 +52,7 @@ public class VistaDueño extends javax.swing.JFrame {
         Titulo1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Titulo1.setForeground(new java.awt.Color(255, 255, 255));
         Titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frutap.png"))); // NOI18N
+        Titulo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo1.setText("LOG IN  ");
 
         Titulo6.setBackground(new java.awt.Color(255, 255, 255));
@@ -103,13 +103,13 @@ public class VistaDueño extends javax.swing.JFrame {
         Titulo.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         Titulo.setForeground(new java.awt.Color(241, 196, 15));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/trabajadores.png"))); // NOI18N
+        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/trabajadores.png"))); // NOI18N
         jPanel1.add(Titulo);
         Titulo.setBounds(770, 270, 190, 120);
 
         jButton2.setBackground(new java.awt.Color(25, 25, 112));
         jButton2.setForeground(new java.awt.Color(25, 25, 112));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/azul.jpg"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/azul.jpg"))); // NOI18N
         jPanel1.add(jButton2);
         jButton2.setBounds(640, 170, 350, 250);
 
@@ -129,18 +129,18 @@ public class VistaDueño extends javax.swing.JFrame {
         jPanel1.add(Titulo4);
         Titulo4.setBounds(220, 440, 150, 70);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/azul.jpg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/azul.jpg"))); // NOI18N
         jPanel1.add(jButton1);
         jButton1.setBounds(640, 430, 350, 250);
 
         jButton4.setBackground(new java.awt.Color(25, 25, 112));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/azul.jpg"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/azul.jpg"))); // NOI18N
         jPanel1.add(jButton4);
         jButton4.setBounds(210, 430, 350, 250);
 
         jButton3.setBackground(new java.awt.Color(25, 25, 112));
         jButton3.setForeground(new java.awt.Color(25, 25, 112));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/azul.jpg"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/azul.jpg"))); // NOI18N
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.gray, null, null));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
