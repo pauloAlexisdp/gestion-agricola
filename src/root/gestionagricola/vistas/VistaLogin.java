@@ -99,7 +99,7 @@ public class VistaLogin extends javax.swing.JFrame {
         Titulo2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         Titulo2.setForeground(new java.awt.Color(255, 255, 255));
         Titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frutap.png"))); // NOI18N
+        Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo2.setText("LOG IN  ");
         jPanel1.add(Titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 310, 170));
 

@@ -52,7 +52,7 @@ public class VistaModificarUsuario extends javax.swing.JFrame {
         Titulo1.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Titulo1.setForeground(new java.awt.Color(255, 255, 255));
         Titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/frutap.png"))); // NOI18N
+        Titulo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo1.setText("LOG IN  ");
 
         Titulo6.setBackground(new java.awt.Color(255, 255, 255));
