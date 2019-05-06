@@ -7,7 +7,7 @@ package root.gestionagricola.vistas;
 
 /**
  *
- * @author ignacioburgos
+ * @author Los Lanzas
  */
 public class VistaBusqueda extends javax.swing.JFrame {
 
