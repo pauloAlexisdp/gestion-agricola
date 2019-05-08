@@ -30,7 +30,6 @@ public class VistaSupervisor extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Titulo6 = new javax.swing.JLabel();
         Titulo8 = new javax.swing.JLabel();
-        Titulo9 = new javax.swing.JLabel();
         Titulo7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Titulo10 = new javax.swing.JLabel();
@@ -49,19 +48,13 @@ public class VistaSupervisor extends javax.swing.JFrame {
         Titulo6.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         Titulo6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo6.setText("Gestionar");
-        jPanel1.add(Titulo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, 160, 50));
+        jPanel1.add(Titulo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 310, 160, 50));
 
         Titulo8.setBackground(new java.awt.Color(255, 255, 255));
         Titulo8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         Titulo8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo8.setText("Trabajadores");
         jPanel1.add(Titulo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 220, 70));
-
-        Titulo9.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo9.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        Titulo9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Titulo9.setText("CheckList");
-        jPanel1.add(Titulo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, 160, 60));
 
         Titulo7.setBackground(new java.awt.Color(255, 255, 255));
         Titulo7.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
@@ -180,7 +173,6 @@ public class VistaSupervisor extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo6;
     private javax.swing.JLabel Titulo7;
     private javax.swing.JLabel Titulo8;
-    private javax.swing.JLabel Titulo9;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;

@@ -68,7 +68,7 @@ public class VistaRegistro extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addComponent(Titulo10, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +84,7 @@ public class VistaRegistro extends javax.swing.JFrame {
         Titulo7.setForeground(new java.awt.Color(255, 255, 255));
         Titulo7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo7.setText("Nombre: ");
-        jPanel1.add(Titulo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 160, 40));
+        jPanel1.add(Titulo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 160, 40));
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 410, 50));
 
         Titulo8.setBackground(new java.awt.Color(255, 255, 255));
@@ -92,7 +92,7 @@ public class VistaRegistro extends javax.swing.JFrame {
         Titulo8.setForeground(new java.awt.Color(255, 255, 255));
         Titulo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo8.setText("Apellido:");
-        jPanel1.add(Titulo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 170, 40));
+        jPanel1.add(Titulo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 170, 40));
         jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 410, 50));
 
         Titulo11.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,7 +100,7 @@ public class VistaRegistro extends javax.swing.JFrame {
         Titulo11.setForeground(new java.awt.Color(255, 255, 255));
         Titulo11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo11.setText("Correo:");
-        jPanel1.add(Titulo11, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 400, 200, 40));
+        jPanel1.add(Titulo11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 390, 150, 40));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 410, 50));
 
         Titulo13.setBackground(new java.awt.Color(255, 255, 255));
@@ -108,7 +108,7 @@ public class VistaRegistro extends javax.swing.JFrame {
         Titulo13.setForeground(new java.awt.Color(255, 255, 255));
         Titulo13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo13.setText("Cargo:");
-        jPanel1.add(Titulo13, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 220, 40));
+        jPanel1.add(Titulo13, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 220, 40));
 
         jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jButton1.setText("Registrarse");
@@ -131,7 +131,12 @@ public class VistaRegistro extends javax.swing.JFrame {
         jRadioButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setText("Dueño");
-        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, 40));
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, -1));
 
         jRadioButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,6 +193,10 @@ public class VistaRegistro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -7,12 +7,12 @@ package root.gestionagricola.vistas;
 
 /**
  *
- * @author ignacioburgos
+ * @author Javier
  */
-public class VistaLogin extends javax.swing.JFrame {
+public class VistaLogin extends javax.swing.JPanel {
 
     /**
-     * Creates new form VistaLogin
+     * Creates new form VistaLogiin
      */
     public VistaLogin() {
         initComponents();
@@ -29,71 +29,16 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        Titulo6 = new javax.swing.JLabel();
-        Titulo14 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        Titulo7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
         Titulo2 = new javax.swing.JLabel();
-        Titulo8 = new javax.swing.JLabel();
-        Titulo9 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel1.setBackground(new java.awt.Color(25, 25, 112));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(80, 214, 141));
-
-        Titulo6.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo6.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
-        Titulo6.setForeground(new java.awt.Color(255, 255, 255));
-        Titulo6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo6.setText("Iniciar Sesión");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(348, 348, 348)
-                .addComponent(Titulo6, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo6, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 120));
-
-        Titulo14.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo14.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        Titulo14.setForeground(new java.awt.Color(241, 196, 15));
-        Titulo14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(Titulo14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 690, 1220, 70));
-
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 550, 190, 80));
-
-        Titulo7.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo7.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        Titulo7.setForeground(new java.awt.Color(255, 255, 255));
-        Titulo7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo7.setText("Usuario:");
-        jPanel1.add(Titulo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, 140, 50));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 280, 50));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, 280, 50));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         Titulo2.setBackground(new java.awt.Color(255, 255, 255));
         Titulo2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
@@ -101,87 +46,82 @@ public class VistaLogin extends javax.swing.JFrame {
         Titulo2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo2.setText("LOG IN  ");
-        jPanel1.add(Titulo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 310, 170));
 
-        Titulo8.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        Titulo8.setForeground(new java.awt.Color(255, 255, 255));
-        Titulo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo8.setText("Contraseña:");
-        jPanel1.add(Titulo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 210, 50));
+        jTextField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jTextField1.setText("Usuario");
+        jTextField1.setToolTipText("Nombre De Usuario");
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
 
-        Titulo9.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo9.setFont(new java.awt.Font("Times New Roman", 2, 36)); // NOI18N
-        Titulo9.setForeground(new java.awt.Color(255, 255, 255));
-        Titulo9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo9.setText("Castro y Asociados");
-        jPanel1.add(Titulo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 460, 110));
+        jButton1.setBackground(new java.awt.Color(255, 153, 153));
+        jButton1.setFont(new java.awt.Font("Garamond", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Iniciar Sesión");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        jPasswordField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jPasswordField1.setText("Contrasena");
+        jPasswordField1.setToolTipText("Ingrese su contrasena");
+        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(71, Short.MAX_VALUE)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(jPasswordField1))))
+                .addGap(65, 65, 65))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 77, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 420, 510));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Fondo claro.jpg"))); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(1270, 693));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1323, 735));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaLogin().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Titulo14;
     private javax.swing.JLabel Titulo2;
-    private javax.swing.JLabel Titulo6;
-    private javax.swing.JLabel Titulo7;
-    private javax.swing.JLabel Titulo8;
-    private javax.swing.JLabel Titulo9;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
