@@ -23,7 +23,8 @@ public class CuentaDA {
     
     public void guardar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
-        cdb.un_sql = "select nombre cuenta where nombre = "+cuenta.getNombre();
+        //modulo seguridad si ya hay una cuenta con ese nombre 
+        cdb.un_sql = "select nombre from cuenta where nombre = "+cuenta.getNombre();
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             
@@ -31,7 +32,6 @@ public class CuentaDA {
             cdb.un_sql = "Insert into cuenta values ('"+cuenta.getNombre()+"','"+cuenta.getPassword()+"','"+cuenta.getTipo()+"'";
             cdb.statement.executeUpdate(cdb.un_sql);
         }
-    
     }
     
     public ArrayList cargar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{

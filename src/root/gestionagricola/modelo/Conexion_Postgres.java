@@ -15,13 +15,13 @@ import java.sql.SQLException;
  * @author los lanzas
  */
 public class Conexion_Postgres extends Conexion {
-    private String opcones ;
+    private String options ;
     private static String JDBC = "jdbc:postgresql://";
     private static String DRIVER = "org.postgresql.Driver";
     private static String HOST = "localhost:5432";
     public Conexion_Postgres(String database, String username, String password) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         super(JDBC, DRIVER, HOST, database, username, password);
-        this.opcones = "charSet=LATIN1";
+        this.options = "charSet=LATIN1";
         
     }
     
@@ -39,7 +39,7 @@ public class Conexion_Postgres extends Conexion {
     public void init() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
         s_conexion = jdbc + host + "/"+database;
         Class.forName(driver).newInstance();
-        conexion = DriverManager.getConnection(jdbc+host+"/"+database+"?"+opcones,username,password);
+        conexion = DriverManager.getConnection(jdbc+host+"/"+database+"?"+options,username,password);
         dbmd = conexion.getMetaData();
         statement =  conexion.createStatement();
     }
