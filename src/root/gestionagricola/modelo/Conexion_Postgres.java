@@ -26,7 +26,7 @@ public class Conexion_Postgres extends Conexion {
     }
     
     public Conexion_Postgres() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
-        this("fruticula", "postgres", "1234");
+        this("fruticula", "postgres", "mas");
     }
     /**
      * Inicializa la base de datos 

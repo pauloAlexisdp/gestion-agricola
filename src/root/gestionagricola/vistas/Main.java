@@ -6,12 +6,14 @@
 package root.gestionagricola.vistas;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import root.gestionagricola.conexion.Conexion;
-import root.gestionagricola.conexion.FactoriaConexion;
-import root.gestionagricola.negocio.Cuenta;
+import root.gestionagricola.Cuenta;
+import root.gestionagricola.CuentaDA;
+import root.gestionagricola.modelo.Conexion;
+import root.gestionagricola.modelo.Conexion_Postgres;
+import root.gestionagricola.modelo.FactoriaConexion;
+
 
 /**
  *
@@ -20,51 +22,39 @@ import root.gestionagricola.negocio.Cuenta;
 public class Main {
        
     public static void main(String[] args){
+        Conexion cdb  = null;
+        String driver="";
         
-       Conexion cdb = null;
-       String driver="";
-       
+        
         try {
             cdb = FactoriaConexion.getInstancia().getConexiondb();
             
-            
         } catch (ClassNotFoundException ex) {
-            System.out.println("Error en la conexion con jdbc : "+cdb.getDriver());
+            driver = cdb.getDriver();
+            System.out.println("Ocurrio un problema");
+            System.out.println("conector jdbc "+driver);
             System.exit(-1);
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            
         } catch (InstantiationException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        System.out.println("Conectado a postgres");
-        Cuenta c = new Cuenta("miguel","1234", "admin" );
+        System.out.println("Conectado a la base de datos");
+        Cuenta cuenta = new Cuenta("miguel", "123", "administrador");
         try {
-            ArrayList r = c.cargar();
-            for(int i=0;i<r.size();i++){
-                System.out.println(r.get(i));
-            }
+            cuenta.guardar();
+            System.out.println("Guardado");
+           
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
-      
-/*        
-            ArrayList r = c.cargar();
-            c.grabar();
-            
-            for(int i = 0;i<r.size();i++){
-                System.out.println(r.get(i));
-            }
-            
-        }       
-     */
+   
 }

@@ -24,12 +24,22 @@ public class CuentaDA {
     public void guardar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
-        cdb.un_sql = "select nombre from cuenta where nombre = "+cuenta.getNombre();
+        cdb.un_sql = "select nombre from cuenta where nombre = '"+cuenta.getNombre()+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
-            
+           if(cdb.resultado.next()){
+               cdb.un_sql = "UPDATE cuenta set contrasena='"+cuenta.getPassword()+"', tipo='"+cuenta.getTipo()+"'"+
+                       "WHERE nombre='"+cuenta.getNombre()+"'";
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Datos actualizados");
+           }else{
+               cdb.un_sql = "Insert into cuenta values('"+cuenta.getNombre()+"','"+cuenta.getPassword()+"','"+cuenta.getTipo()+"')";
+               cdb.statement.executeUpdate(cdb.un_sql);
+               System.out.println("Datos guardados");
+               
+           }
         }else{
-            cdb.un_sql = "Insert into cuenta values ('"+cuenta.getNombre()+"','"+cuenta.getPassword()+"','"+cuenta.getTipo()+"'";
+            cdb.un_sql = "Insert into cuenta values ('"+cuenta.getNombre()+"','"+cuenta.getPassword()+"','"+cuenta.getTipo()+"')";
             cdb.statement.executeUpdate(cdb.un_sql);
         }
     }
@@ -50,7 +60,7 @@ public class CuentaDA {
                 r.add(c);
             }
         }else{
-            System.out.println("error");
+            System.out.println("No hay datos");
         }
       return r;
     }

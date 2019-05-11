@@ -5,6 +5,8 @@
  */
 package root.gestionagricola;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author len_win
@@ -66,5 +68,12 @@ public class Cuenta {
     public String toString(){
         return "Cuenta usuario= "+this.nombre+" psw="+this.password+" tipo="+this.tipo;
     }
+    
+    public void guardar() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException{
+        CuentaDA cda = new CuentaDA(this);
+        cda.guardar();
+        System.out.println("Guardado");
+    }
+    
     
 }
