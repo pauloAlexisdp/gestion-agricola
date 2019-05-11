@@ -5,6 +5,7 @@
  */
 package root.gestionagricola;
 
+import root.gestionagricola.modelo.seguridad.CuentaDA;
 import java.sql.SQLException;
 
 /**

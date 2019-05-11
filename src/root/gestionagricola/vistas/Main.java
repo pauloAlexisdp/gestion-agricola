@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import root.gestionagricola.Cuenta;
-import root.gestionagricola.CuentaDA;
+import root.gestionagricola.modelo.seguridad.CuentaDA;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.Conexion_Postgres;
 import root.gestionagricola.modelo.FactoriaConexion;
