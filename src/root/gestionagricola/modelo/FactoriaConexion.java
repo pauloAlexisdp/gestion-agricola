@@ -25,16 +25,10 @@ public class FactoriaConexion {
         }
         return instancia;
     }
-    /**
-     * 
-     * @return la conexion con la base de datos
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException 
-     */
+    
     public Conexion getConexiondb() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
         if(cdb == null){
-            String nombreClase = "root.gestionagricola.modelo.Conexion_Postgres";
+            String nombreClase = "conexion.Conexion_Postgres";
             
             cdb = (Conexion) Class.forName(nombreClase).newInstance();
         }
