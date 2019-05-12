@@ -17,6 +17,7 @@ public class Cuenta {
     private String password;
     private String tipo;
     
+    
     public Cuenta(String nombre, String password, String tipo){
         this.nombre = nombre;
         this.password = password;
@@ -56,7 +57,7 @@ public class Cuenta {
      * @return the tipo
      */
     public String getTipo() {
-        return tipo;
+        return tipo;  
     }
 
     /**
