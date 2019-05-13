@@ -66,7 +66,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/usuarios-multiples-en-silueta.png"/>
+          <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/trabajadores 32px.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Trabajadores Internos"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
