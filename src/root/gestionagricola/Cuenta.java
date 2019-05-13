@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package root.gestionagricola;
 
 /**
@@ -13,6 +14,7 @@ public class Cuenta {
     private String nombre;
     private String password;
     private String tipo;
+    
     
     public Cuenta(String nombre, String password, String tipo){
         this.nombre = nombre;
@@ -53,7 +55,7 @@ public class Cuenta {
      * @return the tipo
      */
     public String getTipo() {
-        return tipo;
+        return tipo;  
     }
 
     /**
