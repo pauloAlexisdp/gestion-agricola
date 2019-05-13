@@ -27,6 +27,7 @@ public class Administrador extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton4 = new javax.swing.JButton();
         Titulo6 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -40,6 +41,17 @@ public class Administrador extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1270, 735));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/desconectarte.png"))); // NOI18N
+        jButton4.setBorderPainted(false);
+        jButton4.setFocusPainted(false);
+        jButton4.setOpaque(false);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
+
         Titulo6.setBackground(new java.awt.Color(255, 255, 255));
         Titulo6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         Titulo6.setForeground(new java.awt.Color(255, 255, 255));
@@ -50,8 +62,8 @@ public class Administrador extends javax.swing.JPanel {
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/usuarios-multiples-en-silueta.png"))); // NOI18N
-        jButton6.setText("Gestion de Cuentas de Usuario");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/usuario-hombre.png"))); // NOI18N
+        jButton6.setText("Gestión de Cuentas de Usuario");
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
         jButton6.setFocusPainted(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -69,6 +81,7 @@ public class Administrador extends javax.swing.JPanel {
         jButton1.setText("Eliminar Usuario");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         jButton1.setFocusPainted(false);
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -80,9 +93,10 @@ public class Administrador extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton2.setText("Ingresar Usuario");
+        jButton2.setText("Crear Usuario");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         jButton2.setFocusPainted(false);
+        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -97,6 +111,7 @@ public class Administrador extends javax.swing.JPanel {
         jButton3.setText("Modificar Usuario");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         jButton3.setFocusPainted(false);
+        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -234,6 +249,10 @@ public class Administrador extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
@@ -241,6 +260,7 @@ public class Administrador extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
