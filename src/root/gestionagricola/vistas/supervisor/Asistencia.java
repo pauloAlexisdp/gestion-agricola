@@ -5,15 +5,15 @@
  */
 package root.gestionagricola.vistas.supervisor;
 
+import root.gestionagricola.vistas.ControladorVistas;
+
 /**
  *
  * @author Javier
  */
 public class Asistencia extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Asistencia
-     */
+    private ControladorVistas controladorVista;
     public Asistencia() {
         initComponents();
     }
@@ -213,4 +213,8 @@ public class Asistencia extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+       this.controladorVista = controladorVista;
+    }
 }

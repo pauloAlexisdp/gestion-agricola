@@ -11,9 +11,7 @@ package root.gestionagricola.vistas;
  */
 public class Login extends javax.swing.JPanel {
 
-    /**
-     * Creates new form VistaLogiin
-     */
+    private ControladorVistas controladorVista;
     public Login() {
         initComponents();
     }
@@ -129,4 +127,8 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
 }

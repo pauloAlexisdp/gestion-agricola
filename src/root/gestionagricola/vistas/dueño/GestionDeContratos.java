@@ -5,16 +5,16 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+import root.gestionagricola.vistas.ControladorVistas;
+
 /**
  *
  * @author ignacioburgos
  */
-public class GestiónDeContratos extends javax.swing.JPanel {
+public class GestionDeContratos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestiónDeContratos
-     */
-    public GestiónDeContratos() {
+    private ControladorVistas controladorVistas;
+    public GestionDeContratos() {
         initComponents();
     }
 
@@ -257,4 +257,8 @@ public class GestiónDeContratos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controlador_vistas) {
+        this.controladorVistas = controlador_vistas;
+    }
 }

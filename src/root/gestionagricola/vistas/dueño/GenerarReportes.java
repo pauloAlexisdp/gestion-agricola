@@ -7,6 +7,7 @@ package root.gestionagricola.vistas.dueño;
 
 import java.awt.Container;
 import javax.swing.SwingUtilities;
+import root.gestionagricola.vistas.ControladorVistas;
 
 /**
  *
@@ -14,9 +15,7 @@ import javax.swing.SwingUtilities;
  */
 public class GenerarReportes extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FramePrincipal
-     */
+    private ControladorVistas controladorVista;
     public GenerarReportes() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -229,4 +228,8 @@ public void actualizarpantalla() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVistas) {
+        this.controladorVista = controladorVistas;
+    }
 }

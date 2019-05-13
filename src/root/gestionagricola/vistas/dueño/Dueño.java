@@ -5,15 +5,15 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+import root.gestionagricola.vistas.ControladorVistas;
+
 /**
  *
  * @author Javier
  */
 public class Dueño extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Vistadueñoo
-     */
+    private ControladorVistas controladorVista;
     public Dueño() {
         initComponents();
     }
@@ -163,4 +163,8 @@ public class Dueño extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
 }

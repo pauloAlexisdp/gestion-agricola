@@ -54,6 +54,10 @@ public void actualizarpantalla() {
         requestFocusInWindow();
     }
 
+    public void setControladorVista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

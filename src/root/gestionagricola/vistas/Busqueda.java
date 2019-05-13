@@ -11,9 +11,7 @@ package root.gestionagricola.vistas;
  */
 public class Busqueda extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Asistencia
-     */
+    private ControladorVistas controladorVista;
     public Busqueda() {
         initComponents();
 
@@ -166,4 +164,8 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
 }

@@ -5,15 +5,15 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+import root.gestionagricola.vistas.ControladorVistas;
+
 /**
  *
  * @author Javier
  */
 public class GestionTrabajadorInterno extends javax.swing.JPanel {
 
-    /**
-     * Creates new form GestionTrabajador
-     */
+    private ControladorVistas controladorVista;
     public GestionTrabajadorInterno() {
         initComponents();
     }
@@ -258,4 +258,8 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
 }

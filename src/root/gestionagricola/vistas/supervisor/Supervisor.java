@@ -5,15 +5,15 @@
  */
 package root.gestionagricola.vistas.supervisor;
 
+import root.gestionagricola.vistas.ControladorVistas;
+
 /**
  *
  * @author Javier
  */
 public class Supervisor extends javax.swing.JPanel {
 
-    /**
-     * Creates new form VistaSupervisor
-     */
+    private ControladorVistas controladorVistas;
     public Supervisor() {
         initComponents();
     }
@@ -115,4 +115,8 @@ public class Supervisor extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVistas) {
+        this.controladorVistas = controladorVistas;
+    }
 }

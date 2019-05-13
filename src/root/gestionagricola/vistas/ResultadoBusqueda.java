@@ -11,9 +11,7 @@ package root.gestionagricola.vistas;
  */
 public class ResultadoBusqueda extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ResultadoBusqueda
-     */
+    private ControladorVistas controladorVista;
     public ResultadoBusqueda() {
         initComponents();
     }
@@ -215,4 +213,8 @@ public class ResultadoBusqueda extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
 }
