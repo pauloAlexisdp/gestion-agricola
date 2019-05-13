@@ -47,7 +47,9 @@ public class Login extends javax.swing.JPanel {
         Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo2.setText("LOG IN  ");
 
+        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
         jTextField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setText("Usuario");
         jTextField1.setToolTipText("Nombre De Usuario");
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
@@ -58,7 +60,9 @@ public class Login extends javax.swing.JPanel {
         jButton1.setText("Iniciar Sesión");
         jButton1.setFocusPainted(false);
 
+        jPasswordField1.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setText("Contrasena");
         jPasswordField1.setToolTipText("Ingrese su contrasena");
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
