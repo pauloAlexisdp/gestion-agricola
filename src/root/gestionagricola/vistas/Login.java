@@ -57,6 +57,11 @@ public class Login extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Iniciar Sesión");
         jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jPasswordField1.setBackground(new java.awt.Color(51, 51, 51));
         jPasswordField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
@@ -116,6 +121,17 @@ public class Login extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    /*
+    aqui se debe seleccionar el panel dependiendo de que tipo de cuenta es.
+    
+    */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controladorVista.SeleccionarPanel("dueño");
+//        controladorVista.SeleccionarPanel("admin");
+//        controladorVista.SeleccionarPanel("supervisor");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

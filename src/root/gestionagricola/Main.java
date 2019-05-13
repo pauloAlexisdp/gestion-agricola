@@ -36,12 +36,12 @@ public class Main {
          Supervisor supervisor = new Supervisor();
          
          
-         
+         //se instancia el controlador con todas los paneles , para que trbaje con ellos.
          ControladorVistas controlador_vistas = new ControladorVistas(busqueda,principal,
          login,resultado_busqueda,administrador,dueño,reportes,contratos,trabajador_externo,trabajador_interno,
          asistencia,supervisor);
          
-         
+         //se setea el controlador de vistas en todas las vistas
          busqueda.setControladorVista(controlador_vistas);
          login.setControladorVista(controlador_vistas);
          resultado_busqueda.setControladorVista(controlador_vistas);
@@ -53,5 +53,9 @@ public class Main {
          trabajador_interno.setControladorVista(controlador_vistas);
          asistencia.setControladorVista(controlador_vistas);
          supervisor.setControladorVista(controlador_vistas);
+         
+         //se hace visible el frame principal
+         principal.setVisible(true);
+         principal.setContentPane(login); //se selecciona como frame principal el login
      }
 }
