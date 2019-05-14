@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.administrador;
+
+import root.gestionagricola.vistas.ControladorVistas;
 
 /**
  *
@@ -11,9 +9,7 @@ package root.gestionagricola.vistas.administrador;
  */
 public class Administrador extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Administrador
-     */
+    private ControladorVistas controladorVista;
     public Administrador() {
         initComponents();
     }
@@ -43,6 +39,7 @@ public class Administrador extends javax.swing.JPanel {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/desconectarte.png"))); // NOI18N
         jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.setFocusPainted(false);
         jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +59,7 @@ public class Administrador extends javax.swing.JPanel {
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/usuario-hombre.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/usuarios-multiples-en-silueta.png"))); // NOI18N
         jButton6.setText("Gestión de Cuentas de Usuario");
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
         jButton6.setFocusPainted(false);
@@ -250,7 +247,7 @@ public class Administrador extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.controladorVista.SeleccionarPanel("login");
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
@@ -266,4 +263,8 @@ public class Administrador extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVistas) {
+        this.controladorVista = controladorVistas;
+    }
 }
