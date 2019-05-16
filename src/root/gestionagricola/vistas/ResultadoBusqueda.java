@@ -11,9 +11,7 @@ package root.gestionagricola.vistas;
  */
 public class ResultadoBusqueda extends javax.swing.JPanel {
 
-    /**
-     * Creates new form ResultadoBusqueda
-     */
+    private ControladorVistas controladorVista;
     public ResultadoBusqueda() {
         initComponents();
     }
@@ -39,6 +37,7 @@ public class ResultadoBusqueda extends javax.swing.JPanel {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
         jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.setFocusPainted(false);
         jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -202,7 +201,7 @@ public class ResultadoBusqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.controladorVista.SeleccionarPanel("busqueda");
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
@@ -215,4 +214,8 @@ public class ResultadoBusqueda extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
 }

@@ -29,6 +29,7 @@
           <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/desconectarte.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
