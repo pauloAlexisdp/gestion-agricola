@@ -7,9 +7,9 @@ package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 
 /**
@@ -18,9 +18,8 @@ import javax.swing.JTextField;
  */
 public class IngresarDatosContratos extends javax.swing.JFrame {
 
-    GestionDeContratos Gcontratos;
-    public IngresarDatosContratos(GestionDeContratos Gcontratos) {
-        this.Gcontratos = Gcontratos;
+    
+    public IngresarDatosContratos() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -191,16 +190,12 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
         if(this.RespuestaFolio.getText()!=null && (String)this.RespuestEstado.getSelectedItem()!=null && 
                 this.RespuestFechaInicio.getDate()!=null && this.RespuestFechaTermino.getDate()!=null
                 && this.RespuestNombre.getText()!=null && (String)this.RespuestaTipo.getSelectedItem()!=null
-                && this.RespuestaRut.getText()!=null && this.RespuestaValor.getText()!=null){
-            //seteo los valores que obtube del formulario
-            this.Gcontratos.setFolio(Integer.parseInt(this.RespuestaFolio.getText()));
-            this.Gcontratos.setFechaInicio(this.RespuestFechaInicio.getDateFormatString());
-            this.Gcontratos.setFechaTermino(this.RespuestFechaTermino.getDateFormatString());
-            this.Gcontratos.setSueldo(Integer.parseInt(this.RespuestaValor.getText()));
-            this.Gcontratos.setName(this.RespuestNombre.getText());
-            this.Gcontratos.setRut(Integer.parseInt(this.RespuestaRut.getText()));
-            this.Gcontratos.setTipo((String)this.RespuestaTipo.getSelectedItem());
-            this.Gcontratos.setEstado((String)this.RespuestEstado.getSelectedItem());
+                && this.RespuestaRut.getText()!=null && this.RespuestaValor.getText()!=null){   
+                //Aqui se llama al metodo del controlador que hara la conexion con el modelo.
+                ControladorContrato.ingresarContrato(Integer.parseInt(this.RespuestaFolio.getText()), (String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem()
+                        , RespuestFechaInicio.getDateFormatString(), RespuestFechaTermino.getDateFormatString(), 
+                        RespuestNombre.getText(), Integer.parseInt(RespuestaRut.getText()), Integer.parseInt(RespuestaRut.getText()));
+            
             this.dispose();
         }else{//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);

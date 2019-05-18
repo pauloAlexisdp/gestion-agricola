@@ -17,14 +17,8 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private ControladorVistas controladorVistas;
     private IngresarDatosContratos ingresar_datos;
     private ModificarDatoContrato modificarDato;
-    private int folio;
-    private String fechaInicio;
-    private String fechaTermino;
-    private int rut;
-    private String nombre;
-    private int sueldo;
-    private String estado;
-    private String tipo;
+    private EliminarDatoContrato eliminarDato;
+
 
     public GestionDeContratos() {
         initComponents();
@@ -75,7 +69,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
         BotonBusqueda.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         BotonBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         BotonBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        BotonBusqueda.setText("Búsqueda");
+        BotonBusqueda.setText("Búscar Contrato");
         BotonBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         BotonBusqueda.setFocusPainted(false);
         BotonBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -229,6 +223,25 @@ public class GestionDeContratos extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
@@ -266,31 +279,34 @@ public class GestionDeContratos extends javax.swing.JPanel {
         if (respuesta == null) {//no hace nada
 
         } else {//aqui se trabaja con la respuesta.
-            //se debe validar si la respuesta existe. desde la BD.
-            this.folio = Integer.parseInt(respuesta);
-            this.modificarDato = new ModificarDatoContrato(this);
+            
+            this.modificarDato = new ModificarDatoContrato();
             modificarDato.setVisible(true);
             //aqui se le debe pasar los datos que se modificaran al controlador.Los datos estan guardados como atributos.
         }
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        String respuesta = JOptionPane.showInputDialog(null, "Escriba el Folio del Contrato que desea eliminar.", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+        String respuesta = JOptionPane.showInputDialog(null, "Ingrese el folio del contrato que desea eliminar.", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
         if (respuesta == null) {//no hace nada
 
         } else {//aqui se trabaja con la respuesta.
-            //se debe validar si el folio existe desde la BD.
+            
+            
+            this.eliminarDato= new EliminarDatoContrato();
+            eliminarDato.setVisible(true);
+            //aqui se le debe pasar los datos que se modificaran al controlador.Los datos estan guardados como atributos.
         }
+        
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
-        this.ingresar_datos = new IngresarDatosContratos(this);
+        this.ingresar_datos = new IngresarDatosContratos();
         ingresar_datos.setVisible(true);
-        //aqui se debe pasar los datos al controlador.(los datos estan como atributos, seteados desde el formulario.
     }//GEN-LAST:event_BotonIngresarActionPerformed
 
     private void BotonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBusquedaActionPerformed
-        String respuesta = JOptionPane.showInputDialog(null, "Escriba el nombre que desea buscar.", "Búsqueda", JOptionPane.INFORMATION_MESSAGE);
+        String respuesta = JOptionPane.showInputDialog(null, "Escriba el nombre del trabajador que desea buscar.", "Búsqueda", JOptionPane.INFORMATION_MESSAGE);
         if (respuesta == null) {//no hace nada
 
         } else {//aqui se trabaja con la respuesta.
@@ -298,37 +314,6 @@ public class GestionDeContratos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonBusquedaActionPerformed
 
-    public void setFolio(int folio) {
-        this.folio = folio;
-    }
-
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public void setFechaTermino(String fechaTermino) {
-        this.fechaTermino = fechaTermino;
-    }
-
-    public void setRut(int rut) {
-        this.rut = rut;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setSueldo(int sueldo) {
-        this.sueldo = sueldo;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

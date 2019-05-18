@@ -12,6 +12,7 @@ package root.gestionagricola.vistas;
 public class Login extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
+    
     public Login() {
         initComponents();
     }
@@ -129,7 +130,7 @@ public class Login extends javax.swing.JPanel {
     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         controladorVista.SeleccionarPanel("dueño");
-//        controladorVista.SeleccionarPanel("admin");
+ //       controladorVista.SeleccionarPanel("admin");
 //        controladorVista.SeleccionarPanel("supervisor");
     }//GEN-LAST:event_jButton1ActionPerformed
 
