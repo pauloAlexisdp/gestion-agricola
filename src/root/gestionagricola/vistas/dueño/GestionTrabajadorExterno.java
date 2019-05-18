@@ -260,7 +260,9 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    public void setControladorVista(ControladorVistas controladorVista) {
-        this.controladorVista = controladorVista;
+    public void setControladorVista(ControladorVistas controlador_vistas) {
+        this.controladorVista = controlador_vistas;
     }
+
+    
 }

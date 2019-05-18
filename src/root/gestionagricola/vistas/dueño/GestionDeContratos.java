@@ -5,6 +5,7 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+import javax.swing.JOptionPane;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
@@ -14,6 +15,17 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class GestionDeContratos extends javax.swing.JPanel {
 
     private ControladorVistas controladorVistas;
+    private IngresarDatosContratos ingresar_datos;
+    private ModificarDatoContrato modificarDato;
+    private int folio;
+    private String fechaInicio;
+    private String fechaTermino;
+    private int rut;
+    private String nombre;
+    private int sueldo;
+    private String estado;
+    private String tipo;
+
     public GestionDeContratos() {
         initComponents();
     }
@@ -27,94 +39,109 @@ public class GestionDeContratos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        IconoManzana = new javax.swing.JLabel();
+        BotonModificar = new javax.swing.JButton();
+        BotonBusqueda = new javax.swing.JButton();
+        BotonEliminar = new javax.swing.JButton();
+        BotonIngresar = new javax.swing.JButton();
+        BotonVolver = new javax.swing.JButton();
+        BotonTitulo = new javax.swing.JButton();
+        TablaContratos = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         Fondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 229, 151));
+        IconoManzana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
+        IconoManzana.setText("jLabel2");
+        add(IconoManzana, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 229, 151));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton5.setText("Modificar Contrato");
-        jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton5.setFocusPainted(false);
-        jButton5.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificar.setBackground(new java.awt.Color(255, 255, 255));
+        BotonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        BotonModificar.setForeground(new java.awt.Color(0, 0, 0));
+        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        BotonModificar.setText("Modificar Contrato");
+        BotonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        BotonModificar.setFocusPainted(false);
+        BotonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                BotonModificarActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, 40));
+        add(BotonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, 40));
 
-        jButton7.setBackground(new java.awt.Color(255, 255, 255));
-        jButton7.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton7.setText("Eliminar Contrato");
-        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton7.setFocusPainted(false);
-        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        BotonBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        BotonBusqueda.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        BotonBusqueda.setForeground(new java.awt.Color(0, 0, 0));
+        BotonBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        BotonBusqueda.setText("Búsqueda");
+        BotonBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        BotonBusqueda.setFocusPainted(false);
+        BotonBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                BotonBusquedaActionPerformed(evt);
             }
         });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 40));
+        add(BotonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 200, 40));
 
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton8.setText("Ingresar Contrato");
-        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton8.setFocusPainted(false);
-        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        BotonEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        BotonEliminar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        BotonEliminar.setForeground(new java.awt.Color(0, 0, 0));
+        BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        BotonEliminar.setText("Eliminar Contrato");
+        BotonEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        BotonEliminar.setFocusPainted(false);
+        BotonEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                BotonEliminarActionPerformed(evt);
             }
         });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
+        add(BotonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 40));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setFocusPainted(false);
-        jButton4.setOpaque(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BotonIngresar.setBackground(new java.awt.Color(255, 255, 255));
+        BotonIngresar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        BotonIngresar.setForeground(new java.awt.Color(0, 0, 0));
+        BotonIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        BotonIngresar.setText("Ingresar Contrato");
+        BotonIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        BotonIngresar.setFocusPainted(false);
+        BotonIngresar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonIngresar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BotonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BotonIngresarActionPerformed(evt);
             }
         });
-        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
+        add(BotonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/contrato 32px.png"))); // NOI18N
-        jButton6.setText("Gestión de Contratos");
-        jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton6.setFocusPainted(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        BotonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
+        BotonVolver.setBorderPainted(false);
+        BotonVolver.setContentAreaFilled(false);
+        BotonVolver.setFocusPainted(false);
+        BotonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                BotonVolverActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
+        add(BotonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
+
+        BotonTitulo.setBackground(new java.awt.Color(255, 255, 255));
+        BotonTitulo.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        BotonTitulo.setForeground(new java.awt.Color(0, 0, 0));
+        BotonTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/contrato 32px.png"))); // NOI18N
+        BotonTitulo.setText("Gestión de Contratos");
+        BotonTitulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
+        BotonTitulo.setFocusPainted(false);
+        BotonTitulo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BotonTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonTituloActionPerformed(evt);
+            }
+        });
+        add(BotonTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -217,49 +244,108 @@ public class GestionDeContratos extends javax.swing.JPanel {
             }
         });
         jTable1.setGridColor(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(jTable1);
+        TablaContratos.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 800, 360));
+        add(TablaContratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 800, 360));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Fondo oscuro.png"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(1270, 735));
         add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void BotonTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonTituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_BotonTituloActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BotonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVolverActionPerformed
         this.controladorVistas.SeleccionarPanel("dueño");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BotonVolverActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
+        String respuesta = JOptionPane.showInputDialog(null, "Ingrese el folio del contrato que desea modificar.", "Actualizar", JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == null) {//no hace nada
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        } else {//aqui se trabaja con la respuesta.
+            //se debe validar si la respuesta existe. desde la BD.
+            this.folio = Integer.parseInt(respuesta);
+            this.modificarDato = new ModificarDatoContrato(this);
+            modificarDato.setVisible(true);
+            //aqui se le debe pasar los datos que se modificaran al controlador.Los datos estan guardados como atributos.
+        }
+    }//GEN-LAST:event_BotonModificarActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        String respuesta = JOptionPane.showInputDialog(null, "Escriba el Folio del Contrato que desea eliminar.", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == null) {//no hace nada
+
+        } else {//aqui se trabaja con la respuesta.
+            //se debe validar si el folio existe desde la BD.
+        }
+    }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
+        this.ingresar_datos = new IngresarDatosContratos(this);
+        ingresar_datos.setVisible(true);
+        //aqui se debe pasar los datos al controlador.(los datos estan como atributos, seteados desde el formulario.
+    }//GEN-LAST:event_BotonIngresarActionPerformed
+
+    private void BotonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBusquedaActionPerformed
+        String respuesta = JOptionPane.showInputDialog(null, "Escriba el nombre que desea buscar.", "Búsqueda", JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == null) {//no hace nada
+
+        } else {//aqui se trabaja con la respuesta.
+
+        }
+    }//GEN-LAST:event_BotonBusquedaActionPerformed
+
+    public void setFolio(int folio) {
+        this.folio = folio;
+    }
+
+    public void setFechaInicio(String fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public void setFechaTermino(String fechaTermino) {
+        this.fechaTermino = fechaTermino;
+    }
+
+    public void setRut(int rut) {
+        this.rut = rut;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setSueldo(int sueldo) {
+        this.sueldo = sueldo;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonBusqueda;
+    private javax.swing.JButton BotonEliminar;
+    private javax.swing.JButton BotonIngresar;
+    private javax.swing.JButton BotonModificar;
+    private javax.swing.JButton BotonTitulo;
+    private javax.swing.JButton BotonVolver;
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel IconoManzana;
+    private javax.swing.JScrollPane TablaContratos;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     public void setControladorVista(ControladorVistas controlador_vistas) {
         this.controladorVistas = controlador_vistas;
     }
+
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package root.gestionagricola.vistas.dueño;
 
 import javax.swing.JOptionPane;
@@ -15,6 +10,7 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class Dueño extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
+
     public Dueño() {
         initComponents();
     }
@@ -151,16 +147,19 @@ public class Dueño extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        String[] trabajadores = {"Externo","Interno"};
+        String[] trabajadores = {"Externo", "Interno"};
         String respuesta = "";
-        respuesta = (String)JOptionPane.showInputDialog(null, "Seleccione el tipo de trabajadores", "Trabajadores", 
-                JOptionPane.DEFAULT_OPTION, null,trabajadores, trabajadores[0]);
-        if(respuesta.equals("")){//no se hace nada
-            
-        }else{//se selecciona uno de los dos paneles
+        try {
+            respuesta = (String) JOptionPane.showInputDialog(null, "Seleccione el tipo de trabajadores", "Trabajadores",
+                    JOptionPane.DEFAULT_OPTION, null, trabajadores, trabajadores[0]);
+        } catch (NullPointerException e) {
+        }
+        if (respuesta==null) {//no se hace nada
+
+        } else {//se selecciona uno de los dos paneles
             this.controladorVista.SeleccionarPanel(respuesta);
         }
-        
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -192,7 +191,8 @@ public class Dueño extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
-    public void setControladorVista(ControladorVistas controladorVista) {
-        this.controladorVista = controladorVista;
+    public void setControladorVista(ControladorVistas controlador_vistas) {
+        this.controladorVista = controlador_vistas;
     }
+
 }
