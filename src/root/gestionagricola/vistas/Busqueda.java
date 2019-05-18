@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas;
 
 /**
@@ -10,10 +6,11 @@ package root.gestionagricola.vistas;
  * @author Javier
  */
 public class Busqueda extends javax.swing.JPanel {
+    
+    
 
-    /**
-     * Creates new form Asistencia
-     */
+    private ControladorVistas controladorVista;
+    private String panel_anterior;
     public Busqueda() {
         initComponents();
 
@@ -78,8 +75,8 @@ public class Busqueda extends javax.swing.JPanel {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
         jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.setFocusPainted(false);
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -127,6 +124,11 @@ public class Busqueda extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Garamond", 1, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Realizar Búsqueda");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 260, 60));
 
         jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
@@ -144,8 +146,21 @@ public class Busqueda extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+       //pueden acceder desde supervisor o dueño
+       //volver al dueño
+       if(this.panel_anterior.equals("busquedadueño")){
+           this.controladorVista.SeleccionarPanel("dueño");
+       }else if(this.panel_anterior.equals("busquedasupervisor")){//volver al supervisor
+            this.controladorVista.SeleccionarPanel("supervisor");
+       }
+       
+       
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.controladorVista.SeleccionarPanel("resultadobusqueda");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,4 +181,13 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
+
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
+
+    public void setPanel_anterior(String panel_anterior) {
+        this.panel_anterior = panel_anterior;
+    }
+    
 }
