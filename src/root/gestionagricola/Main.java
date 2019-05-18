@@ -54,6 +54,7 @@ public class Main {
          asistencia.setControladorVista(controlador_vistas);
          supervisor.setControladorVista(controlador_vistas);
          
+         
          //se hace visible el frame principal
          principal.setVisible(true);
          principal.setContentPane(login); //se selecciona como frame principal el login
