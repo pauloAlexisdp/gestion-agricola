@@ -1,5 +1,5 @@
 
-package root.gestionagricola;
+package root.gestionagricola.gestioncontrato;
 
 import java.util.ArrayList;
 
@@ -9,22 +9,31 @@ import java.util.ArrayList;
  */
 public class ControladorContrato {
     
+    private Contrato contrato;
     
     public static void ingresarContrato(int folio, String tipo, String estado, 
             String f_inicio, String f_termino, String nombre, int rut, int sueldo){
-        
+        //Ingreso de datos a la BD
     }
     
-    public ArrayList buscarContrato(int folio, String tipo, String estado, 
+    public static ArrayList buscarContrato(int folio, String tipo, String estado, 
             String f_inicio, String f_termino, String nombre, int rut, int sueldo){
+        //Se obtiene un arreglo de contratos relacionados a los atributos...
         return null;
     }
     
-    public Object getContrato(int folio){
+    public Contrato getContrato(int folio){
+        // Llamada a la BD para obtener el contrato
         return null;
     }
     
-    public void eliminarContrato(int folio){
+    /* Revisar */
+    public static Contrato setContrato(int folio, String tipo, String estado, 
+            String f_inicio, String f_termino, String nombre, int rut, int sueldo){
+        return new Contrato(folio, tipo, estado, f_inicio, f_termino, nombre, rut, sueldo);
+    }
+    
+    public static void eliminarContrato(int folio){
         
     }
 }
