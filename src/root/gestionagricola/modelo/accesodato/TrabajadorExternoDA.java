@@ -7,7 +7,6 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
@@ -107,7 +106,7 @@ public class TrabajadorExternoDA {
      * @throws IllegalAccessException
      * @throws SQLException 
      **/
-    public  static ArrayList buscarContrato(Date inicio, Date termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+    public  static ArrayList buscarContrato(String inicio, String termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
         
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
