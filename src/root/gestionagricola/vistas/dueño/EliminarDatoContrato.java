@@ -193,7 +193,7 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         String[] datos=null;
-        //datos = ControladorContrato.getContrato(this.folio_recibido);
+        datos = ControladorContrato.getContrato(this.folio_recibido);
         if(datos==null){
              JOptionPane.showMessageDialog(null, "El contrato a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }else{

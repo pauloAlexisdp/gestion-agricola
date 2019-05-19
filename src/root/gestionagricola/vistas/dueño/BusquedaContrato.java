@@ -187,12 +187,10 @@ public class BusquedaContrato extends javax.swing.JFrame {
                 || this.RespuestaEmpresa.getText() != null || this.RespuestaValor.getText() != null
                 || this.RespuestaEmpresa.getText() != null) {
             String[][] datos = null;
-            //          datos = ControladorContrato.buscarContrato((String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
-            //                  , this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText())
-            //                          this.RespuestaEmpresa.getText());
-            this.Gcontratos.cargarDatosTabla();
+            datos = ControladorContrato.buscarContrato((String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate(),
+                    this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
             if(datos!=null){
-                //this.Gcontratos.setDatos_para_tabla(datos);
+                this.Gcontratos.setDatos_para_tabla(datos);
                 this.Gcontratos.cargarDatosTabla();
             }else{
                 JOptionPane.showMessageDialog(null, "Los datos no han sido encontrados.", "ERROR", JOptionPane.WARNING_MESSAGE);

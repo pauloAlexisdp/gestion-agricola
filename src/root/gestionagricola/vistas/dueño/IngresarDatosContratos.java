@@ -204,9 +204,9 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
                 && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
                 && this.RespuestaEmpresa.getText() != null && this.RespuestaValor.getText() != null) {
             //Aqui se llama al metodo del controlador que hara la conexion con el modelo.
-            //     ControladorContrato.ingresarContrato(Integer.parseInt(this.RespuestaFolio.getText()), (String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem()
-            //             , RespuestFechaInicio.getDate(), RespuestFechaTermino.getDate(), 
-            //             RespuestNombre.getText(), Integer.parseInt(RespuestaEmpresa.getText()), Integer.parseInt(RespuestaEmpresa.getText()),this.RespuestaEmpresa.getText());
+                 ControladorContrato.ingresarContrato(Integer.parseInt(this.RespuestaFolio.getText()), (String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem()
+                         , RespuestFechaInicio.getDate(), RespuestFechaTermino.getDate(), 
+                         RespuestNombre.getText(), Integer.parseInt(RespuestaEmpresa.getText()), Integer.parseInt(RespuestaEmpresa.getText()),this.RespuestaEmpresa.getText());
             
             this.dispose();
         } else {//si no le avisa al usuario que le faltan casillas por llenar.

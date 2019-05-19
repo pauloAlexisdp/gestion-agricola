@@ -21,17 +21,10 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private ModificarDatoContrato modificarDato;
     private EliminarDatoContrato eliminarDato;
     private BusquedaContrato busquedaContrato;
-    private String[][] datos_para_tabla = new String[1][8];
+    private String[][] datos_para_tabla ;
 
     public GestionDeContratos() {
-        datos_para_tabla[0][0]="hola";
-        datos_para_tabla[0][1]="hola";
-        datos_para_tabla[0][2]="hola";
-        datos_para_tabla[0][3]="hola";
-        datos_para_tabla[0][4]="hola";
-        datos_para_tabla[0][5]="hola";
-        datos_para_tabla[0][6]="hola";
-        datos_para_tabla[0][7]="hola";
+
         initComponents();
     }
 
