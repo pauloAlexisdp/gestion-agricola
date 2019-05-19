@@ -1,7 +1,9 @@
 
 package root.gestionagricola.gestioncontrato;
 
-import java.util.Date;
+import java.sql.SQLException;
+import java.sql.Date;
+import root.gestionagricola.modelo.accesodato.*;
 
 
 /**
@@ -26,7 +28,7 @@ public class ControladorContrato {
      */
     public static void ingresarContrato(int folio, String tipo, String estado, 
             Date f_inicio, Date f_termino, String nombre, int rut, int sueldo,
-            String nom_empresa){
+            String nom_empresa) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         /* Formateo de Fechas */
         String inicio = ControladorContrato.transformarDate(f_inicio);
         String termino = ControladorContrato.transformarDate(f_termino);
@@ -57,12 +59,15 @@ public class ControladorContrato {
      */
     public static String[][] buscarContrato(String tipo, String estado, 
             Date f_inicio, Date f_termino, String nombre, int rut, int sueldo,
-            String nom_empresa){
+            String nom_empresa) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         /* Formateo de Fechas */
         String inicio = ControladorContrato.transformarDate(f_inicio);
         String termino = ControladorContrato.transformarDate(f_termino);
-        
-        
+        if(tipo.equals("planta")){
+            TrabajadorInternoDA.buscarContrato(f_inicio, f_termino);
+        }else{
+            TrabajadorExternoDA.buscarContrato(f_inicio, f_termino);
+        }
         //Se obtiene un arreglo de contratos relacionados a los atributos...
         
         return null;
