@@ -44,9 +44,7 @@ public class ContratoDA {
         cdb.un_sql = "select folio from contrato where folio = "+folio;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
-           System.out.println("hola");
            if(cdb.resultado.next()){
-               System.out.println("123");
                /*cdb.un_sql = "UPDATE cuenta set contrasena='"+cuenta.getPassword()+"', tipo='"+cuenta.getTipo()+"'"+
                        "WHERE nombre='"+cuenta.getNombre()+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
