@@ -109,7 +109,7 @@ public class TrabajadorInternoDA {
      * @throws IllegalAccessException
      * @throws SQLException 
      **/
-    public static ArrayList buscarContrato(Date inicio, Date termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+    public static ArrayList buscarContrato(String inicio, String termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
         
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
