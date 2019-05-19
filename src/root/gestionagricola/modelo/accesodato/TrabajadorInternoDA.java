@@ -77,7 +77,7 @@ public class TrabajadorInternoDA {
          * estado para 
          */
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
-                + "from trabajadorinterno, contrato where folio=refcontrato";
+                + " from trabajadorinterno, contrato where folio=refcontrato";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
