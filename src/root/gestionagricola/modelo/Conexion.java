@@ -54,5 +54,13 @@ public class Conexion {
     public String getDriver(){
         return this.driver;
     }
+    /**
+     * cierro mi conexion 
+     * @throws SQLException 
+     */
+    public void close() throws SQLException{
+        this.statement.close();
+        this.resultado.close();
+    }
     
 }
