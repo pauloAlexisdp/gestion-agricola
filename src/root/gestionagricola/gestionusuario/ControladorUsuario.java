@@ -14,18 +14,42 @@ public class ControladorUsuario{
     private Usuario usuario;
     
     
-    public static void CrearUsuario(String nombreUsuario, String contrasena, String tipoCuenta){        
+    public static void CrearUsuario(String nombreUsuario, String contrasena, String tipoCuenta){ 
+        
+        String nombre = nombreUsuario;
+        // validar que el nombre del usuario y que no se repita dentro de la BD
+        
+        String password = contrasena;
+        
+        String cuenta = tipoCuenta;
+        
+        // agregar los 3 parametros a la BD.
         
     }
     
     
     public static void ModificarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
         
+        String modificarNombre = nombreUsuario;
+
+        
+        
+        
         
     }
    
     
     public static void EliminarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
+        
+        String nombre = nombreUsuario;
+        
+        String password = contrasena;
+        
+        // verificar en la BD que los dos parametros existen y eliminarlos.
+        
+        
+        
+        
         
     }
 
