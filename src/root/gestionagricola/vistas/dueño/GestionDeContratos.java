@@ -6,6 +6,8 @@
 package root.gestionagricola.vistas.dueño;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
@@ -18,9 +20,18 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private IngresarDatosContratos ingresar_datos;
     private ModificarDatoContrato modificarDato;
     private EliminarDatoContrato eliminarDato;
-
+    private BusquedaContrato busquedaContrato;
+    private String[][] datos_para_tabla = new String[1][8];
 
     public GestionDeContratos() {
+        datos_para_tabla[0][0]="hola";
+        datos_para_tabla[0][1]="hola";
+        datos_para_tabla[0][2]="hola";
+        datos_para_tabla[0][3]="hola";
+        datos_para_tabla[0][4]="hola";
+        datos_para_tabla[0][5]="hola";
+        datos_para_tabla[0][6]="hola";
+        datos_para_tabla[0][7]="hola";
         initComponents();
     }
 
@@ -41,7 +52,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
         BotonVolver = new javax.swing.JButton();
         BotonTitulo = new javax.swing.JButton();
         TablaContratos = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         Fondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +80,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
         BotonBusqueda.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         BotonBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         BotonBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        BotonBusqueda.setText("Búscar Contrato");
+        BotonBusqueda.setText("Búscar Contratos");
         BotonBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         BotonBusqueda.setFocusPainted(false);
         BotonBusqueda.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -137,127 +148,127 @@ public class GestionDeContratos extends javax.swing.JPanel {
         });
         add(BotonTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setBackground(new java.awt.Color(255, 255, 255));
+        Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        Tabla.setForeground(new java.awt.Color(0, 0, 0));
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "N° Contrato", "Fecha Inicio", "Fecha termino", "Rut", "Nombre", "Valor", "Estado"
+                "N° Contrato", "Fecha Inicio", "Fecha termino", "Rut", "Nombre", "Valor", "Estado", "Nombre Empresa"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(153, 153, 153));
-        TablaContratos.setViewportView(jTable1);
+        Tabla.setGridColor(new java.awt.Color(153, 153, 153));
+        TablaContratos.setViewportView(Tabla);
 
         add(TablaContratos, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 800, 360));
 
@@ -279,9 +290,10 @@ public class GestionDeContratos extends javax.swing.JPanel {
         if (respuesta == null) {//no hace nada
 
         } else {//aqui se trabaja con la respuesta.
-            
+
             this.modificarDato = new ModificarDatoContrato();
             modificarDato.setVisible(true);
+            modificarDato.setFolio_recibido(Integer.parseInt(respuesta));
             //aqui se le debe pasar los datos que se modificaran al controlador.Los datos estan guardados como atributos.
         }
     }//GEN-LAST:event_BotonModificarActionPerformed
@@ -290,14 +302,13 @@ public class GestionDeContratos extends javax.swing.JPanel {
         String respuesta = JOptionPane.showInputDialog(null, "Ingrese el folio del contrato que desea eliminar.", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
         if (respuesta == null) {//no hace nada
 
-        } else {//aqui se trabaja con la respuesta.
-            
-            
-            this.eliminarDato= new EliminarDatoContrato();
+        } else {//aqui se llama al otro JFrame(EliminarDatosContratos) que trabajara los datos.
+
+            this.eliminarDato = new EliminarDatoContrato();
             eliminarDato.setVisible(true);
-            //aqui se le debe pasar los datos que se modificaran al controlador.Los datos estan guardados como atributos.
+            eliminarDato.setFolio_recibido(Integer.parseInt(respuesta));
         }
-        
+
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresarActionPerformed
@@ -306,14 +317,32 @@ public class GestionDeContratos extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonIngresarActionPerformed
 
     private void BotonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBusquedaActionPerformed
-        String respuesta = JOptionPane.showInputDialog(null, "Escriba el nombre del trabajador que desea buscar.", "Búsqueda", JOptionPane.INFORMATION_MESSAGE);
-        if (respuesta == null) {//no hace nada
-
-        } else {//aqui se trabaja con la respuesta.
-
-        }
+        this.busquedaContrato = new BusquedaContrato(this);
+        busquedaContrato.setVisible(true);
     }//GEN-LAST:event_BotonBusquedaActionPerformed
 
+    public void setjTable(JTable jTable) {
+        this.Tabla = jTable;
+    }
+
+    public void setDatos_para_tabla(String[][] datos_para_tabla) {
+        this.datos_para_tabla = datos_para_tabla;
+    }
+
+    public void cargarDatosTabla() {
+        for (int i = 0; i < this.datos_para_tabla.length; i++) {
+            this.Tabla.setValueAt(this.datos_para_tabla[i][0], i, 0);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][2], i, 2);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][3], i, 3);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][4], i, 4);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][5], i, 5);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][6], i, 6);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][7], i, 7);
+            
+            
+        }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -325,8 +354,8 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private javax.swing.JButton BotonVolver;
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel IconoManzana;
+    private javax.swing.JTable Tabla;
     private javax.swing.JScrollPane TablaContratos;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     public void setControladorVista(ControladorVistas controlador_vistas) {

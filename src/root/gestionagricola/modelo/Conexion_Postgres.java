@@ -5,7 +5,7 @@
  */
 package root.gestionagricola.modelo;
 
-import java.beans.Statement;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -26,7 +26,7 @@ public class Conexion_Postgres extends Conexion {
     }
     
     public Conexion_Postgres() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
-        this("fruticula", "postgres", "1234");
+        this("fruticola", "postgres", "mas");
     }
     /**
      * Inicializa la base de datos 
