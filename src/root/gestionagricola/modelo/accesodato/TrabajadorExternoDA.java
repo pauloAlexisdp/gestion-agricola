@@ -86,7 +86,7 @@ public class TrabajadorExternoDA {
                 int sueldo  = cdb.resultado.getInt("sueldo");
                 String estado = cdb.resultado.getString("estado");
                 String nombreEmpresa = cdb.resultado.getString("nombreempresa");
-                
+
                 r.add(ControladorContrato.crearContrato(folio, "externo", estado,fechaInicio, fechaTermino, nombre, rut, sueldo, nombreEmpresa));
             }
         }else{
@@ -117,7 +117,7 @@ public class TrabajadorExternoDA {
         System.out.println(inicio + " "+ termino);
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado, nombreempresa"
                 + " from trabajadorexterno, contrato where folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
-        System.out.println(cdb.un_sql.toString());
+
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
@@ -130,9 +130,9 @@ public class TrabajadorExternoDA {
                 int sueldo  = cdb.resultado.getInt("sueldo");
                 String estado = cdb.resultado.getString("estado");
                 String nombreEmpresa = cdb.resultado.getString("nombreempresa");
-                
+                System.out.println(nombreEmpresa);
                 r.add(ControladorContrato.crearContrato(folio, "externo", estado,fechaInicio, fechaTermino, nombre, rut, sueldo, nombreEmpresa));
-                System.out.println("holas");
+
             }
         }else{
             System.out.println("error");
