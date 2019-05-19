@@ -206,7 +206,7 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
             this.RespuestNombre.setText(datos[4]);
             this.RespuestaRut.setText(datos[5]);
             this.RespuestaValor.setText(datos[6]);
-            ControladorContrato.modificarContrato((String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
+            ControladorContrato.modificarContrato(this.folio_recibido,(String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
                     , this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
             JOptionPane.showMessageDialog(null, "Contrato Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
