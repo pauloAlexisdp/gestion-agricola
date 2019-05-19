@@ -6,8 +6,10 @@
 
 package root.gestionagricola;
 
+import java.sql.SQLException;
+
 /**
- *
+ * 
  * @author len_win
  */
 public class Cuenta {
@@ -64,9 +66,42 @@ public class Cuenta {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    public String toString(){
-        return "Cuenta usuario= "+this.nombre+" psw="+this.password+" tipo="+this.tipo;
+    /**
+     * 
+     * @param nombre
+     * @param password
+     * @return retorna el tipo de usuario que es 
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
+    public String BuscarUsuario(String nombre, String password) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        CuentaDA cda = new CuentaDA(this);
+        Cuenta c = cda.buscar(nombre, password);
+        this.nombre=c.getNombre();
+        this.password = c.getPassword();
+        this.tipo = c.getTipo();
+        System.out.println("Nombre "+this.nombre+" paa "+this.password+" tipo "+this.tipo);
+        if(this.tipo == null){
+            return "0";
+        }else{
+            return this.tipo;
+        }
     }
     
+ 
+    
+    /**
+     * 
+     * @throws ClassNotFoundException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws SQLException 
+     */
+    public void guardar() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException{
+        CuentaDA cda = new CuentaDA(this);
+        cda.guardar();
+        System.out.println("Guardado");
+    }    
 }
