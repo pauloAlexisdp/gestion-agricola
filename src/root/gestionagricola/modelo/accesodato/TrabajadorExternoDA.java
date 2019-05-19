@@ -114,8 +114,10 @@ public class TrabajadorExternoDA {
          * estado para trabajador:  
          * estado para 
          */
+        System.out.println(inicio + " "+ termino);
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado, nombreempresa"
-                + "from trabajadorexterno, contrato where folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
+                + " from trabajadorexterno, contrato where folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
+        System.out.println(cdb.un_sql.toString());
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
@@ -130,6 +132,7 @@ public class TrabajadorExternoDA {
                 String nombreEmpresa = cdb.resultado.getString("nombreempresa");
                 
                 r.add(ControladorContrato.crearContrato(folio, "externo", estado,fechaInicio, fechaTermino, nombre, rut, sueldo, nombreEmpresa));
+                System.out.println("holas");
             }
         }else{
             System.out.println("error");
