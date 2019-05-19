@@ -1,6 +1,7 @@
 
 package root.gestionagricola.vistas;
 
+import root.gestionagricola.Cuenta;
 import root.gestionagricola.vistas.administrador.Administrador;
 import root.gestionagricola.vistas.dueño.Dueño;
 import root.gestionagricola.vistas.dueño.GenerarReportes;
@@ -27,7 +28,7 @@ public class ControladorVistas {
     private GestionTrabajadorInterno trabajador_interno;
     private Asistencia asistencia;
     private Supervisor supervisor;
-    
+    private Cuenta cuenta;
     
     
     public ControladorVistas(Busqueda busqueda, FramePrincipal frameprincipal,Login 
@@ -47,7 +48,7 @@ public class ControladorVistas {
         this.trabajador_interno = trabajador_interno;
         this.asistencia = asistencia;
         this.supervisor = supervisor;
-    }
+    }    
     
     /*
        Metodo para seleccionar el panel que se mostrara al realizar una accion.
