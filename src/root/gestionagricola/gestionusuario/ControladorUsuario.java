@@ -1,5 +1,8 @@
 package root.gestionagricola.gestionusuario;
 
+import java.sql.SQLException;
+import root.gestionagricola.modelo.accesodato.UsuarioDA;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -14,42 +17,37 @@ public class ControladorUsuario{
     private Usuario usuario;
     
     
-    public static void CrearUsuario(String nombreUsuario, String contrasena, String tipoCuenta){ 
-        
-        String nombre = nombreUsuario;
-        // validar que el nombre del usuario y que no se repita dentro de la BD
-        
-        String password = contrasena;
-        
-        String cuenta = tipoCuenta;
-        
-        // agregar los 3 parametros a la BD.
-        
-    }
     
+    /**
+     * Permite ingresar un nuevo contrato a la base de datos
+     * @param nombreUsuario Se espera un <String> identificador del nombre (unico).
+     * @param contrasena Se espera un <String> con la contraseña asociada a un usuario.
+     * @param tipoCuenta Se espera un <String> con el tipo de cuenta asociada a un usuario {Administrador, Dueño, Supervisor}
+     */
+    public static void CrearUsuario(String nombreUsuario, String contrasena, String tipoCuenta){ 
+
+        try{
+            UsuarioDA.crearUsuario(nombreUsuario, contrasena, tipoCuenta);
+        }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
+    }
     
     public static void ModificarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
-        
-        String modificarNombre = nombreUsuario;
 
-        
-        
-        
-        
     }
    
+    /**
+     * Permite eliminar un Usuario de la Base de datos.
+     * @param nombreUsuario Se espera un <String> identificador del nombre (unico).
+     * @param contrasena Se espera un <String> con la contraseña asociada a un usuario.
+     * @param tipoCuenta Se espera un <String> con el tipo de cuenta asociada a un usuario {Administrador, Dueño, Supervisor}
+     */
     
     public static void EliminarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
         
-        String nombre = nombreUsuario;
-        
-        String password = contrasena;
-        
-        // verificar en la BD que los dos parametros existen y eliminarlos.
-        
-        
-        
-        
+        try{
+            UsuarioDA.eliminarUsuario(nombreUsuario);
+        }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
+
         
     }
 
