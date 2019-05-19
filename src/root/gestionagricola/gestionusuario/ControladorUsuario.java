@@ -11,30 +11,30 @@ package root.gestionagricola.gestionusuario;
  */
 public class ControladorUsuario{
     
+    private Usuario usuario;
     
     
-    
-    public static void IngresarUsuario(String nombreUsuario, String tipoCuenta){
-        
-        
+    public static void CrearUsuario(String nombreUsuario, String contrasena, String tipoCuenta){        
         
     }
     
     
-    
-    public static void setNombreUsuario(String nombreUsuario){
-    }
-    
-    
-    public static void setTipoCuenta(String tipoCuenta){
-        
-    }
-    
-    
-    
-    public static void EliminarUsuario(String nombreUsuario, String tipoCuenta){
+    public static void ModificarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
         
         
     }
+   
+    
+    public static void EliminarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
+        
+    }
+
+    public static String[] getUsuario(String nombre, String contrasena){
+        
+        //llamada a la BD para obtener al usuario.
+        return null;
+    }
+    
+    
     
 }

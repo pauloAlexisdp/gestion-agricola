@@ -13,18 +13,20 @@ public class Usuario {
     
     private String nombreUsuario;
     private String tipoCuenta;
-    
+    private String contrasena;
     
     
     /**
-     * Constructor de la clase Usuario. 
+     * Constructor de la clase Usuario.
      * @param nombreUsuario Tipo <String> nombre del usuario.
-     * @param tipoCuenta  Tipo <String> para el tipo de cuenta del usuario (Supervisor, Dueño , Administrador).
+     * @param contrasena Tipo<String> Único en la BD.
+     * @param tipoCuenta Tipo <String> para el tipo de cuenta del usuario (Supervisor, Dueño , Administrador).
      */
    
-    public Usuario(String nombreUsuario, String tipoCuenta){
+    public Usuario(String nombreUsuario, String contrasena, String tipoCuenta){
     this.nombreUsuario = nombreUsuario;
     this.tipoCuenta = tipoCuenta;
+    this.contrasena = contrasena;
     
     }
   
@@ -64,6 +66,26 @@ public class Usuario {
     public void setTipoCuenta(String tipoCuenta) {
         this.tipoCuenta = tipoCuenta;
     }
+
+    /**
+     * 
+     * @return la contraseña asociada a un Usuario en particular.
+     */
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    
+    /**
+     * 
+     * @param contrasena Recibe un <String> con la nueva contraseña para la cuenta de Usuario.
+     */
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
     
   
+    
+    
+    
 }
