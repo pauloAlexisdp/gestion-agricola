@@ -73,7 +73,7 @@ public class ControladorContrato {
         /* Match de contratos (Solo por fechas) */
         ArrayList<Contrato> contratos = new ArrayList<>();
         try{
-            if(tipo.equals("planta")){
+            if(tipo.equals("Planta")){
                 contratos = TrabajadorInternoDA.buscarContrato(inicio, termino);
             }else{
                 contratos = TrabajadorExternoDA.buscarContrato(inicio, termino);
@@ -183,10 +183,10 @@ public class ControladorContrato {
         String inicio;
         
         if (fecha.getDate() < 10){
-            inicio = '"' + "0" + fecha.getDate();
+            inicio = "'" + "0" + fecha.getDate();
         }
         else{
-            inicio = '"' + "" + fecha.getDate();
+            inicio = "'" + "" + fecha.getDate();
         }
         if (fecha.getMonth() < 9){
             inicio += "-0" + (fecha.getMonth() + 1);
@@ -194,7 +194,7 @@ public class ControladorContrato {
         else{
             inicio += "-" + (fecha.getMonth() + 1);
         }
-        inicio += "-" + (fecha.getYear() + 1900) + '"';
+        inicio += "-" + (fecha.getYear() + 1900) + "'";
         
         return inicio;
     }
