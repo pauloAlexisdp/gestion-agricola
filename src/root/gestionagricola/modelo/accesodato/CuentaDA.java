@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package root.gestionagricola;
+package root.gestionagricola.modelo.accesodato;
 
 import root.gestionagricola.modelo.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import root.gestionagricola.Cuenta;
 import root.gestionagricola.Cuenta;
 
 /**
