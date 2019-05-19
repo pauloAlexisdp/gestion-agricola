@@ -135,6 +135,8 @@ public class Login extends javax.swing.JPanel {
     
     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+
         Cuenta cuenta=new Cuenta();
         String tipo="";
         try {
@@ -150,18 +152,22 @@ public class Login extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Tipo "+tipo);
        
         if(tipo.equals("0")){
-            JOptionPane.showConfirmDialog(null, "Usuario: "+this.nombre_txt.getText()+" No encontrado\nVerifique nombre Usuario o contraseña", "Error encontrar usuario", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Verifique sus datos, Usuario o Contraseña incorrecta.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }else{
-            System.out.println("alla");
-            System.out.println(cuenta.getNombre()+" Paww: "+cuenta.getPassword());
-            controladorVista.SeleccionarPanel(cuenta.getTipo());
+            //aqui se deriva al panel correspondiente dependiendo el tipo de cuenta.
+            if(cuenta.getTipo().equals("dueño")){
+                controladorVista.SeleccionarPanel("dueño");
+            }else if(cuenta.getTipo().equals("administrador")){
+                controladorVista.SeleccionarPanel("admin");
+            }else if(cuenta.getTipo().equals("supervisor")){
+                controladorVista.SeleccionarPanel("supervisor");
+            }
+
+            
         }
-         
-//        controladorVista.SeleccionarPanel("admin");
-//        controladorVista.SeleccionarPanel("supervisor");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
