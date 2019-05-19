@@ -7,6 +7,7 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
@@ -64,7 +65,7 @@ public class TrabajadorExternoDA {
      * @throws IllegalAccessException
      * @throws SQLException 
      **/
-    public ArrayList cargarContrato() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+    public static ArrayList cargarContrato() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
         
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
@@ -74,6 +75,48 @@ public class TrabajadorExternoDA {
          */
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado, nombreempresa"
                 + "from trabajadorexterno, contrato where folio=refcontrato";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+            r = new ArrayList();
+            while(cdb.resultado.next()){
+                String fechaInicio = cdb.resultado.getString("fechainicio");
+                String fechaTermino = cdb.resultado.getString("fechatermino");
+                int folio  =cdb.resultado.getInt("folio");
+                int rut = cdb.resultado.getInt("rut");
+                String nombre = cdb.resultado.getString("nombre");
+                int sueldo  = cdb.resultado.getInt("sueldo");
+                String estado = cdb.resultado.getString("estado");
+                String nombreEmpresa = cdb.resultado.getString("nombreempresa");
+                
+                r.add(ControladorContrato.crearContrato(folio, "externo", estado,fechaInicio, fechaTermino, nombre, rut, sueldo, nombreEmpresa));
+            }
+        }else{
+            System.out.println("error");
+        }
+    //    cdb.close();
+      return r;
+    }
+    
+    /**
+     * se carga una lista de todos los contratos de los trabajadores externos que fueron contratado en ciertas fechas
+     * @param inicio fecha inicio en que esta el contrato 
+     * @param termino fecha de termino del contrato 
+     * @return una lista de todas los contratos 
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     **/
+    public  static ArrayList buscarContrato(Date inicio, Date termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        ArrayList r = null;
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        /**
+         * estado para trabajador:  
+         * estado para 
+         */
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado, nombreempresa"
+                + "from trabajadorexterno, contrato where folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();

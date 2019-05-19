@@ -99,4 +99,45 @@ public class TrabajadorInternoDA {
       return r;
     }
     
+    /**
+     * cargo una lista de todos los contratos registrados
+     * @param inicio
+     * @param termino
+     * @return una lista de todas los contratos  que coincidan con las fechas correspondiente
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     **/
+    public static ArrayList buscarContrato(Date inicio, Date termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        ArrayList r = null;
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        /**
+         * estado para trabajador:  
+         * estado para 
+         */
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
+                + "from trabajadorinterno, contrato where folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+            r = new ArrayList();
+            while(cdb.resultado.next()){
+                String fechaInicio = cdb.resultado.getString("fechainicio");
+                String fechaTermino = cdb.resultado.getString("fechatermino");
+                int folio  =cdb.resultado.getInt("folio");
+                int rut = cdb.resultado.getInt("rut");
+                String nombre = cdb.resultado.getString("nombre");
+                int sueldo  = cdb.resultado.getInt("sueldo");
+                String estado = cdb.resultado.getString("estado");
+                
+                r.add(ControladorContrato.crearContrato(folio, "planta", estado,fechaInicio, fechaTermino, nombre, rut, sueldo, ""));
+            }
+        }else{
+            System.out.println("error");
+        }
+        //cdb.close();
+      return r;
+    }
+    
 }
