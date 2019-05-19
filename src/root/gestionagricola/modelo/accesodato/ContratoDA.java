@@ -38,28 +38,27 @@ public class ContratoDA {
      * @throws SQLException 
      */
     public static void guardar(int folio, String fechaInicio, String fechaTermino, String estado) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
-        
-        Date fecha_inicio = Date.valueOf(fechaInicio);
-        Date fecha_termino = Date.valueOf(fechaTermino);
-        
+     
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
         cdb.un_sql = "select folio from contrato where folio = "+folio;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
+           System.out.println("hola");
            if(cdb.resultado.next()){
+               System.out.println("123");
                /*cdb.un_sql = "UPDATE cuenta set contrasena='"+cuenta.getPassword()+"', tipo='"+cuenta.getTipo()+"'"+
                        "WHERE nombre='"+cuenta.getNombre()+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Datos actualizados");*/
            }else{
-               cdb.un_sql = "Insert into contrato values("+ folio +", "+fecha_inicio+", " +fecha_termino +",'"+estado+"'"+")";
+               cdb.un_sql = "Insert into contrato values("+ folio +", "+fechaInicio+", " +fechaTermino +",'"+estado+"'"+")";
                cdb.statement.executeUpdate(cdb.un_sql);
                System.out.println("Datos guardados");
                
            }
         }else{
-               cdb.un_sql = "Insert into contrato values("+ folio +", "+fecha_inicio+", " +fecha_termino +")";
+               cdb.un_sql = "Insert into contrato values("+ folio +", "+fechaInicio+", " +fechaTermino +")";
                cdb.statement.executeUpdate(cdb.un_sql);
         }
         //cdb.close();
