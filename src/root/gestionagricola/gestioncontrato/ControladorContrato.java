@@ -1,7 +1,9 @@
 
 package root.gestionagricola.gestioncontrato;
 
+import java.sql.SQLException;
 import java.util.Date;
+import root.gestionagricola.modelo.accesodato.*;
 
 
 /**
@@ -26,7 +28,7 @@ public class ControladorContrato {
      */
     public static void ingresarContrato(int folio, String tipo, String estado, 
             Date f_inicio, Date f_termino, String nombre, int rut, int sueldo,
-            String nom_empresa){
+            String nom_empresa) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         /* Formateo de Fechas */
         String inicio = ControladorContrato.transformarDate(f_inicio);
         String termino = ControladorContrato.transformarDate(f_termino);
