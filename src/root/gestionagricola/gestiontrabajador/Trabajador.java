@@ -19,7 +19,7 @@ public class Trabajador {
      * @param rut Se espera un <int> con el DNI del asociado.
      * @param nombre Se espera un <String> con el nombre del asociado.
      * @param telefono Se espera un <int> con el telefono del asociado.
-     * @param estado Se espera un <String> con el estado del asociado.
+     * @param estado Se espera un <String> con el estado del asociado {Subcontratado, Planta}.
      * @param num_contrato Se espera un <int> con el folio del contrato.
      */
     public Trabajador(int rut, String nombre, int telefono, String estado, int num_contrato) {
@@ -109,7 +109,7 @@ public class Trabajador {
     }
 
     /**
-     * Permite obtener el estado del asociado.
+     * Permite obtener el estado del asociado {Subcontratado, Planta}.
      * @return Retorna un <String> con el estado del asociado.
      */
     public String getEstado() {
@@ -118,7 +118,7 @@ public class Trabajador {
 
     /**
      * Permite modificar el estado del asociado.
-     * @param estado Se espera un <String> con el estado del asociado.
+     * @param estado Se espera un <String> con el estado del asociado {Subcontratado, Planta}.
      */
     public void setEstado(String estado) {
         this.estado = estado;

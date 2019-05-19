@@ -15,6 +15,7 @@ public class Contrato {
     private String nombre;
     private int rut;
     private int sueldo;
+    private String nom_empresa;
 
     /**
      * Constructor de la clase Contrato.
@@ -26,8 +27,10 @@ public class Contrato {
      * @param nombre Tipo <String>, nombre del asociado.
      * @param rut Tipo <int> DNI del asociado.
      * @param sueldo Tipo <int> sueldo del asociado.
+     * @param nom_empresa Se espera un <int> con el nombre de la empresa subcontratada.
      */
-    public Contrato(int folio, String tipo, String estado, String f_inicio, String f_termino, String nombre, int rut, int sueldo) {
+    public Contrato(int folio, String tipo, String estado, String f_inicio, 
+            String f_termino, String nombre, int rut, int sueldo, String nom_empresa) {
         this.folio = folio;
         this.tipo = tipo;
         this.estado = estado;
@@ -165,6 +168,22 @@ public class Contrato {
      */
     public void setSueldo(int sueldo) {
         this.sueldo = sueldo;
+    }
+    
+    /**
+     * Permite obtener el nombre de la empresa subcontratada.
+     * @return Retorna un <String> con el nombre de la empresa.
+     */
+    public String getNom_empresa() {
+        return nom_empresa;
+    }
+
+    /**
+     * Permite modificar el nombre de una empresa subcontrada.
+     * @param nom_empresa Se espera un <String> con el nuevo nombre de la empresa.
+     */
+    public void setNom_empresa(String nom_empresa) {
+        this.nom_empresa = nom_empresa;
     }
     
 }
