@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.SimpleFormatter;
+import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
@@ -43,10 +44,11 @@ public class TrabajadorInternoDA {
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
-               /*cdb.un_sql = "UPDATE cuenta set contrasena='"+cuenta.getPassword()+"', tipo='"+cuenta.getTipo()+"'"+
-                       "WHERE nombre='"+cuenta.getNombre()+"'";
+               //Actualiza trabajador Interno
+               cdb.un_sql = "UPDATE trabajadorinterno set nombre='"+nombre+"', sueldo="+sueldo+", folio="+folio+
+                       " WHERE rut="+rut;
                 cdb.statement.executeUpdate(cdb.un_sql);
-                System.out.println("Datos actualizados");*/
+                System.out.println("Datos actualizados");
            }else{
                cdb.un_sql = "Insert into trabajadorInterno values("+rut +", '"+nombre+"', " +sueldo+", "+folio +")";
                cdb.statement.executeUpdate(cdb.un_sql);
@@ -77,7 +79,7 @@ public class TrabajadorInternoDA {
          * estado para 
          */
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
-                + " from trabajadorinterno, contrato where folio=refcontrato";
+                + " from trabajadorinterno, contrato where estado not like 'eliminado' and folio=refcontrato";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
@@ -97,6 +99,38 @@ public class TrabajadorInternoDA {
         }
         //cdb.close();
       return r;
+    }
+    /**
+     * se carga un contrato en especifico
+     * @param folio folio del trabajador especifico
+     * @return el contrato encontrado
+     */
+    public static Contrato encontrarContrato(int folio) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        
+        Contrato contrato=null;
+        
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
+                + " from trabajadorinterno, contrato where estado not like 'eliminado' and folio="+folio+ " and refcontrato=folio";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+            while(cdb.resultado.next()){
+                String fechaInicio = cdb.resultado.getString("fechainicio");
+                String fechaTermino = cdb.resultado.getString("fechatermino");
+                int folioResult  =cdb.resultado.getInt("folio");
+                int rut = cdb.resultado.getInt("rut");
+                String nombre = cdb.resultado.getString("nombre");
+                int sueldo  = cdb.resultado.getInt("sueldo");
+                String estado = cdb.resultado.getString("estado");
+                
+                contrato = ControladorContrato.crearContrato(folio, "planta", estado,fechaInicio, fechaTermino, nombre, rut, sueldo, "");
+            }
+        }else{
+            System.out.println("error");
+        }
+        //cdb.close();
+        return contrato;
+     
     }
     
     /**
@@ -118,7 +152,7 @@ public class TrabajadorInternoDA {
          * estado para 
          */
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
-                + "from trabajadorinterno, contrato where folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
+                + "from trabajadorinterno, contrato where estado not like 'eliminado' folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
