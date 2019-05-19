@@ -83,6 +83,7 @@ public class ControladorContrato {
         
         /* Cambio de estructura de datos */
         String[][] datos = new String[contratos.size()][9];
+        System.out.println(contratos.size());
         for (int i = 0; i < contratos.size(); i ++){
             datos[i][0] = String.valueOf(contratos.get(i).getFolio());
             datos[i][1] = contratos.get(i).getTipo();
@@ -96,6 +97,7 @@ public class ControladorContrato {
         }
         
         if (contratos.isEmpty()){
+            
             return null;
         }
         

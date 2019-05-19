@@ -332,9 +332,6 @@ public class GestionDeContratos extends javax.swing.JPanel {
             this.Tabla.setValueAt(this.datos_para_tabla[i][5], i, 5);
             this.Tabla.setValueAt(this.datos_para_tabla[i][6], i, 6);
             this.Tabla.setValueAt(this.datos_para_tabla[i][7], i, 7);
-            this.Tabla.setValueAt(this.datos_para_tabla[i][8], i, 7);
-            
-            
         }
     }
 
