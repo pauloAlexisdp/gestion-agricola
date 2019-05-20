@@ -5,6 +5,7 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
@@ -21,7 +22,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private ModificarDatoContrato modificarDato;
     private EliminarDatoContrato eliminarDato;
     private BusquedaContrato busquedaContrato;
-    private String[][] datos_para_tabla ;
+    private String[][] datos_para_tabla;
 
     public GestionDeContratos() {
 
@@ -147,113 +148,113 @@ public class GestionDeContratos extends javax.swing.JPanel {
         Tabla.setForeground(new java.awt.Color(0, 0, 0));
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "N° Contrato", "Fecha Inicio", "Fecha termino", "Rut", "Nombre", "Valor", "Estado", "Nombre Empresa"
+                "N° Contrato", "Tipo", "Estado", "Fecha Inicio", "Fecha termino", "Nombre", "Rut", "Valor", "Nombre Empresa"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -285,9 +286,32 @@ public class GestionDeContratos extends javax.swing.JPanel {
         } else {//aqui se trabaja con la respuesta.
 
             this.modificarDato = new ModificarDatoContrato();
-            modificarDato.setVisible(true);
             modificarDato.setFolio_recibido(Integer.parseInt(respuesta));
-            //aqui se le debe pasar los datos que se modificaran al controlador.Los datos estan guardados como atributos.
+            String[] datos = null;
+            datos = ControladorContrato.getContrato(Integer.parseInt(respuesta));
+            if (datos != null) {
+                if (datos[1] == "Planta") {//selecciona el tipo  que aparecera en pantalla
+                    this.modificarDato.getRespuestaTipo().setSelectedIndex(0);
+                } else {
+                    this.modificarDato.getRespuestaTipo().setSelectedIndex(1);
+                    this.modificarDato.getRespuestaEmpresa().setText(datos[8]);
+                }
+                if (datos[2] == "Renovado") {//selecciona el estado que aparecera en pantalla
+                    this.modificarDato.getRespuestEstado1().setSelectedIndex(0);
+                } else if (datos[1] == "Activo") {
+                    this.modificarDato.getRespuestEstado1().setSelectedIndex(1);
+                } else {
+                    this.modificarDato.getRespuestEstado1().setSelectedIndex(2);
+                }
+                this.modificarDato.getRespuestFechaInicio().setDate(Date.valueOf(datos[3]));
+                this.modificarDato.getRespuestFechaTermino().setDate(Date.valueOf(datos[4]));
+                this.modificarDato.getRespuestNombre().setText(datos[5]);
+                this.modificarDato.getRespuestaRut().setText(datos[6]);
+                this.modificarDato.getRespuestaValor().setText(datos[7]);
+            }
+
+            modificarDato.setVisible(true);
+            modificarDato.actualizarpantalla();
         }
     }//GEN-LAST:event_BotonModificarActionPerformed
 
@@ -298,8 +322,38 @@ public class GestionDeContratos extends javax.swing.JPanel {
         } else {//aqui se llama al otro JFrame(EliminarDatosContratos) que trabajara los datos.
 
             this.eliminarDato = new EliminarDatoContrato();
-            eliminarDato.setVisible(true);
+
             eliminarDato.setFolio_recibido(Integer.parseInt(respuesta));
+            String[] datos = null;
+            datos = ControladorContrato.getContrato(Integer.parseInt(respuesta));
+            
+            //seteo los datos en el formulario para que asegure si esos son los datos a eliminar.
+            if (datos != null) {
+                
+                if (datos[1] == "Planta") {//selecciona el tipo  que aparecera en pantalla
+                    System.out.println("sssss");
+                    this.eliminarDato.getRespuestaTipo().setSelectedIndex(0);
+                    
+                } else {
+                    this.eliminarDato.getRespuestaTipo().setSelectedIndex(1);
+                    this.eliminarDato.getRespuestaEmpresa().setText(datos[8]);
+                }
+                if (datos[2] == "Renovado") {//selecciona el estado que aparecera en pantalla
+                    this.eliminarDato.getRespuestEstado().setSelectedIndex(0);
+                } else if (datos[1] == "Activo") {
+                    this.eliminarDato.getRespuestEstado().setSelectedIndex(1);
+                } else {
+                    this.eliminarDato.getRespuestEstado().setSelectedIndex(2);
+                }
+                this.eliminarDato.getRespuestFechaInicio().setDate(Date.valueOf(datos[3]));
+                this.eliminarDato.getRespuestFechaTermino().setDate(Date.valueOf(datos[4]));
+                this.eliminarDato.getRespuestNombre().setText(datos[5]);
+                this.eliminarDato.getRespuestaRut().setText(datos[6]);
+                this.eliminarDato.getRespuestaValor().setText(datos[7]);
+            }
+            eliminarDato.setVisible(true);
+            eliminarDato.actualizarpantalla();
+
         }
 
     }//GEN-LAST:event_BotonEliminarActionPerformed
@@ -332,6 +386,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
             this.Tabla.setValueAt(this.datos_para_tabla[i][5], i, 5);
             this.Tabla.setValueAt(this.datos_para_tabla[i][6], i, 6);
             this.Tabla.setValueAt(this.datos_para_tabla[i][7], i, 7);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][8], i, 8);
         }
     }
 
