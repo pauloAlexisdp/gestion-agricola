@@ -250,8 +250,9 @@ public class Administrador extends javax.swing.JPanel {
 
         
     }//GEN-LAST:event_botonEliminarActionPerformed
-
+   
     public void setDatos_para_tabla(String[][] datos_para_tabla) {
+        this.reiniciarTabla();
         this.datos_para_tabla = datos_para_tabla;
     }
 
@@ -299,7 +300,12 @@ public class Administrador extends javax.swing.JPanel {
             this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
         }
     }
-
+    public void reiniciarTabla(){
+        for (int i = 0; i < this.datos_para_tabla.length; i++) {
+            this.Tabla.setValueAt(null, i, 0);
+            this.Tabla.setValueAt(null, i, 1);
+        }
+    }
     public void setTabla(JTable Tabla) {
         this.Tabla = Tabla;
     }
