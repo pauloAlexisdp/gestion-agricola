@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
+import java.sql.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
  *
@@ -16,10 +13,9 @@ import javax.swing.JTextField;
  */
 public class ModificarDatoContrato extends javax.swing.JFrame {
 
-    GestionDeContratos Gcontratos;
+    private int folio_recibido;
 
-    public ModificarDatoContrato(GestionDeContratos Gcontratos) {
-        this.Gcontratos = Gcontratos;
+    public ModificarDatoContrato() {
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -41,16 +37,18 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        RespuestaRut = new javax.swing.JTextField();
+        RespuestaEmpresa = new javax.swing.JTextField();
         RespuestNombre = new javax.swing.JTextField();
         RespuestaValor = new javax.swing.JTextField();
+        RespuestaRut = new javax.swing.JTextField();
         RespuestaTipo = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BotonModificar = new javax.swing.JButton();
+        BotonCancelar = new javax.swing.JButton();
         RespuestFechaTermino = new com.toedter.calendar.JDateChooser();
         RespuestFechaInicio = new com.toedter.calendar.JDateChooser();
         RespuestEstado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -74,7 +72,7 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Rut:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 63, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 63, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
@@ -92,19 +90,24 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tipo:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 63, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 63, -1));
 
-        RespuestaRut.setBackground(new java.awt.Color(255, 255, 255));
-        RespuestaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jPanel1.add(RespuestaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 185, -1));
+        RespuestaEmpresa.setBackground(new java.awt.Color(255, 255, 255));
+        RespuestaEmpresa.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        RespuestaEmpresa.setEnabled(false);
+        jPanel1.add(RespuestaEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 185, -1));
 
         RespuestNombre.setBackground(new java.awt.Color(255, 255, 255));
         RespuestNombre.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jPanel1.add(RespuestNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 185, -1));
+        jPanel1.add(RespuestNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 185, -1));
 
         RespuestaValor.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaValor.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jPanel1.add(RespuestaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 185, -1));
+        jPanel1.add(RespuestaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 185, -1));
+
+        RespuestaRut.setBackground(new java.awt.Color(255, 255, 255));
+        RespuestaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jPanel1.add(RespuestaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 185, -1));
 
         RespuestaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Planta", "Subcontrato" }));
         RespuestaTipo.addActionListener(new java.awt.event.ActionListener() {
@@ -112,36 +115,36 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
                 RespuestaTipoActionPerformed(evt);
             }
         });
-        jPanel1.add(RespuestaTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 185, 21));
+        jPanel1.add(RespuestaTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 185, 21));
 
-        jButton1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonModificar.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        BotonModificar.setText("Modificar");
+        BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 135, -1));
+        jPanel1.add(BotonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 135, -1));
 
-        jButton2.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BotonCancelar.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        BotonCancelar.setText("Cancelar");
+        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BotonCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 135, -1));
+        jPanel1.add(BotonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 135, -1));
 
         RespuestFechaTermino.setBackground(new java.awt.Color(51, 51, 51));
         RespuestFechaTermino.setForeground(new java.awt.Color(255, 255, 255));
         RespuestFechaTermino.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         RespuestFechaTermino.setPreferredSize(new java.awt.Dimension(86, 21));
-        jPanel1.add(RespuestFechaTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 185, 21));
+        jPanel1.add(RespuestFechaTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 185, 21));
 
         RespuestFechaInicio.setBackground(new java.awt.Color(51, 51, 51));
         RespuestFechaInicio.setForeground(new java.awt.Color(255, 255, 255));
         RespuestFechaInicio.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
-        jPanel1.add(RespuestFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 185, 21));
+        jPanel1.add(RespuestFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 185, 21));
         RespuestFechaInicio.getAccessibleContext().setAccessibleName("");
 
         RespuestEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Renovado", "Activo", "Finalizado" }));
@@ -150,13 +153,19 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
                 RespuestEstadoActionPerformed(evt);
             }
         });
-        jPanel1.add(RespuestEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 185, 21));
+        jPanel1.add(RespuestEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 185, 21));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Estado:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 63, -1));
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Nombre Empresa:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 120, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,38 +183,57 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Si las casillas estan llenas puede guardar los datos
-        if ((String) this.RespuestEstado.getSelectedItem() != null
-                && this.RespuestFechaInicio.getDate() != null && this.RespuestFechaTermino.getDate() != null
-                && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
-                && this.RespuestaRut.getText() != null && this.RespuestaValor.getText() != null) {
-            //seteo los valores que obtuve del formulario
-            this.Gcontratos.setFechaInicio(this.RespuestFechaInicio.getDateFormatString());
-            this.Gcontratos.setFechaTermino(this.RespuestFechaTermino.getDateFormatString());
-            this.Gcontratos.setSueldo(Integer.parseInt(this.RespuestaValor.getText()));
-            this.Gcontratos.setName(this.RespuestNombre.getText());
-            this.Gcontratos.setRut(Integer.parseInt(this.RespuestaRut.getText()));
-            this.Gcontratos.setTipo((String) this.RespuestaTipo.getSelectedItem());
-            this.Gcontratos.setEstado((String) this.RespuestEstado.getSelectedItem());
-            this.dispose();
-        } else {//si no le avisa al usuario que le faltan casillas por llenar.
-            JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
+    private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
+        String[] datos = null;
+        datos = ControladorContrato.getContrato(this.folio_recibido);
+        if (datos == null) {
+            JOptionPane.showMessageDialog(null, "El contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if(datos[0]=="Planta"){//selecciona el tipo  que aparecera en pantalla
+                this.RespuestaTipo.setSelectedIndex(0);
+            }else{
+                this.RespuestaTipo.setSelectedIndex(1);
+            }
+            if(datos[1]=="Renovado"){//selecciona el estado que aparecera en pantalla
+                this.RespuestEstado.setSelectedIndex(0);
+            }else if(datos[1]=="Activo"){
+                this.RespuestEstado.setSelectedIndex(1);
+            }else{
+                this.RespuestEstado.setSelectedIndex(2);
+            }
+            this.RespuestFechaInicio.setDate(Date.valueOf(datos[2]));
+            this.RespuestFechaTermino.setDate(Date.valueOf(datos[3]));
+            this.RespuestNombre.setText(datos[4]);
+            this.RespuestaRut.setText(datos[5]);
+            this.RespuestaValor.setText(datos[6]);
+            ControladorContrato.modificarContrato(this.folio_recibido,(String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
+                    , this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
+            JOptionPane.showMessageDialog(null, "Contrato Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void RespuestaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaTipoActionPerformed
-        // TODO add your handling code here:
+        String aux = (String) this.RespuestaTipo.getSelectedItem();
+        if (aux.equals("Planta")) {
+            this.RespuestaEmpresa.setEnabled(false);
+        } else {
+            this.RespuestaEmpresa.setEnabled(true);
+        }
+
     }//GEN-LAST:event_RespuestaTipoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BotonCancelarActionPerformed
 
     private void RespuestEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestEstadoActionPerformed
+
+    public void setFolio_recibido(int folio_recibido) {
+        this.folio_recibido = folio_recibido;
+    }
 
     public JComboBox<String> getRespuestEstado1() {
         return RespuestEstado;
@@ -224,7 +252,7 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
     }
 
     public JTextField getRespuestaRut() {
-        return RespuestaRut;
+        return RespuestaEmpresa;
     }
 
     public JComboBox<String> getRespuestaTipo() {
@@ -237,15 +265,17 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCancelar;
+    private javax.swing.JButton BotonModificar;
     private javax.swing.JComboBox<String> RespuestEstado;
     private com.toedter.calendar.JDateChooser RespuestFechaInicio;
     private com.toedter.calendar.JDateChooser RespuestFechaTermino;
     private javax.swing.JTextField RespuestNombre;
+    private javax.swing.JTextField RespuestaEmpresa;
     private javax.swing.JTextField RespuestaRut;
     private javax.swing.JComboBox<String> RespuestaTipo;
     private javax.swing.JTextField RespuestaValor;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
