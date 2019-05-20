@@ -40,10 +40,11 @@ public class UsuarioDA {
         
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre
-        
-        cdb.un_sql ="select nombre from cuenta where nombre = "+nombreUsuario;
+
+        cdb.un_sql ="select nombre from cuenta where nombre = '"+nombreUsuario+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado != null){
+
            if(cdb.resultado.next()){
                cdb.un_sql = "UPDATE cuenta set contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
                        "WHERE nombre='"+nombreUsuario+"'";
