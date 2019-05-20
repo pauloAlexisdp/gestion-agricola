@@ -78,12 +78,11 @@ public class ControladorContrato {
             }else{
                 contratos = TrabajadorExternoDA.buscarContrato(inicio, termino);
             }
-        } 
+        }
         catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
         
         /* Cambio de estructura de datos */
         String[][] datos = new String[contratos.size()][9];
-        System.out.println(contratos.size());
         for (int i = 0; i < contratos.size(); i ++){
             datos[i][0] = String.valueOf(contratos.get(i).getFolio());
             datos[i][1] = contratos.get(i).getTipo();
@@ -97,7 +96,6 @@ public class ControladorContrato {
         }
         
         if (contratos.isEmpty()){
-            
             return null;
         }
         
@@ -110,8 +108,41 @@ public class ControladorContrato {
      * @return Retorna un <String[]> con la informacion del contrato.
      */
     public static String[] getContrato(int folio){
-        
-        // Llamada a la BD para obtener el contrato
+        Contrato contrato;
+        String[] datos = new String[9];
+        try{
+            if (TrabajadorExternoDA.encontrarContrato(folio) != null){
+                contrato = TrabajadorExternoDA.encontrarContrato(folio);
+                datos[0] = String.valueOf(contrato.getFolio());
+                datos[1] = contrato.getTipo();
+                datos[2] = contrato.getEstado();
+                datos[3] = contrato.getF_inicio();
+                datos[4] = contrato.getF_termino();
+                datos[5] = contrato.getNombre();
+                datos[6] = String.valueOf(contrato.getRut());
+                datos[7] = String.valueOf(contrato.getSueldo());
+                datos[8] = contrato.getNom_empresa();
+                return datos;
+            }
+//            if (TrabajadorInternoDA.encontrarContrato(folio) != null){
+//                contrato = TrabajadorInternoDA.encontrarContrato(folio);
+//                System.out.println("djkahsdiqwrtty1245");
+//                datos[0] = String.valueOf(contrato.getFolio());
+//                datos[1] = contrato.getTipo();
+//                datos[2] = contrato.getEstado();
+//                datos[3] = contrato.getF_inicio();
+//                datos[4] = contrato.getF_termino();
+//                datos[5] = contrato.getNombre();
+//                datos[6] = String.valueOf(contrato.getRut());
+//                datos[7] = String.valueOf(contrato.getSueldo());
+//                datos[8] = contrato.getNom_empresa();
+//                return datos;
+//            }
+            else{
+                return null;
+            }
+        }
+        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
         
         return null;
     }
@@ -154,7 +185,10 @@ public class ControladorContrato {
      * @param folio Se espera un <int> con el numero unico del contrato.
      */
     public static void eliminarContrato(int folio){
-        
+        try {
+            ContratoDA.eliminar(folio);
+        }
+        catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
     }
     
     /**
