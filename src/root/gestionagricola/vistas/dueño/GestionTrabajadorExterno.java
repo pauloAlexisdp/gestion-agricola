@@ -5,6 +5,7 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+import javax.swing.JTable;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
@@ -14,6 +15,12 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class GestionTrabajadorExterno extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
+    private CrearTrabajadorExterno crearTrabajadorE;
+    private ModificarTrabajadorExterno modificarTrabajadorE;
+    private EliminarTrabajadorExterno eliminarTrabajadorE;
+    private String[][] datos_para_tabla;
+
+    
     public GestionTrabajadorExterno() {
         initComponents();
     }
@@ -28,13 +35,13 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        titulo = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
+        botonIngresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         Fondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1270, 735));
@@ -44,20 +51,19 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
         jLabel2.setText("jLabel2");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 229, 151));
 
-        jButton6.setBackground(new java.awt.Color(255, 255, 255));
-        jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/trabajadores 32px.png"))); // NOI18N
-        jButton6.setText("Gestión de Trabajadores Externos");
-        jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton6.setFocusPainted(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        titulo.setBackground(new java.awt.Color(255, 255, 255));
+        titulo.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/trabajadores 32px.png"))); // NOI18N
+        titulo.setText("Gestión de Trabajadores Externos");
+        titulo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
+        titulo.setFocusPainted(false);
+        titulo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        titulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                tituloActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
+        add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
         jButton4.setBorderPainted(false);
@@ -70,57 +76,52 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton3.setText("Modificar Trabajador");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton3.setFocusPainted(false);
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        botonModificar.setBackground(new java.awt.Color(255, 255, 255));
+        botonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        botonModificar.setText("Modificar Trabajador");
+        botonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonModificar.setFocusPainted(false);
+        botonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                botonModificarActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, 40));
+        add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, 40));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton1.setText("Eliminar Trabajador");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton1.setFocusPainted(false);
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        botonEliminar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        botonEliminar.setText("Eliminar Trabajador");
+        botonEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonEliminarActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 40));
+        add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 40));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton2.setText("Ingresar Trabajador");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonIngresar.setBackground(new java.awt.Color(255, 255, 255));
+        botonIngresar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        botonIngresar.setText("Ingresar Trabajador");
+        botonIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonIngresar.setFocusPainted(false);
+        botonIngresar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonIngresar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonIngresarActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
+        add(botonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -216,9 +217,9 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setEnabled(false);
-        jTable1.setGridColor(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(jTable1);
+        Tabla.setEnabled(false);
+        Tabla.setGridColor(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setViewportView(Tabla);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 800, 360));
 
@@ -227,42 +228,66 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
         add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1323, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+        this.modificarTrabajadorE = new ModificarTrabajadorExterno(this);
+        modificarTrabajadorE.setVisible(true);
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonModificarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        this.crearTrabajadorE = new CrearTrabajadorExterno(this);
+        crearTrabajadorE.setVisible(true);
+    }//GEN-LAST:event_botonIngresarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+        this.eliminarTrabajadorE = new EliminarTrabajadorExterno(this);
+        eliminarTrabajadorE.setVisible(true);
+
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_tituloActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.controladorVista.SeleccionarPanel("dueño");
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    public void setDatos_para_tabla(String[][] datos_para_tabla) {
+        this.reiniciarTabla();
+        this.datos_para_tabla = datos_para_tabla;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JTable Tabla;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JButton botonIngresar;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton titulo;
     // End of variables declaration//GEN-END:variables
 
     public void setControladorVista(ControladorVistas controlador_vistas) {
         this.controladorVista = controlador_vistas;
     }
 
+    public void cargarDatosTabla() {
+        for (int i = 0; i < this.datos_para_tabla.length; i++) {
+            this.Tabla.setValueAt(this.datos_para_tabla[i][0], i, 0);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
+        }
+    }
+    public void reiniciarTabla(){
+        for (int i = 0; i < this.datos_para_tabla.length; i++) {
+            this.Tabla.setValueAt(null, i, 0);
+            this.Tabla.setValueAt(null, i, 1);
+        }
+    }
+    public void setTabla(JTable Tabla) {
+        this.Tabla = Tabla;
+    }
     
 }

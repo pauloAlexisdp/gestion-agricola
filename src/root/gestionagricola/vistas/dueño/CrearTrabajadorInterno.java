@@ -126,7 +126,7 @@ public class CrearTrabajadorInterno extends javax.swing.JFrame{
             
             try {
                 String[][] datos;
-                datos = ControladorTrabajador.cargarDatos();
+                datos = ControladorTrabajador.cargarTrabajadoresInternos();
                 gestion.setDatos_para_tabla(datos);
                 gestion.cargarDatosTabla();
                 
