@@ -7,10 +7,7 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.SimpleFormatter;
 import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
@@ -45,7 +42,7 @@ public class TrabajadorInternoDA {
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
                //Actualiza trabajador Interno
-               cdb.un_sql = "UPDATE trabajadorinterno set nombre='"+nombre+"', sueldo="+sueldo+", folio="+folio+
+               cdb.un_sql = "UPDATE trabajadorinterno set nombre='"+nombre+"', sueldo="+sueldo+", refcontrato="+folio+
                        " WHERE rut="+rut;
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Datos actualizados");
@@ -78,7 +75,7 @@ public class TrabajadorInternoDA {
          * estado para trabajador:  
          * estado para 
          */
-        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo, estado "
                 + " from trabajadorinterno, contrato where estado not like 'eliminado' and folio=refcontrato";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
@@ -110,7 +107,7 @@ public class TrabajadorInternoDA {
         
         Contrato contrato=null;
         
-        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo, estado "
                 + " from trabajadorinterno, contrato where estado not like 'eliminado' and folio="+folio+ " and refcontrato=folio";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
@@ -151,8 +148,8 @@ public class TrabajadorInternoDA {
          * estado para trabajador:  
          * estado para 
          */
-        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
-                + "from trabajadorinterno, contrato where estado not like 'eliminado' folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo, estado "
+                + "from trabajadorinterno, contrato where estado not like 'eliminado' and  folio=refcontrato and fechainicio>="+inicio+" and fechatermino<="+termino;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();

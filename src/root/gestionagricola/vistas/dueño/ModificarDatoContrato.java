@@ -1,10 +1,12 @@
 package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Container;
 import java.sql.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
@@ -103,10 +105,16 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
 
         RespuestaValor.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaValor.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        RespuestaValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RespuestaValorActionPerformed(evt);
+            }
+        });
         jPanel1.add(RespuestaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 185, -1));
 
         RespuestaRut.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        RespuestaRut.setEnabled(false);
         jPanel1.add(RespuestaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 185, -1));
 
         RespuestaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Planta", "Subcontrato" }));
@@ -189,26 +197,19 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         if (datos == null) {
             JOptionPane.showMessageDialog(null, "El contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
-            if(datos[0]=="Planta"){//selecciona el tipo  que aparecera en pantalla
-                this.RespuestaTipo.setSelectedIndex(0);
+            if ((String) this.RespuestEstado.getSelectedItem() != null
+                    && this.RespuestFechaInicio.getDate() != null && this.RespuestFechaTermino.getDate() != null
+                    && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
+                    && this.RespuestaEmpresa.getText() != null && this.RespuestaValor.getText() != null) {
+                ControladorContrato.modificarContrato(this.folio_recibido, (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
+                         this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Contrato Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
+
             }else{
-                this.RespuestaTipo.setSelectedIndex(1);
+                JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
-            if(datos[1]=="Renovado"){//selecciona el estado que aparecera en pantalla
-                this.RespuestEstado.setSelectedIndex(0);
-            }else if(datos[1]=="Activo"){
-                this.RespuestEstado.setSelectedIndex(1);
-            }else{
-                this.RespuestEstado.setSelectedIndex(2);
-            }
-            this.RespuestFechaInicio.setDate(Date.valueOf(datos[2]));
-            this.RespuestFechaTermino.setDate(Date.valueOf(datos[3]));
-            this.RespuestNombre.setText(datos[4]);
-            this.RespuestaRut.setText(datos[5]);
-            this.RespuestaValor.setText(datos[6]);
-            ControladorContrato.modificarContrato(this.folio_recibido,(String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
-                    , this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
-            JOptionPane.showMessageDialog(null, "Contrato Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+
         }
 
     }//GEN-LAST:event_BotonModificarActionPerformed
@@ -231,11 +232,15 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestEstadoActionPerformed
 
+    private void RespuestaValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RespuestaValorActionPerformed
+
     public void setFolio_recibido(int folio_recibido) {
         this.folio_recibido = folio_recibido;
     }
 
-    public JComboBox<String> getRespuestEstado1() {
+    public JComboBox<String> getRespuestEstado() {
         return RespuestEstado;
     }
 
@@ -251,8 +256,12 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         return RespuestNombre;
     }
 
-    public JTextField getRespuestaRut() {
+    public JTextField getRespuestaEmpresa() {
         return RespuestaEmpresa;
+    }
+
+    public JTextField getRespuestaRut() {
+        return RespuestaRut;
     }
 
     public JComboBox<String> getRespuestaTipo() {
@@ -263,6 +272,14 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         return RespuestaValor;
     }
 
+    
+    
+    public void actualizarpantalla() {
+        Container temp = this.getContentPane();
+        SwingUtilities.updateComponentTreeUI(temp);
+        temp.validate();
+        requestFocusInWindow();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
