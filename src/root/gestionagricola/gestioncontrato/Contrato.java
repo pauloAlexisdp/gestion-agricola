@@ -39,6 +39,7 @@ public class Contrato {
         this.nombre = nombre;
         this.rut = rut;
         this.sueldo = sueldo;
+        this.nom_empresa = nom_empresa;
     }
 
     /**

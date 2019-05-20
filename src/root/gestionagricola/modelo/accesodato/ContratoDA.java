@@ -41,14 +41,15 @@ public class ContratoDA {
      
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
-        cdb.un_sql = "select folio from contrato where folio = "+folio;
+        cdb.un_sql = "select folio from contrato where  folio = "+folio;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
-               /*cdb.un_sql = "UPDATE cuenta set contrasena='"+cuenta.getPassword()+"', tipo='"+cuenta.getTipo()+"'"+
-                       "WHERE nombre='"+cuenta.getNombre()+"'";
+               //ACTUALIZACION
+               cdb.un_sql = "UPDATE contrato set fechaInicio="+fechaInicio+", fechatermino="+fechaTermino+", esatado='"+estado+"' "+
+                      " WHERE folio="+folio;
                 cdb.statement.executeUpdate(cdb.un_sql);
-                System.out.println("Datos actualizados");*/
+                System.out.println("Datos actualizados");
            }else{
                cdb.un_sql = "Insert into contrato values("+ folio +", "+fechaInicio+", " +fechaTermino +",'"+estado+"'"+")";
                cdb.statement.executeUpdate(cdb.un_sql);
@@ -60,6 +61,31 @@ public class ContratoDA {
                cdb.statement.executeUpdate(cdb.un_sql);
         }
         //cdb.close();
+    }
+    /**
+     * elimina un contrato de la base de datos, solo oculta la informacion del contrato 
+     * @param folio
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
+    public static void eliminar(int folio) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        //modulo seguridad si ya hay una cuenta con ese nombre 
+        cdb.un_sql = "select folio from contrato where folio = "+folio;
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //ACTUALIZACION
+               cdb.un_sql = "UPDATE contrato set estado='eliminado'"+
+                      " WHERE folio="+folio;
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Contrato eliminado");
+           }else{
+               
+           }
+        }
     }
     
     
