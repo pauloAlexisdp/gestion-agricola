@@ -125,7 +125,7 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
 
         // este boton es cuando apreta Eliminar.
-        String[] datos = null;
+        /*String[] datos = null;
         datos = ControladorUsuario.getUsuario(this.nombre_recibido, this.contrasena_recibido);
         if(datos == null){
             JOptionPane.showMessageDialog(null, "El usuario a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -133,6 +133,16 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
             this.RespuestaNombreUsuario.setText(datos[0]);
             this.RespuestaContrasena.setText(datos[1]);
             JOptionPane.showMessageDialog(null, "Usuario Eliminado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        }*/
+        
+        // este boton es cuando apreta Eliminar.
+        if(this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena != null){
+            // aqui se llama al método controlador que hara la conexion con el modelo.
+            ControladorUsuario.EliminarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText());
+            this.dispose();
+        }
+        else{ //si no le avisa al usuario que le faltan casillas por llenar.
+            JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
