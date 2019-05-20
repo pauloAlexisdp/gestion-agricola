@@ -87,7 +87,7 @@ public class EliminarTrabajadorExterno extends javax.swing.JFrame {
             //ControladorTrabajador.
              try {
                 String[][] datos;
-                datos = ControladorTrabajador.cargarDatos();
+                datos = ControladorTrabajador.cargarTrabajadoresExternos();
                 gestion.setDatos_para_tabla(datos);
                 gestion.cargarDatosTabla();
                 
