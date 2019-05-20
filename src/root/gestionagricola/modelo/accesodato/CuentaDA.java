@@ -103,7 +103,6 @@ public class CuentaDA {
             cuenta.setNombre(cdb.resultado.getString("nombre"));
             cuenta.setPassword(cdb.resultado.getString("contrasena"));
             cuenta.setTipo(cdb.resultado.getString("tipo"));
-            System.out.println("Nombre "+cuenta.getNombre()+" tipo "+cuenta.getTipo());
         }
         }else{
         }
