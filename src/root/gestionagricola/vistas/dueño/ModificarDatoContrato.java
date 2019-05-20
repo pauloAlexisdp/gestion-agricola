@@ -191,28 +191,19 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         if (datos == null) {
             JOptionPane.showMessageDialog(null, "El contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {
-            if(datos[0]=="Planta"){//selecciona el tipo  que aparecera en pantalla
-                this.RespuestaTipo.setSelectedIndex(0);
+            if ((String) this.RespuestEstado.getSelectedItem() != null
+                    && this.RespuestFechaInicio.getDate() != null && this.RespuestFechaTermino.getDate() != null
+                    && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
+                    && this.RespuestaEmpresa.getText() != null && this.RespuestaValor.getText() != null) {
+                ControladorContrato.modificarContrato(this.folio_recibido, (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
+                         this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Contrato Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
+
             }else{
-                this.RespuestaTipo.setSelectedIndex(1);
+                JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
-            if(datos[1]=="Renovado"){//selecciona el estado que aparecera en pantalla
-                this.RespuestEstado.setSelectedIndex(0);
-            }else if(datos[1]=="Activo"){
-                this.RespuestEstado.setSelectedIndex(1);
-            }else{
-                this.RespuestEstado.setSelectedIndex(2);
-            }
-            this.RespuestFechaInicio.setDate(Date.valueOf(datos[2]));
-            this.RespuestFechaTermino.setDate(Date.valueOf(datos[3]));
-            this.RespuestNombre.setText(datos[4]);
-            this.RespuestaRut.setText(datos[5]);
-            this.RespuestaValor.setText(datos[6]);
-            this.actualizarpantalla();
-            ControladorContrato.modificarContrato(this.folio_recibido,(String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
-                    , this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
-            this.dispose();
-            JOptionPane.showMessageDialog(null, "Contrato Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+
         }
 
     }//GEN-LAST:event_BotonModificarActionPerformed
@@ -266,6 +257,7 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
     public JTextField getRespuestaValor() {
         return RespuestaValor;
     }
+
     public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);
