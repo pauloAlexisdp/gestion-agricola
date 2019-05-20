@@ -157,11 +157,11 @@ public class Login extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Verifique sus datos, Usuario o Contraseña incorrecta.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }else{
             //aqui se deriva al panel correspondiente dependiendo el tipo de cuenta.
-            if(cuenta.getTipo().equals("dueño")){
+            if(cuenta.getTipo().equals("Dueño")){
                 controladorVista.SeleccionarPanel("dueño");
-            }else if(cuenta.getTipo().equals("administrador")){
+            }else if(cuenta.getTipo().equals("Administrador")){
                 controladorVista.SeleccionarPanel("admin");
-            }else if(cuenta.getTipo().equals("supervisor")){
+            }else if(cuenta.getTipo().equals("Supervisor")){
                 controladorVista.SeleccionarPanel("supervisor");
             }
 

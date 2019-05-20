@@ -60,7 +60,7 @@ public class UsuarioDA {
             cdb.un_sql = "Insert into cuenta values ('"+nombreUsuario+"','"+contrasena+"','"+tipoCuenta+"')";
             cdb.statement.executeUpdate(cdb.un_sql);
         }
-        cdb.close();
+//        cdb.close();
     }
     
     
@@ -76,13 +76,13 @@ public class UsuarioDA {
     public static void eliminarUsuario(String nombreUsuario) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una Usuario con ese nombre 
-        cdb.un_sql = "select nombre from cuenta where nombre = "+nombreUsuario;
+        cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
                //ACTUALIZACION
-               cdb.un_sql = "UPDATE cuenta set estado='eliminado'"+
-                      " WHERE nombre="+nombreUsuario;
+               cdb.un_sql = "DELETE FROM cuenta"+
+                      " WHERE nombre='"+nombreUsuario+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Usuario eliminado");
            }else{
@@ -101,25 +101,24 @@ public class UsuarioDA {
      * @throws IllegalAccessException
      * @throws SQLException 
      */
-    public ArrayList cargar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+    public static ArrayList cargar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
-        Cuenta c;
+        Usuario c;
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         cdb.un_sql = "select * from cuenta";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
             while(cdb.resultado.next()){
-                c = new Cuenta();
-                c.setNombre(cdb.resultado.getString("nombre"));
-                c.setPassword(cdb.resultado.getString("contrasena"));
-                c.setTipo(cdb.resultado.getString("tipo"));
+                c = new Usuario();
+                c.setNombreUsuario(cdb.resultado.getString("nombre"));
+                c.setTipoCuenta(cdb.resultado.getString("tipo"));
                 r.add(c);
             }
         }else{
             System.out.println("error");
         }
-        cdb.close();
+//        cdb.close();
       return r;
     }
 }

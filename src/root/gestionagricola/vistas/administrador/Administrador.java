@@ -1,6 +1,8 @@
 package root.gestionagricola.vistas.administrador;
 
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 import root.gestionagricola.vistas.ControladorVistas;
 
@@ -14,10 +16,13 @@ public class Administrador extends javax.swing.JPanel {
     private crearDatosUsuario crearDatosUsuario;
     private ModificarDatoUsuario modificarDato;
     private EliminarDatoUsuario eliminarDato;
+    private String[][] datos_para_tabla;
 
-    public Administrador() {
+    public Administrador() throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException  {
+        
         initComponents();
-
+        this.datos_para_tabla = ControladorUsuario.cargarDatos();
+        this.cargarDatosTabla();
     }
 
     /**
@@ -36,7 +41,7 @@ public class Administrador extends javax.swing.JPanel {
         botonCrear = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
@@ -121,11 +126,11 @@ public class Administrador extends javax.swing.JPanel {
         });
         add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, 40));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setBackground(new java.awt.Color(255, 255, 255));
+        Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        Tabla.setForeground(new java.awt.Color(0, 0, 0));
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -221,8 +226,8 @@ public class Administrador extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setGridColor(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(jTable1);
+        Tabla.setGridColor(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setViewportView(Tabla);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 620, 360));
 
@@ -240,18 +245,22 @@ public class Administrador extends javax.swing.JPanel {
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
 
-        this.eliminarDato = new EliminarDatoUsuario();
+        this.eliminarDato = new EliminarDatoUsuario(this);
         eliminarDato.setVisible(true);
 
         
     }//GEN-LAST:event_botonEliminarActionPerformed
+
+    public void setDatos_para_tabla(String[][] datos_para_tabla) {
+        this.datos_para_tabla = datos_para_tabla;
+    }
 
     private void botonCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCrearActionPerformed
 
 
     }//GEN-LAST:event_BotonCrearActionPerformed
     private void botonCreaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCreaarActionPerformed
-        this.crearDatosUsuario = new crearDatosUsuario();
+        this.crearDatosUsuario = new crearDatosUsuario(this);
         crearDatosUsuario.setVisible(true);
     }//GEN-LAST:event_botonCreaarActionPerformed
 
@@ -270,6 +279,7 @@ public class Administrador extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
+    private javax.swing.JTable Tabla;
     private javax.swing.JLabel Titulo6;
     private javax.swing.JButton botonCrear;
     private javax.swing.JButton botonEliminar;
@@ -277,11 +287,22 @@ public class Administrador extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
     public void setControladorVista(ControladorVistas controladorVistas) {
         this.controladorVista = controladorVistas;
     }
+    public void cargarDatosTabla() {
+        
+        for (int i = 0; i < this.datos_para_tabla.length; i++) {
+            this.Tabla.setValueAt(this.datos_para_tabla[i][0], i, 0);
+            this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
+        }
+    }
+
+    public void setTabla(JTable Tabla) {
+        this.Tabla = Tabla;
+    }
+    
 }
