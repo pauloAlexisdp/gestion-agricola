@@ -89,7 +89,7 @@ public class EliminarTrabajadorInterno extends javax.swing.JFrame {
             //ControladorTrabajador.
              try {
                 String[][] datos;
-                datos = ControladorTrabajador.cargarDatos();
+                datos = ControladorTrabajador.cargarTrabajadoresInternos();
                 gestion.setDatos_para_tabla(datos);
                 gestion.cargarDatosTabla();
                 
