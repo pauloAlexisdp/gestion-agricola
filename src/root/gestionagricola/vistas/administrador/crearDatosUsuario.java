@@ -5,6 +5,9 @@
  */
 package root.gestionagricola.vistas.administrador;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -16,10 +19,9 @@ import root.gestionagricola.gestionusuario.ControladorUsuario;
  */
 public class crearDatosUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form IngresarDatosUsuario
-     */
-    public crearDatosUsuario() {
+    Administrador admin;
+    public crearDatosUsuario(Administrador admin) {
+        this.admin = admin;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -121,7 +123,25 @@ public class crearDatosUsuario extends javax.swing.JFrame {
         if(this.RespuestaNombre.getText() != null && this.RespuestaContrasena.getText() != null && this.RespuestaTipo.getSelectedItem() != null){
             // aqui se llama al método controlador que hara la conexion con el modelo.
             ControladorUsuario.CrearUsuario(this.RespuestaNombre.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaTipo.getSelectedItem());
+            
+            try {
+                String[][] datos;
+                datos = ControladorUsuario.cargarDatos();
+                admin.setDatos_para_tabla(datos);
+                admin.cargarDatosTabla();
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             this.dispose();
+            JOptionPane.showMessageDialog(null, "Cuenta de Usuario Ingresada.", "Creación", JOptionPane.INFORMATION_MESSAGE);
         }else{//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }

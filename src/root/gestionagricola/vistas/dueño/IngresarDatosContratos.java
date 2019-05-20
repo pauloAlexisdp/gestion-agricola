@@ -209,6 +209,7 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
                          RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
             
             this.dispose();
+            JOptionPane.showMessageDialog(null, "Contrato Ingresado.", "Creación", JOptionPane.INFORMATION_MESSAGE);
         } else {//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
