@@ -41,7 +41,7 @@ public class TrabajadorExternoDA {
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
                //Actualizacion de trabajadores 
-               cdb.un_sql = "UPDATE trabajadorexterno set nombre='"+nombre+"', sueldo="+sueldo+",nombreempresa='"+nombreEmpresa+"', folio="+folio+
+               cdb.un_sql = "UPDATE trabajadorexterno set nombre='"+nombre+"', sueldo="+sueldo+",nombreempresa='"+nombreEmpresa+"', refcontrato="+folio+
                        " WHERE rut="+rut;
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Datos actualizados");
@@ -109,7 +109,7 @@ public class TrabajadorExternoDA {
         
         Contrato contrato=null;
         
-        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, telefono, estado "
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo, estado "
                 + " from trabajadorexterno, contrato where estado not like 'eliminado' and folio="+folio+" and refcontrato=folio";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){

@@ -7,6 +7,7 @@
 package root.gestionagricola;
 
 import java.sql.SQLException;
+import root.gestionagricola.modelo.accesodato.CuentaDA;
 
 /**
  * 
@@ -82,7 +83,6 @@ public class Cuenta {
         this.nombre=c.getNombre();
         this.password = c.getPassword();
         this.tipo = c.getTipo();
-        System.out.println("Nombre "+this.nombre+" paa "+this.password+" tipo "+this.tipo);
         if(this.tipo == null){
             return "0";
         }else{
