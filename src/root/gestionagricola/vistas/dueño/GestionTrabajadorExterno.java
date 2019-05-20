@@ -5,6 +5,7 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+
 import javax.swing.JTable;
 import root.gestionagricola.vistas.ControladorVistas;
 
@@ -229,7 +230,7 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        this.modificarTrabajadorE = new ModificarTrabajadorExterno(this);
+        this.modificarTrabajadorE = new ModificarTrabajadorExterno();
         modificarTrabajadorE.setVisible(true);
 
     }//GEN-LAST:event_botonModificarActionPerformed
@@ -240,7 +241,7 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        this.eliminarTrabajadorE = new EliminarTrabajadorExterno(this);
+        this.eliminarTrabajadorE = new EliminarTrabajadorExterno();
         eliminarTrabajadorE.setVisible(true);
 
     }//GEN-LAST:event_botonEliminarActionPerformed

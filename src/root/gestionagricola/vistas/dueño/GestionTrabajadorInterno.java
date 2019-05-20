@@ -5,6 +5,7 @@
  */
 package root.gestionagricola.vistas.dueño;
 
+
 import javax.swing.JTable;
 import root.gestionagricola.vistas.ControladorVistas;
 
@@ -64,6 +65,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/trabajadores 32px.png"))); // NOI18N
         jButton6.setText("Gestión de Trabajadores Internos");
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
@@ -78,6 +80,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
 
         botonEditar.setBackground(new java.awt.Color(255, 255, 255));
         botonEditar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonEditar.setForeground(new java.awt.Color(0, 0, 0));
         botonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
         botonEditar.setText("Modificar Trabajador");
         botonEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
@@ -92,6 +95,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
 
         botonEliminar.setBackground(new java.awt.Color(255, 255, 255));
         botonEliminar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonEliminar.setForeground(new java.awt.Color(0, 0, 0));
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
         botonEliminar.setText("Eliminar Trabajador");
         botonEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
@@ -106,6 +110,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
 
         botonIngresar.setBackground(new java.awt.Color(255, 255, 255));
         botonIngresar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonIngresar.setForeground(new java.awt.Color(0, 0, 0));
         botonIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
         botonIngresar.setText("Ingresar Trabajador");
         botonIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
@@ -119,6 +124,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
         });
         add(botonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
 
+        Tabla.setBackground(new java.awt.Color(255, 255, 255));
         Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -228,7 +234,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        this.modificarTrabajadorI = new ModificarTrabajadorInterno(this);
+        this.modificarTrabajadorI = new ModificarTrabajadorInterno();
         modificarTrabajadorI.setVisible(true); 
     }//GEN-LAST:event_botonEditarActionPerformed
 
@@ -238,7 +244,7 @@ public class GestionTrabajadorInterno extends javax.swing.JPanel {
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-       this.eliminarTrabajadorI = new EliminarTrabajadorInterno(this);
+       this.eliminarTrabajadorI = new EliminarTrabajadorInterno();
        eliminarTrabajadorI.setVisible(true);
 
     }//GEN-LAST:event_botonEliminarActionPerformed
