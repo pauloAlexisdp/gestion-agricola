@@ -105,10 +105,16 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
 
         RespuestaValor.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaValor.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        RespuestaValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RespuestaValorActionPerformed(evt);
+            }
+        });
         jPanel1.add(RespuestaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 185, -1));
 
         RespuestaRut.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        RespuestaRut.setEnabled(false);
         jPanel1.add(RespuestaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 185, -1));
 
         RespuestaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Planta", "Subcontrato" }));
@@ -226,11 +232,15 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestEstadoActionPerformed
 
+    private void RespuestaValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RespuestaValorActionPerformed
+
     public void setFolio_recibido(int folio_recibido) {
         this.folio_recibido = folio_recibido;
     }
 
-    public JComboBox<String> getRespuestEstado1() {
+    public JComboBox<String> getRespuestEstado() {
         return RespuestEstado;
     }
 
@@ -246,8 +256,12 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         return RespuestNombre;
     }
 
-    public JTextField getRespuestaRut() {
+    public JTextField getRespuestaEmpresa() {
         return RespuestaEmpresa;
+    }
+
+    public JTextField getRespuestaRut() {
+        return RespuestaRut;
     }
 
     public JComboBox<String> getRespuestaTipo() {
@@ -258,6 +272,8 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         return RespuestaValor;
     }
 
+    
+    
     public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);

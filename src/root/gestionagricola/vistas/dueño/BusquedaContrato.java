@@ -206,6 +206,7 @@ public class BusquedaContrato extends javax.swing.JFrame {
             }
             
             this.dispose();
+            
         } else {//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Debe llenar al menos una casilla.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
