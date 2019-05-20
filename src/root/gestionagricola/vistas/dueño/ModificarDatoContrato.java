@@ -1,10 +1,12 @@
 package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Container;
 import java.sql.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
@@ -206,8 +208,10 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
             this.RespuestNombre.setText(datos[4]);
             this.RespuestaRut.setText(datos[5]);
             this.RespuestaValor.setText(datos[6]);
+            this.actualizarpantalla();
             ControladorContrato.modificarContrato(this.folio_recibido,(String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate()
                     , this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
+            this.dispose();
             JOptionPane.showMessageDialog(null, "Contrato Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
 
@@ -262,7 +266,12 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
     public JTextField getRespuestaValor() {
         return RespuestaValor;
     }
-
+    public void actualizarpantalla() {
+        Container temp = this.getContentPane();
+        SwingUtilities.updateComponentTreeUI(temp);
+        temp.validate();
+        requestFocusInWindow();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;

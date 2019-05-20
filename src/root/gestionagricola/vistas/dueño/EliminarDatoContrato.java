@@ -214,6 +214,8 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
             this.RespuestNombre.setText(datos[4]);
             this.RespuestaRut.setText(datos[5]);
             this.RespuestaValor.setText(datos[6]);
+            ControladorContrato.eliminarContrato(this.folio_recibido);
+            this.dispose();
             JOptionPane.showMessageDialog(null, "Contrato Eliminado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
         }
 
