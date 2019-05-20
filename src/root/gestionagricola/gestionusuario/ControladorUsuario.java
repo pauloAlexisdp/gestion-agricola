@@ -1,6 +1,7 @@
 package root.gestionagricola.gestionusuario;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import root.gestionagricola.modelo.accesodato.UsuarioDA;
 
 /*
@@ -42,7 +43,7 @@ public class ControladorUsuario{
      * @param tipoCuenta Se espera un <String> con el tipo de cuenta asociada a un usuario {Administrador, Dueño, Supervisor}
      */
     
-    public static void EliminarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
+    public static void EliminarUsuario(String nombreUsuario, String contrasena){
         
         try{
             UsuarioDA.eliminarUsuario(nombreUsuario);
@@ -56,7 +57,18 @@ public class ControladorUsuario{
         //llamada a la BD para obtener al usuario.
         return null;
     }
-    
+    public static String[][] cargarDatos() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        ArrayList<Usuario> usuarios = new ArrayList();
+        usuarios = UsuarioDA.cargar();
+        
+        String[][] datos = new String[usuarios.size()][9];
+        System.out.println(usuarios.size());
+        for (int i = 0; i < usuarios.size(); i ++){
+            datos[i][0] = String.valueOf(usuarios.get(i).getNombreUsuario());
+            datos[i][1] = usuarios.get(i).getTipoCuenta();
+        }
+        return datos;
+    }
     
     
 }

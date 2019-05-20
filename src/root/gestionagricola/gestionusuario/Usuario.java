@@ -15,6 +15,7 @@ public class Usuario {
     private String tipoCuenta;
     private String contrasena;
     
+    public Usuario(){}
     
     /**
      * Constructor de la clase Usuario.
