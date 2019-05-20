@@ -5,6 +5,9 @@
  */
 package root.gestionagricola.vistas.administrador;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -18,8 +21,10 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
 
     private String nombre_recibido;
     private String contrasena_recibido;
+    Administrador admin;
     
-    public EliminarDatoUsuario() {
+    public EliminarDatoUsuario(Administrador admin) {
+        this.admin = admin;
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -125,14 +130,29 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
 
         // este boton es cuando apreta Eliminar.
-        String[] datos = null;
-        datos = ControladorUsuario.getUsuario(this.nombre_recibido, this.contrasena_recibido);
-        if(datos == null){
-            JOptionPane.showMessageDialog(null, "El usuario a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }else{
-            this.RespuestaNombreUsuario.setText(datos[0]);
-            this.RespuestaContrasena.setText(datos[1]);
-            JOptionPane.showMessageDialog(null, "Usuario Eliminado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        if(this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena != null){
+            // aqui se llama al método controlador que hara la conexion con el modelo.
+            ControladorUsuario.EliminarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText());
+             try {
+                String[][] datos;
+                datos = ControladorUsuario.cargarDatos();
+                admin.setDatos_para_tabla(datos);
+                admin.cargarDatosTabla();
+                
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Cuenta de Usuario Eliminada.", "Eliminación", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{ //si no le avisa al usuario que le faltan casillas por llenar.
+            JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
