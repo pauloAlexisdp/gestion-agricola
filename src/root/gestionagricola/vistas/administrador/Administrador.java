@@ -294,7 +294,6 @@ public class Administrador extends javax.swing.JPanel {
         this.controladorVista = controladorVistas;
     }
     public void cargarDatosTabla() {
-        
         for (int i = 0; i < this.datos_para_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_para_tabla[i][0], i, 0);
             this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
