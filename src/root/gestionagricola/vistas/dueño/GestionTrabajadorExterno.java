@@ -6,7 +6,9 @@
 package root.gestionagricola.vistas.dueño;
 
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import root.gestionagricola.gestiontrabajador.ControladorTrabajador;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
@@ -230,8 +232,25 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        this.modificarTrabajadorE = new ModificarTrabajadorExterno();
-        modificarTrabajadorE.setVisible(true);
+        String respuesta = JOptionPane.showInputDialog(null, "Ingrese el rut del trabajador que desea modificar.", "Actualizar", JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == null) {//no hace nada
+
+        } else {//aqui se trabaja con la respuesta.
+
+            this.modificarTrabajadorE = new ModificarTrabajadorExterno();
+            modificarTrabajadorE.setRut_recibido(Integer.parseInt(respuesta));
+            String[] datos = null;
+            datos = ControladorTrabajador.getTrabajador(Integer.parseInt(respuesta));
+            
+            this.modificarTrabajadorE.getDatoRut().setText(datos[0]);
+            this.modificarTrabajadorE.getDatoNombre().setText(datos[1]);
+            this.modificarTrabajadorE.getDatoRol().setText(datos[2]);
+            this.modificarTrabajadorE.getDatoTelefono().setText(datos[3]);
+            this.modificarTrabajadorE.getDatoNum_Contrato().setText(datos[5]);
+            }
+
+            modificarTrabajadorE.setVisible(true);
+            modificarTrabajadorE.actualizarpantalla();
 
     }//GEN-LAST:event_botonModificarActionPerformed
 
@@ -241,8 +260,28 @@ public class GestionTrabajadorExterno extends javax.swing.JPanel {
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
-        this.eliminarTrabajadorE = new EliminarTrabajadorExterno();
-        eliminarTrabajadorE.setVisible(true);
+         String respuesta = JOptionPane.showInputDialog(null, "Ingrese el rut del trabajador que desea eliminar.", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+        if (respuesta == null) {//no hace nada
+
+        } else {//aqui se llama al otro JFrame(EliminarTrabajadorInterno) que trabajara los datos.
+
+            this.eliminarTrabajadorE = new EliminarTrabajadorExterno(this);
+
+            eliminarTrabajadorE.setRut_recibido(Integer.parseInt(respuesta));
+            String[] datos = null;
+            datos = ControladorTrabajador.getTrabajador(Integer.parseInt(respuesta));
+
+            if (datos != null) {
+                this.eliminarTrabajadorE.getDatoRut().setText(datos[0]);
+                this.eliminarTrabajadorE.getDatoNombre().setText(datos[1]);
+                this.eliminarTrabajadorE.getDatoRol().setText(datos[2]);
+                this.eliminarTrabajadorE.getDatoTelefono().setText(datos[3]);
+                this.eliminarTrabajadorE.getDatoNum_Contrato().setText(datos[5]);
+                
+            }
+            eliminarTrabajadorE.setVisible(true);
+            eliminarTrabajadorE.actualizarpantalla();
+        }
 
     }//GEN-LAST:event_botonEliminarActionPerformed
 

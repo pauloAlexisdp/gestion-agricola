@@ -5,22 +5,20 @@
  */
 package root.gestionagricola.vistas.dueño;
 
-import com.toedter.calendar.JDateChooser;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.gestiontrabajador.ControladorTrabajador;
 
 /**
  *
- * @author Javier
+ * @author Ariel
  */
 public class CrearTrabajadorInterno extends javax.swing.JFrame {
     GestionTrabajadorInterno gestion;
+    
     public CrearTrabajadorInterno(GestionTrabajadorInterno gestion) {
         this.gestion = gestion;
         initComponents();
@@ -203,8 +201,6 @@ public class CrearTrabajadorInterno extends javax.swing.JFrame {
     public JTextField getDatoTelefono() {
         return datoTelefono;
     }
-
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCancelar;

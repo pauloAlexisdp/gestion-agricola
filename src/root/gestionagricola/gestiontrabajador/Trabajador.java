@@ -13,7 +13,28 @@ public class Trabajador {
     private int telefono;
     private String estado;
     private int num_contrato;
-
+    
+    //Se utiliza para crear un trabajador sin parametros.
+    public Trabajador(){    
+    }
+    /**
+     * Constructor para un trabajador en general, ya sea interno o externo.
+     * @param rut Se espera un <int> con el DNI del asociado.
+     * @param nombre Se espera un <String> con el nombre del asociado.
+     * @param rol Se espera un <String> que detalle la funcion del trabajador.
+     * @param telefono Se espera un <int> con el telefono del asociado.
+     * @param estado Se espera un <String> con el estado del asociado {Subcontratado, Planta}.
+     * @param num_contrato Se espera un <int> con el folio del contrato.
+     */
+    public Trabajador(int rut, String nombre, String rol, int telefono, String estado, int num_contrato) {
+        this.rut = rut;
+        this.nombre = nombre;
+        this.rol = rol;
+        this.telefono = telefono;
+        this.estado = estado;
+        this.num_contrato = num_contrato;
+    }
+    
     /**
      * Constructor para un trabajador interno de la empresa.
      * @param rut Se espera un <int> con el DNI del asociado.

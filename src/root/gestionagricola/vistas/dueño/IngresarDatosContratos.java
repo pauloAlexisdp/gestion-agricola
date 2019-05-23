@@ -63,66 +63,54 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Folio :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 63, -1));
 
-        RespuestaFolio.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaFolio.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jPanel1.add(RespuestaFolio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 185, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Fecha Inicio:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 101, -1));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Fecha Termino:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 101, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Rut:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 63, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nombre:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 63, -1));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Sueldo:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 63, -1));
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Nombre Empresa:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, 120, 20));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Tipo:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 63, -1));
 
-        RespuestaEmpresa.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaEmpresa.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         RespuestaEmpresa.setEnabled(false);
         jPanel1.add(RespuestaEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 185, -1));
 
-        RespuestNombre.setBackground(new java.awt.Color(255, 255, 255));
         RespuestNombre.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jPanel1.add(RespuestNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 168, 185, -1));
 
-        RespuestaValor.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaValor.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jPanel1.add(RespuestaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 185, -1));
 
@@ -174,11 +162,9 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Estado:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 63, -1));
 
-        RespuestaRut.setBackground(new java.awt.Color(255, 255, 255));
         RespuestaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         jPanel1.add(RespuestaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 185, -1));
 

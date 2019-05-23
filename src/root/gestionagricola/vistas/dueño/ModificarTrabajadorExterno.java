@@ -1,21 +1,18 @@
 package root.gestionagricola.vistas.dueño;
 
-import com.toedter.calendar.JDateChooser;
 import java.awt.Container;
-import java.sql.Date;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import root.gestionagricola.gestioncontrato.ControladorContrato;
+import root.gestionagricola.gestiontrabajador.ControladorTrabajador;
 
 /**
  *
- * @author Javier
+ * @author Ariel
  */
 public class ModificarTrabajadorExterno extends javax.swing.JFrame {
 
-    private int folio_recibido;
+    private int rut_recibido;
 
     public ModificarTrabajadorExterno() {
         initComponents();
@@ -33,97 +30,24 @@ public class ModificarTrabajadorExterno extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        RespuestaEmpresa = new javax.swing.JTextField();
-        RespuestNombre = new javax.swing.JTextField();
-        RespuestaValor = new javax.swing.JTextField();
-        RespuestaRut = new javax.swing.JTextField();
-        RespuestaTipo = new javax.swing.JComboBox<>();
         BotonModificar = new javax.swing.JButton();
         BotonCancelar = new javax.swing.JButton();
-        RespuestFechaTermino = new com.toedter.calendar.JDateChooser();
-        RespuestFechaInicio = new com.toedter.calendar.JDateChooser();
-        RespuestEstado = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        datoRut = new javax.swing.JTextField();
+        datoNombre = new javax.swing.JTextField();
+        datoRol = new javax.swing.JTextField();
+        datoTelefono = new javax.swing.JTextField();
+        datoNum_Contrato = new javax.swing.JTextField();
+        etiquetaRut = new javax.swing.JLabel();
+        etiquetaNombre = new javax.swing.JLabel();
+        etiquetaRol = new javax.swing.JLabel();
+        etiquetaTelefono = new javax.swing.JLabel();
+        etiquetaNum_Contrato = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Fecha Inicio:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 101, -1));
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Fecha Termino:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 101, -1));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Rut:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 63, -1));
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Nombre:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 63, -1));
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Sueldo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 63, -1));
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Tipo:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 63, -1));
-
-        RespuestaEmpresa.setBackground(new java.awt.Color(255, 255, 255));
-        RespuestaEmpresa.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaEmpresa.setEnabled(false);
-        jPanel1.add(RespuestaEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 185, -1));
-
-        RespuestNombre.setBackground(new java.awt.Color(255, 255, 255));
-        RespuestNombre.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jPanel1.add(RespuestNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 185, -1));
-
-        RespuestaValor.setBackground(new java.awt.Color(255, 255, 255));
-        RespuestaValor.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaValor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RespuestaValorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(RespuestaValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 185, -1));
-
-        RespuestaRut.setBackground(new java.awt.Color(255, 255, 255));
-        RespuestaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaRut.setEnabled(false);
-        jPanel1.add(RespuestaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 185, -1));
-
-        RespuestaTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Planta", "Subcontrato" }));
-        RespuestaTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RespuestaTipoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(RespuestaTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 185, 21));
 
         BotonModificar.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
         BotonModificar.setText("Modificar");
@@ -143,37 +67,41 @@ public class ModificarTrabajadorExterno extends javax.swing.JFrame {
         });
         jPanel1.add(BotonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 135, -1));
 
-        RespuestFechaTermino.setBackground(new java.awt.Color(51, 51, 51));
-        RespuestFechaTermino.setForeground(new java.awt.Color(255, 255, 255));
-        RespuestFechaTermino.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
-        RespuestFechaTermino.setPreferredSize(new java.awt.Dimension(86, 21));
-        jPanel1.add(RespuestFechaTermino, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 185, 21));
-
-        RespuestFechaInicio.setBackground(new java.awt.Color(51, 51, 51));
-        RespuestFechaInicio.setForeground(new java.awt.Color(255, 255, 255));
-        RespuestFechaInicio.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
-        jPanel1.add(RespuestFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 185, 21));
-        RespuestFechaInicio.getAccessibleContext().setAccessibleName("");
-
-        RespuestEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Renovado", "Activo", "Finalizado" }));
-        RespuestEstado.addActionListener(new java.awt.event.ActionListener() {
+        datoRut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RespuestEstadoActionPerformed(evt);
+                datoRutActionPerformed(evt);
             }
         });
-        jPanel1.add(RespuestEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 185, 21));
+        jPanel1.add(datoRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 200, -1));
+        jPanel1.add(datoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 200, -1));
+        jPanel1.add(datoRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 200, -1));
+        jPanel1.add(datoTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, 200, -1));
+        jPanel1.add(datoNum_Contrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, -1));
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("Estado:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 63, -1));
+        etiquetaRut.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaRut.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        etiquetaRut.setText("Rut");
+        jPanel1.add(etiquetaRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 110, -1));
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel10.setText("Nombre Empresa:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 120, 20));
+        etiquetaNombre.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaNombre.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        etiquetaNombre.setText("Nombre");
+        jPanel1.add(etiquetaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+
+        etiquetaRol.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaRol.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        etiquetaRol.setText("Rol");
+        jPanel1.add(etiquetaRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
+
+        etiquetaTelefono.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaTelefono.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        etiquetaTelefono.setText("Telefóno");
+        jPanel1.add(etiquetaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+
+        etiquetaNum_Contrato.setBackground(new java.awt.Color(255, 255, 255));
+        etiquetaNum_Contrato.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        etiquetaNum_Contrato.setText("N° Contrato");
+        jPanel1.add(etiquetaNum_Contrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,87 +121,35 @@ public class ModificarTrabajadorExterno extends javax.swing.JFrame {
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         String[] datos = null;
-        datos = ControladorContrato.getContrato(this.folio_recibido);
+        datos = ControladorTrabajador.getTrabajador(this.rut_recibido);
         if (datos == null) {
-            JOptionPane.showMessageDialog(null, "El contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else {
-            if ((String) this.RespuestEstado.getSelectedItem() != null
-                    && this.RespuestFechaInicio.getDate() != null && this.RespuestFechaTermino.getDate() != null
-                    && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
-                    && this.RespuestaEmpresa.getText() != null && this.RespuestaValor.getText() != null) {
-                ControladorContrato.modificarContrato(this.folio_recibido, (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
-                         this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+            JOptionPane.showMessageDialog(null, "El trabajador a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else {
+            if (this.datoRut.getText() != null && this.datoNombre.getText() != null && 
+                this.datoRol.getText() != null && this.datoTelefono.getText() != null
+                && this.datoNum_Contrato.getText() != null) {
+                ControladorTrabajador.modificarTrabajadorInterno(this.rut_recibido, this.datoNombre.getText(), this.datoRol.getText(), Integer.valueOf(this.datoTelefono.getText()),
+                                                                 "Planta", Integer.valueOf(this.datoNum_Contrato.getText()));
                 this.dispose();
-                JOptionPane.showMessageDialog(null, "Contrato Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
-
+                JOptionPane.showMessageDialog(null, "Trabajador Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
             }else{
                 JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
-
         }
-
     }//GEN-LAST:event_BotonModificarActionPerformed
-
-    private void RespuestaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaTipoActionPerformed
-        String aux = (String) this.RespuestaTipo.getSelectedItem();
-        if (aux.equals("Planta")) {
-            this.RespuestaEmpresa.setEnabled(false);
-        } else {
-            this.RespuestaEmpresa.setEnabled(true);
-        }
-
-    }//GEN-LAST:event_RespuestaTipoActionPerformed
 
     private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_BotonCancelarActionPerformed
 
-    private void RespuestEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestEstadoActionPerformed
+    private void datoRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datoRutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RespuestEstadoActionPerformed
+    }//GEN-LAST:event_datoRutActionPerformed
 
-    private void RespuestaValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RespuestaValorActionPerformed
-
-    public void setFolio_recibido(int folio_recibido) {
-        this.folio_recibido = folio_recibido;
+    public void setRut_recibido(int rut_recibido) {
+        this.rut_recibido = rut_recibido;
     }
 
-    public JComboBox<String> getRespuestEstado() {
-        return RespuestEstado;
-    }
-
-    public JDateChooser getRespuestFechaInicio() {
-        return RespuestFechaInicio;
-    }
-
-    public JDateChooser getRespuestFechaTermino() {
-        return RespuestFechaTermino;
-    }
-
-    public JTextField getRespuestNombre() {
-        return RespuestNombre;
-    }
-
-    public JTextField getRespuestaEmpresa() {
-        return RespuestaEmpresa;
-    }
-
-    public JTextField getRespuestaRut() {
-        return RespuestaRut;
-    }
-
-    public JComboBox<String> getRespuestaTipo() {
-        return RespuestaTipo;
-    }
-
-    public JTextField getRespuestaValor() {
-        return RespuestaValor;
-    }
-
-    
-    
     public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);
@@ -281,25 +157,39 @@ public class ModificarTrabajadorExterno extends javax.swing.JFrame {
         requestFocusInWindow();
     }
 
+    public JTextField getDatoNombre() {
+        return datoNombre;
+    }
+
+    public JTextField getDatoNum_Contrato() {
+        return datoNum_Contrato;
+    }
+
+    public JTextField getDatoRol() {
+        return datoRol;
+    }
+
+    public JTextField getDatoRut() {
+        return datoRut;
+    }
+
+    public JTextField getDatoTelefono() {
+        return datoTelefono;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
     private javax.swing.JButton BotonModificar;
-    private javax.swing.JComboBox<String> RespuestEstado;
-    private com.toedter.calendar.JDateChooser RespuestFechaInicio;
-    private com.toedter.calendar.JDateChooser RespuestFechaTermino;
-    private javax.swing.JTextField RespuestNombre;
-    private javax.swing.JTextField RespuestaEmpresa;
-    private javax.swing.JTextField RespuestaRut;
-    private javax.swing.JComboBox<String> RespuestaTipo;
-    private javax.swing.JTextField RespuestaValor;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField datoNombre;
+    private javax.swing.JTextField datoNum_Contrato;
+    private javax.swing.JTextField datoRol;
+    private javax.swing.JTextField datoRut;
+    private javax.swing.JTextField datoTelefono;
+    private javax.swing.JLabel etiquetaNombre;
+    private javax.swing.JLabel etiquetaNum_Contrato;
+    private javax.swing.JLabel etiquetaRol;
+    private javax.swing.JLabel etiquetaRut;
+    private javax.swing.JLabel etiquetaTelefono;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

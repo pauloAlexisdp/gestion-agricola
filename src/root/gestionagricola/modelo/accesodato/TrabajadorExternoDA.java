@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
+import root.gestionagricola.gestiontrabajador.ControladorTrabajador;
+import root.gestionagricola.gestiontrabajador.Trabajador;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
 
@@ -179,4 +181,149 @@ public class TrabajadorExternoDA {
       return r;
     }
     
+    /**
+     * 
+     * @param rut
+     * @param nombre
+     * @param rol
+     * @param telefono
+     * @param estado
+     * @param num_contrato
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
+    public static void guardarTrabajadorExterno(int rut, String nombre, String rol, int telefono, String estado, int num_contrato) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+  
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        //modulo seguridad si ya hay una cuenta con ese nombre 
+        cdb.un_sql = "select rut from trabajador_Externo where rut = "+rut;
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //Actualiza trabajador Interno
+               cdb.un_sql = "UPDATE trabajador_Externo set nombre='"+nombre+"', rol="+rol+", telefono="+telefono+"', estado="+estado+"', num_contrato="+num_contrato+
+                       " WHERE rut="+rut;
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Datos actualizados");
+           }else{
+               cdb.un_sql = "Insert into trabajador_Externo values("+rut +", '"+nombre+"', " +rol+", "+telefono+", "+estado+", "+num_contrato+")";
+               cdb.statement.executeUpdate(cdb.un_sql);
+               System.out.println("Datos guardados");
+               
+           }
+        }else{
+               cdb.un_sql = "Insert into trabajador_Externo values("+rut +", '"+nombre+"', " +rol+", "+telefono+", "+estado+", "+num_contrato+")";
+               cdb.statement.executeUpdate(cdb.un_sql);
+        }
+        //cdb.close();
+    }
+    
+    public static void eliminarTrabajadorExterno(int rut) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        //modulo seguridad si ya hay una cuenta con ese rut
+        cdb.un_sql = "select rut from trabajador_Externo where rut = "+rut;
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //ACTUALIZACION
+               cdb.un_sql = "DELETE FROM trabajador_Externo"+
+                      " WHERE rut='"+rut+"'";
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Trabajador eliminado");
+            }else{
+               
+            }
+        }
+    }
+    
+    /**
+     * Se carga una lista de los trabajadores externos creados.
+     * @return un arreglo que contienen a los trabajadores.
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
+    public static ArrayList cargarTrabajadorExterno() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        ArrayList r = null;
+        Trabajador t;
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        cdb.un_sql = "select * from trabajador_Externo";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+            r = new ArrayList();
+            while(cdb.resultado.next()){
+                t = new Trabajador();
+                t.setRut(Integer.valueOf(cdb.resultado.getString("rut")));
+                t.setNombre(cdb.resultado.getString("nombre"));
+                t.setRol(cdb.resultado.getString("rol"));
+                t.setTelefono(Integer.valueOf(cdb.resultado.getString("telefono")));
+                t.setEstado(cdb.resultado.getString("estado"));
+                t.setNum_contrato(Integer.valueOf(cdb.resultado.getString("num_contrato")));
+                r.add(t);
+            }
+        }else{
+            System.out.println("error");
+        }
+        //cdb.close();
+      return r;
+    }
+    
+    public static Trabajador encontrarTrabajadorExterno(int rut) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        
+        Trabajador trabajador=null;
+        
+        cdb.un_sql = "select rut, nombre, rol, telefono, estado, num_contrato"
+                + " from trabajador_Externo, trabajador where estado not like 'eliminado' and rut="+rut+ " and reftrabajador=rut";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+            while(cdb.resultado.next()){
+                rut = cdb.resultado.getInt("rut");
+                String nombre = cdb.resultado.getString("nombre");
+                String rol = cdb.resultado.getString("rol");
+                int telefono  =cdb.resultado.getInt("telefono");
+                int num_contrato  = cdb.resultado.getInt("num_contrato");              
+                trabajador = ControladorTrabajador.crearTrabajadorExterno(rut, nombre, rol, telefono, "subContratado", num_contrato);
+            }
+        }else{
+            System.out.println("error");
+        }
+        //cdb.close();
+        return trabajador;    
+    }
+    
+    /*
+    public static ArrayList buscarTrabajadorExterno(int rut) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        ArrayList r = null;
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        /**
+         * estado para trabajador:  
+         * estado para 
+        cdb.un_sql = "select rut, nombre,rol, telefono, estado, num_contrato"
+                + " from trabajador_Externo, rut where folio=refrut";
+
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+            r = new ArrayList();
+            while(cdb.resultado.next()){
+                rut= cdb.resultado.getInt("folio");
+                String nombre = cdb.resultado.getString("nombre");
+                String rol = cdb.resultado.getString("rol");
+                int telefono = cdb.resultado.getInt("telefono");
+                String estado = cdb.resultado.getString("estado");
+                int num_contrato = cdb.resultado.getInt("num_contrato");
+                r.add(ControladorTrabajador.crearTrabajadorExterno(rut, nombre, rol, telefono, estado, num_contrato));
+
+            }
+        }else{
+            System.out.println("error");
+        }
+    //    cdb.close();
+      return r;
+    }
+*/
 }
