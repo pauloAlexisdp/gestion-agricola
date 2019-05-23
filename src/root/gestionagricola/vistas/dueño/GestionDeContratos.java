@@ -284,7 +284,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         String respuesta = JOptionPane.showInputDialog(null, "Ingrese el folio del contrato que desea modificar.", "Actualizar", JOptionPane.INFORMATION_MESSAGE);
         if (respuesta == null) {//no hace nada
-
+             JOptionPane.showMessageDialog(null, "El folio del contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {//aqui se trabaja con la respuesta.
 
             this.modificarDato = new ModificarDatoContrato();
@@ -293,7 +293,6 @@ public class GestionDeContratos extends javax.swing.JPanel {
             datos = ControladorContrato.getContrato(Integer.parseInt(respuesta));
             if (datos != null) {
                 if (datos[1].equals("planta")) {//selecciona el tipo  que aparecera en pantalla
-                    System.out.println("hola");
                     this.modificarDato.getRespuestaTipo().setSelectedIndex(0);
                     this.modificarDato.getRespuestaEmpresa().setEnabled(false);
                     this.modificarDato.getRespuestaEmpresa().setText("");
