@@ -13,11 +13,11 @@ import root.gestionagricola.gestioncontrato.ControladorContrato;
  *
  * @author Javier
  */
-public class ModificarDatoContrato extends javax.swing.JFrame {
+public class ModificarTrabajadorInterno extends javax.swing.JFrame {
 
     private int folio_recibido;
 
-    public ModificarDatoContrato() {
+    public ModificarTrabajadorInterno() {
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -194,36 +194,23 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         String[] datos = null;
         datos = ControladorContrato.getContrato(this.folio_recibido);
+        if (datos == null) {
+            JOptionPane.showMessageDialog(null, "El contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+            if ((String) this.RespuestEstado.getSelectedItem() != null
+                    && this.RespuestFechaInicio.getDate() != null && this.RespuestFechaTermino.getDate() != null
+                    && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
+                    && this.RespuestaEmpresa.getText() != null && this.RespuestaValor.getText() != null) {
+                ControladorContrato.modificarContrato(this.folio_recibido, (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
+                         this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Contrato Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
 
-        if ((String) this.RespuestEstado.getSelectedItem() != null
-                && this.RespuestFechaInicio.getDate() != null && this.RespuestFechaTermino.getDate() != null
-                && this.RespuestNombre.getText() != null && (String) this.RespuestaTipo.getSelectedItem() != null
-                && this.RespuestaEmpresa.getText() != null && this.RespuestaValor.getText() != null) {
-
-            //Valido si folio y sueldo es Numero.
-            if (this.esNumero(this.RespuestaValor.getText())) {
-                if (this.validarRut(this.RespuestaRut.getText())) {//Valido si el rut es correcto
-                    //Aqui se llama al metodo del controlador que hara la conexion con el modelo.
-                    if (this.RespuestFechaTermino.getDate().after(this.RespuestFechaInicio.getDate())) {//verifico si la fecha de termino esta despues de la fecha de inicio
-                        ControladorContrato.modificarContrato(this.folio_recibido, (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
-                                this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
-                        this.dispose();
-                        JOptionPane.showMessageDialog(null, "Contrato Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "La fecha de termino tiene que ser despues de la Fecha de Inicio.", "ERROR", JOptionPane.WARNING_MESSAGE);
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Rut Invalido.", "ERROR", JOptionPane.WARNING_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "El Sueldo deben ser numeros Enteros sin puntos.", "ERROR", JOptionPane.WARNING_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
 
-        } else {//si no le avisa al usuario que le faltan casillas por llenar.
-            JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
-
 
     }//GEN-LAST:event_BotonModificarActionPerformed
 
@@ -231,7 +218,6 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         String aux = (String) this.RespuestaTipo.getSelectedItem();
         if (aux.equals("Planta")) {
             this.RespuestaEmpresa.setEnabled(false);
-
         } else {
             this.RespuestaEmpresa.setEnabled(true);
         }
@@ -249,51 +235,6 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
     private void RespuestaValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaValorActionPerformed
-    /**
-     * Metodo para validar rut Chileno.
-     *
-     * @param rut String que contendra el rut ingresado por el usuario.
-     * @return Verdadero si el rut es valido, Falso si el rut es invalido
-     */
-    public boolean validarRut(String rut) {
-
-        boolean validacion = false;
-        try {
-            rut = rut.toUpperCase();
-            rut = rut.replace(".", "");
-            rut = rut.replace("-", "");
-            int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-
-            char dv = rut.charAt(rut.length() - 1);
-
-            int m = 0, s = 1;
-            for (; rutAux != 0; rutAux /= 10) {
-                s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-            }
-            if (dv == (char) (s != 0 ? s + 47 : 75)) {
-                validacion = true;
-            }
-
-        } catch (java.lang.NumberFormatException e) {
-        } catch (Exception e) {
-        }
-        return validacion;
-    }
-
-    /**
-     * Metodo para validar Si el folio y sueldo son numeros.
-     *
-     * @param cadena Cadena que sera recibida en un texfield.
-     * @return true si es un numero, False si no es un numero.
-     */
-    public boolean esNumero(String cadena) {
-        try {
-            Integer.parseInt(cadena);
-            return true;
-        } catch (NumberFormatException nfe) {
-            return false;
-        }
-    }
 
     public void setFolio_recibido(int folio_recibido) {
         this.folio_recibido = folio_recibido;
@@ -331,6 +272,8 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
         return RespuestaValor;
     }
 
+    
+    
     public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);

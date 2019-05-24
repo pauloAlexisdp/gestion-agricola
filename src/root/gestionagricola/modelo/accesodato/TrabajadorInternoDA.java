@@ -7,10 +7,7 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.logging.SimpleFormatter;
 import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;

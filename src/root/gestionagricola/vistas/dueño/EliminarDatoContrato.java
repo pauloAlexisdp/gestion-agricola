@@ -17,7 +17,9 @@ import root.gestionagricola.gestioncontrato.ControladorContrato;
 public class EliminarDatoContrato extends javax.swing.JFrame {
 
     private int folio_recibido;
-    public EliminarDatoContrato() {
+    private GestionDeContratos Gcontratos;
+    public EliminarDatoContrato(GestionDeContratos gcontratos) {
+        this.Gcontratos = gcontratos;
         initComponents();
         this.setLocationRelativeTo(null);
 
@@ -201,6 +203,7 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
         }else{
             
             ControladorContrato.eliminarContrato(this.folio_recibido);
+            
             this.dispose();
             JOptionPane.showMessageDialog(null, "Contrato Eliminado.", "Eliminación", JOptionPane.INFORMATION_MESSAGE);
         }

@@ -8,6 +8,8 @@ package root.gestionagricola.vistas.dueño;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.vistas.ControladorVistas;
 
@@ -282,7 +284,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         String respuesta = JOptionPane.showInputDialog(null, "Ingrese el folio del contrato que desea modificar.", "Actualizar", JOptionPane.INFORMATION_MESSAGE);
         if (respuesta == null) {//no hace nada
-
+             JOptionPane.showMessageDialog(null, "El folio del contrato a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
         } else {//aqui se trabaja con la respuesta.
 
             this.modificarDato = new ModificarDatoContrato();
@@ -290,18 +292,22 @@ public class GestionDeContratos extends javax.swing.JPanel {
             String[] datos = null;
             datos = ControladorContrato.getContrato(Integer.parseInt(respuesta));
             if (datos != null) {
-                if (datos[1] == "Planta") {//selecciona el tipo  que aparecera en pantalla
+                if (datos[1].equals("planta")) {//selecciona el tipo  que aparecera en pantalla
                     this.modificarDato.getRespuestaTipo().setSelectedIndex(0);
+                    this.modificarDato.getRespuestaEmpresa().setEnabled(false);
+                    this.modificarDato.getRespuestaEmpresa().setText("");
+                    
                 } else {
                     this.modificarDato.getRespuestaTipo().setSelectedIndex(1);
+                    this.modificarDato.getRespuestaEmpresa().setEnabled(true);
                     this.modificarDato.getRespuestaEmpresa().setText(datos[8]);
                 }
-                if (datos[2] == "Renovado") {//selecciona el estado que aparecera en pantalla
-                    this.modificarDato.getRespuestEstado1().setSelectedIndex(0);
-                } else if (datos[1] == "Activo") {
-                    this.modificarDato.getRespuestEstado1().setSelectedIndex(1);
+                if (datos[2].equals("Renovado")) {//selecciona el estado que aparecera en pantalla
+                    this.modificarDato.getRespuestEstado().setSelectedIndex(0);
+                } else if (datos[2].equals("Activo")) {
+                    this.modificarDato.getRespuestEstado().setSelectedIndex(1);
                 } else {
-                    this.modificarDato.getRespuestEstado1().setSelectedIndex(2);
+                    this.modificarDato.getRespuestEstado().setSelectedIndex(2);
                 }
                 this.modificarDato.getRespuestFechaInicio().setDate(Date.valueOf(datos[3]));
                 this.modificarDato.getRespuestFechaTermino().setDate(Date.valueOf(datos[4]));
@@ -321,19 +327,19 @@ public class GestionDeContratos extends javax.swing.JPanel {
 
         } else {//aqui se llama al otro JFrame(EliminarDatosContratos) que trabajara los datos.
 
-            this.eliminarDato = new EliminarDatoContrato();
+            this.eliminarDato = new EliminarDatoContrato(this);
 
             eliminarDato.setFolio_recibido(Integer.parseInt(respuesta));
             String[] datos = null;
             datos = ControladorContrato.getContrato(Integer.parseInt(respuesta));
-            
+
             //seteo los datos en el formulario para que asegure si esos son los datos a eliminar.
             if (datos != null) {
-                
+
                 if (datos[1] == "Planta") {//selecciona el tipo  que aparecera en pantalla
                     System.out.println("sssss");
                     this.eliminarDato.getRespuestaTipo().setSelectedIndex(0);
-                    
+
                 } else {
                     this.eliminarDato.getRespuestaTipo().setSelectedIndex(1);
                     this.eliminarDato.getRespuestaEmpresa().setText(datos[8]);
@@ -377,6 +383,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
     }
 
     public void cargarDatosTabla() {
+        
         for (int i = 0; i < this.datos_para_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_para_tabla[i][0], i, 0);
             this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
@@ -390,6 +397,7 @@ public class GestionDeContratos extends javax.swing.JPanel {
         }
     }
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBusqueda;
