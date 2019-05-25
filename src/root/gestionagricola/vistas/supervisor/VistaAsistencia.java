@@ -12,15 +12,15 @@ import root.gestionagricola.vistas.ControladorVistas;
  *
  * @author Javier
  */
-public class Asistencia extends javax.swing.JPanel {
+public class VistaAsistencia extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
     private String[][] datos_tabla_internos;
     private String[][] datos_tabla_externos;
 
-    public Asistencia() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+    public VistaAsistencia() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
-     //   this.cargarDatosTabla();
+     // this.cargarDatosTabla();
     }
 
     /**
