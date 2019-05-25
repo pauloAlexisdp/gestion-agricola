@@ -45,7 +45,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/circulo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Modificar Contrato"/>
+        <Property name="text" type="java.lang.String" value="Modificar Trabajador y Contrato"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2">
@@ -61,7 +61,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="130" y="270" width="200" height="40"/>
+          <AbsoluteConstraints x="40" y="270" width="290" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -79,7 +79,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/circulo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="B&#xfa;scar Contratos"/>
+        <Property name="text" type="java.lang.String" value="B&#xfa;scar Trabajador y Contrato"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2">
@@ -95,7 +95,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="130" y="410" width="200" height="40"/>
+          <AbsoluteConstraints x="40" y="410" width="290" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -113,7 +113,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/circulo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Eliminar Contrato"/>
+        <Property name="text" type="java.lang.String" value="Eliminar Trabajador y Contrato"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2">
@@ -129,7 +129,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="130" y="340" width="200" height="40"/>
+          <AbsoluteConstraints x="40" y="340" width="290" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -147,7 +147,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/circulo.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ingresar Contrato"/>
+        <Property name="text" type="java.lang.String" value="Ingresar Trabajador y Contrato"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="2">
@@ -164,7 +164,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="130" y="200" width="200" height="40"/>
+          <AbsoluteConstraints x="40" y="200" width="290" height="40"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -200,7 +200,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/root/gestionagricola/vistas/imagenes/contrato 32px.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Contratos"/>
+        <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de Trabajadores y Contratos"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder roundedCorners="true" thickness="2">

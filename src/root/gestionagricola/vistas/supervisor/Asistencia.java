@@ -5,6 +5,7 @@
  */
 package root.gestionagricola.vistas.supervisor;
 
+import java.sql.SQLException;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
@@ -14,8 +15,12 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class Asistencia extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
-    public Asistencia() {
+    private String[][] datos_tabla_internos;
+    private String[][] datos_tabla_externos;
+
+    public Asistencia() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
+     //   this.cargarDatosTabla();
     }
 
     /**
@@ -196,7 +201,7 @@ public class Asistencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -215,6 +220,25 @@ public class Asistencia extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void setControladorVista(ControladorVistas controladorVista) {
-       this.controladorVista = controladorVista;
+        this.controladorVista = controladorVista;
+    }
+
+    public void setDatos_tabla_internos(String[][] datos_tabla_internos) {
+        this.datos_tabla_internos = datos_tabla_internos;
+    }
+
+    public void setDatos_tabla_externos(String[][] datos_tabla_externos) {
+        this.datos_tabla_externos = datos_tabla_externos;
+    }
+
+    public void cargarDatosTabla() {
+        for (int i = 0; i < this.datos_tabla_internos.length; i++) {
+
+            this.jTable1.setValueAt(this.datos_tabla_internos[i][1], i, 0);
+        }
+        for (int i = this.datos_tabla_internos.length; i < (this.datos_tabla_externos.length + this.datos_tabla_internos.length); i++) {
+            this.jTable1.setValueAt(this.datos_tabla_externos[i][1], i, 0);
+
+        }
     }
 }

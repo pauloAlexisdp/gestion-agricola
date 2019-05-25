@@ -46,7 +46,7 @@ public class ContratoDA {
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
                //ACTUALIZACION
-               cdb.un_sql = "UPDATE contrato set fechaInicio="+fechaInicio+", fechatermino="+fechaTermino+", esatado='"+estado+"' "+
+               cdb.un_sql = "UPDATE contrato set fechaInicio="+fechaInicio+", fechatermino="+fechaTermino+", estado='"+estado+"' "+
                       " WHERE folio="+folio;
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Datos actualizados");
