@@ -1,5 +1,5 @@
-
 package root.gestionagricola.vistas.supervisor;
+
 
 import root.gestionagricola.vistas.ControladorVistas;
 
@@ -10,6 +10,7 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class Supervisor extends javax.swing.JPanel {
 
     private ControladorVistas controladorVistas;
+
     public Supervisor() {
         initComponents();
     }
@@ -92,7 +93,9 @@ public class Supervisor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
         this.controladorVistas.SeleccionarPanel("asistencia");
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
