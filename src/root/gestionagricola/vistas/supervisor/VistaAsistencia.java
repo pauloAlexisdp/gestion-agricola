@@ -5,7 +5,11 @@
  */
 package root.gestionagricola.vistas.supervisor;
 
+
 import java.sql.SQLException;
+import java.util.Date;
+import root.gestionagricola.gestioncontrato.ControladorContrato;
+import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
@@ -15,12 +19,10 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class VistaAsistencia extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
-    private String[][] datos_tabla_internos;
-    private String[][] datos_tabla_externos;
+    private String[][] datos_tabla;
 
     public VistaAsistencia() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
-     // this.cargarDatosTabla();
     }
 
     /**
@@ -36,7 +38,7 @@ public class VistaAsistencia extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
@@ -82,108 +84,115 @@ public class VistaAsistencia extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setBackground(new java.awt.Color(255, 255, 255));
+        Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        Tabla.setForeground(new java.awt.Color(0, 0, 0));
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nombre", "Asistencia"
+                "Rut", "Nombre", "Asistencia"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jTable1.setGridColor(new java.awt.Color(153, 153, 153));
-        jScrollPane1.setViewportView(jTable1);
+        Tabla.setGridColor(new java.awt.Color(153, 153, 153));
+        jScrollPane1.setViewportView(Tabla);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 1020, 360));
 
@@ -201,7 +210,20 @@ public class VistaAsistencia extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+        String[][] datos_asistencia = new String[datos_tabla.length][2];
+        
+        for (int i = 0; i < datos_tabla.length; i++) {
+            datos_asistencia[i][0] = (String)this.Tabla.getValueAt(i, 0);
+            if((boolean)Tabla.getValueAt(i, 2) == true){
+                java.util.Date fecha = new Date();
+                String fecha_actual = ControladorContrato.transformarDate(fecha);
+                datos_asistencia[i][1]  = fecha_actual;
+            }else{
+                datos_asistencia[i][1] = null;
+            }  
+        }
+        
+        ControladorAsistencia.guardarAsistencia(datos_asistencia);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -211,34 +233,28 @@ public class VistaAsistencia extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
+    private javax.swing.JTable Tabla;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     public void setControladorVista(ControladorVistas controladorVista) {
         this.controladorVista = controladorVista;
     }
 
-    public void setDatos_tabla_internos(String[][] datos_tabla_internos) {
-        this.datos_tabla_internos = datos_tabla_internos;
-    }
-
-    public void setDatos_tabla_externos(String[][] datos_tabla_externos) {
-        this.datos_tabla_externos = datos_tabla_externos;
+    public void setDatos_tabla(String[][] datos_tabla) {
+        this.datos_tabla = datos_tabla;
     }
 
     public void cargarDatosTabla() {
-        for (int i = 0; i < this.datos_tabla_internos.length; i++) {
-
-            this.jTable1.setValueAt(this.datos_tabla_internos[i][1], i, 0);
+        for (int i = 0; i < this.datos_tabla.length; i++) {
+            this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
+            this.Tabla.setValueAt(this.datos_tabla[i][1], i, 1);
+            
         }
-        for (int i = this.datos_tabla_internos.length; i < (this.datos_tabla_externos.length + this.datos_tabla_internos.length); i++) {
-            this.jTable1.setValueAt(this.datos_tabla_externos[i][1], i, 0);
-
-        }
+        
     }
 }
