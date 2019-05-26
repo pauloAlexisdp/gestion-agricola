@@ -1,12 +1,12 @@
-
 package root.gestionagricola.vistas;
 
+import java.util.Random;
 import root.gestionagricola.Cuenta;
 import root.gestionagricola.vistas.administrador.Administrador;
 import root.gestionagricola.vistas.dueño.Dueño;
 import root.gestionagricola.vistas.dueño.GenerarReportes;
 import root.gestionagricola.vistas.dueño.GestionDeContratos;
-import root.gestionagricola.vistas.supervisor.Asistencia;
+import root.gestionagricola.vistas.supervisor.VistaAsistencia;
 import root.gestionagricola.vistas.supervisor.Supervisor;
 
 /**
@@ -14,6 +14,7 @@ import root.gestionagricola.vistas.supervisor.Supervisor;
  * @author Javier
  */
 public class ControladorVistas {
+
     private Busqueda busqueda;
     private FramePrincipal frame_principal;
     private Login login;
@@ -22,14 +23,13 @@ public class ControladorVistas {
     private Dueño dueño;
     private GenerarReportes reportes;
     private GestionDeContratos contratos;
-    private Asistencia asistencia;
+    private VistaAsistencia asistencia;
     private Supervisor supervisor;
-    
-    
-    public ControladorVistas(Busqueda busqueda, FramePrincipal frameprincipal,Login 
-            login,ResultadoBusqueda resulbusqueda, Administrador admin,Dueño dueno,
-            GenerarReportes reportes,GestionDeContratos contratos, Asistencia asistencia,Supervisor supervisor){
-        
+    private final static int LENGTH_PASS = 10;
+
+    public ControladorVistas(Busqueda busqueda, FramePrincipal frameprincipal, Login login, ResultadoBusqueda resulbusqueda, Administrador admin, Dueño dueno,
+            GenerarReportes reportes, GestionDeContratos contratos, VistaAsistencia asistencia, Supervisor supervisor) {
+
         this.busqueda = busqueda;
         this.frame_principal = frameprincipal;
         this.login = login;
@@ -40,13 +40,13 @@ public class ControladorVistas {
         this.contratos = contratos;
         this.asistencia = asistencia;
         this.supervisor = supervisor;
-    }    
-    
+    }
+
     /*
        Metodo para seleccionar el panel que se mostrara al realizar una accion.
-    */
-    public void SeleccionarPanel(String panel){
-        switch(panel){
+     */
+    public void SeleccionarPanel(String panel) {
+        switch (panel) {
             case "login"://se carga el panel de login
                 this.frame_principal.setContentPane(this.login);
                 this.frame_principal.actualizarpantalla();
@@ -55,7 +55,7 @@ public class ControladorVistas {
                 this.frame_principal.setContentPane(this.busqueda);
                 this.frame_principal.actualizarpantalla();
                 break;
-                
+
             case "busqueda_supervisor"://cargar el panel de busqueda desde supervisor
                 this.frame_principal.setContentPane(this.busqueda);
                 this.busqueda.setPanel_anterior("busquedasupervisor");//se setea que fue desde supervisor
@@ -94,7 +94,7 @@ public class ControladorVistas {
                 this.frame_principal.setContentPane(this.supervisor);
                 this.frame_principal.actualizarpantalla();
                 break;
-                
+
         }
     }
 
@@ -130,14 +130,34 @@ public class ControladorVistas {
         return contratos;
     }
 
-    public Asistencia getAsistencia() {
+    public VistaAsistencia getAsistencia() {
         return asistencia;
     }
 
     public Supervisor getSupervisor() {
         return supervisor;
     }
-    
-    
-    
+
+    /**
+     * Permite generar una clave de usuario aleatoria, considera minusculas,
+     * mayusculas y numeros.
+     *
+     * @return Retorna un <String> con la nueva clave de usuario.
+     */
+    public static String createRandomPassword() {
+        String pass = "";
+        Random r = new Random();
+        int disc;
+        for (int i = 0; i < ControladorVistas.LENGTH_PASS; i++) {
+            disc = r.nextInt(3);
+            if (disc == 0) {
+                pass += (char)(r.nextInt(26) + 65);
+            } else if (disc == 1) {
+                pass += (char)(r.nextInt(26) + 97);
+            } else {
+                pass += (char)(r.nextInt(9) + 49);
+            }
+        }
+        return pass;
+    }
 }
