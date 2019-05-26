@@ -142,10 +142,11 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
             try {   
                boolean BuscarUsuario = ControladorUsuario.BuscarUsuario(this.RespuestaNombreUsuario.getText());
                if(BuscarUsuario == true){
-                    if(this.RespuestaNombreUsuarioNuevo.getText() == null){
+
+                    if(this.RespuestaNombreUsuarioNuevo.getText().equals("")){
                         ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), (String)this.RespuestaEstado.getSelectedItem());
                     }
-                    else if( this.RespuestaNombreUsuarioNuevo != null){
+                    else{
                         ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuarioNuevo.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaEstado.getSelectedItem());
                     }
                     this.dispose();
