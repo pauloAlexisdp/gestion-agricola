@@ -63,6 +63,26 @@ public class UsuarioDA {
 //        cdb.close();
     }
     
+  
+        
+    public static void modificarUsuario(String nombreUsuario, String nombreUsuarioNuevo, String contrasena, String tipoCuenta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        //modulo seguridad si ya hay una Usuario con ese nombre 
+        cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //ACTUALIZACION DE LOS DATOS DE UN USUARIO
+                cdb.un_sql = "UPDATE cuenta set nombre='"+nombreUsuarioNuevo+"', set contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
+                       "WHERE nombre='"+nombreUsuario+"'";
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Datos actualizados");
+           }else{
+               
+           }
+        }
+    }
     
     /**
      * elimina un usuario de la base de datos, solo oculta la informacion del usuario
@@ -121,6 +141,10 @@ public class UsuarioDA {
 //        cdb.close();
       return r;
     }
+    
+    
+
+ 
 }
         
     
