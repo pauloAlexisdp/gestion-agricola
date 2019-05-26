@@ -85,7 +85,7 @@ public class UsuarioDA {
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
                //ACTUALIZACION DE LOS DATOS DE UN USUARIO
-                cdb.un_sql = "UPDATE cuenta set nombre='"+nombreUsuarioNuevo+"', set contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
+                cdb.un_sql = "UPDATE cuenta set nombre='"+nombreUsuarioNuevo+"', contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
                        "WHERE nombre='"+nombreUsuario+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Datos actualizados");
