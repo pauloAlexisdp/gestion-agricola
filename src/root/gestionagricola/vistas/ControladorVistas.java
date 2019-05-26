@@ -1,7 +1,7 @@
 package root.gestionagricola.vistas;
 
 import java.util.Random;
-import root.gestionagricola.Cuenta;
+import root.gestionagricola.SingletonCuenta;
 import root.gestionagricola.vistas.administrador.Administrador;
 import root.gestionagricola.vistas.dueño.Dueño;
 import root.gestionagricola.vistas.dueño.GenerarReportes;
@@ -48,6 +48,7 @@ public class ControladorVistas {
     public void SeleccionarPanel(String panel) {
         switch (panel) {
             case "login"://se carga el panel de login
+                SingletonCuenta.downInstance();
                 this.frame_principal.setContentPane(this.login);
                 this.frame_principal.actualizarpantalla();
                 break;
