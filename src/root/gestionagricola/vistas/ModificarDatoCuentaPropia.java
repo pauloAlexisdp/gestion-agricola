@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import root.gestionagricola.Cuenta;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 
 /**
@@ -95,13 +96,14 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-    
+        Cuenta cuenta = Login.getInstanciaCuenta();
         if(this.RespuestaContrasenaAntigua != null && this.RespuestaContrasena != null){
 
             try {   
-                boolean datos = ControladorUsuario.BuscarContrasena(this.getName(), this.RespuestaContrasenaAntigua.getText());
+                boolean datos = ControladorUsuario.BuscarContrasena(cuenta.getNombre(), this.RespuestaContrasenaAntigua.getText());
                 if(datos == true){
-                    ControladorUsuario.ModificarContrasena(this.getName(), this.RespuestaContrasena.getText());
+                    
+                    ControladorUsuario.ModificarContrasena(cuenta.getNombre(), this.RespuestaContrasena.getText());
                     this.dispose();
                     JOptionPane.showMessageDialog(null, "Contraseña Modificada.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
                 }
