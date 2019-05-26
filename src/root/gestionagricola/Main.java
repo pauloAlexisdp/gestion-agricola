@@ -11,7 +11,7 @@ import root.gestionagricola.vistas.administrador.Administrador;
 import root.gestionagricola.vistas.dueño.Dueño;
 import root.gestionagricola.vistas.dueño.GenerarReportes;
 import root.gestionagricola.vistas.dueño.GestionDeContratos;
-import root.gestionagricola.vistas.supervisor.Asistencia;
+import root.gestionagricola.vistas.supervisor.VistaAsistencia;
 import root.gestionagricola.vistas.supervisor.Supervisor;
 
 /**
@@ -29,7 +29,7 @@ public class Main {
          Dueño dueño = new Dueño();
          GenerarReportes reportes = new GenerarReportes();
          GestionDeContratos contratos = new GestionDeContratos();
-         Asistencia asistencia = new Asistencia();         
+         VistaAsistencia asistencia = new VistaAsistencia();         
          Supervisor supervisor = new Supervisor();
          
          
