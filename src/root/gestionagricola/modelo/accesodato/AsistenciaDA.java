@@ -59,37 +59,28 @@ public class AsistenciaDA {
         
             if (cdb.resultado != null) {
                 if (cdb.resultado.next()) {
-                    //Actualiza la tabla de assitencia
-                    cdb.un_sql = "UPDATE trabajadorinternoinstancia set asistencia=" + fecha +
-                             " WHERE reftrabajadorinterno=" + rut ;
-                    cdb.statement.executeUpdate(cdb.un_sql);
-                    System.out.println("Datos actualizados");
+                    
                 } else {
-                    cdb.un_sql = "Insert into trabajadorInternoinstancia values('" + idTermporada + "', " + rut + ", " + fecha + ")";
+                    cdb.un_sql = "Insert into asistenciatrabajadorinterno(reftemporada,reftrabajadorinterno,asistencia) values('" + idTermporada + "', " + rut + ", " + fecha + ")";
                     cdb.statement.executeUpdate(cdb.un_sql);
-                    System.out.println("Datos guardados");
-
+                
                 }
             } else {
-                cdb.un_sql = "Insert into trabajadorInternoinstancia values('" + idTermporada + "', " + rut + ", " + fecha + ")";
-                cdb.statement.executeUpdate(cdb.un_sql);
+                
+                    cdb.un_sql = "Insert into asistenciatrabajadorinterno(reftemporada,reftrabajadorinterno,asistencia) values('" + idTermporada + "', " + rut + ", " + fecha + ")";
+                    cdb.statement.executeUpdate(cdb.un_sql);
             }
         }else{
             if (cdb.resultado != null) {
                 if (cdb.resultado.next()) {
-                    //Actualiza la tabla de assitencia
-                    cdb.un_sql = "UPDATE trabajadorexternoinstancia set asistencia=" + fecha +
-                             " WHERE reftrabajadorexterno=" + rut ;
-                    cdb.statement.executeUpdate(cdb.un_sql);
-                    System.out.println("Datos actualizados");
+                    
                 } else {
-                    cdb.un_sql = "Insert into trabajadorexternoinstancia values('" + idTermporada + "', " + rut + ", " + fecha + ")";
+                    cdb.un_sql = "Insert into asistenciatrabajadorexterno(reftemporada,reftrabajadorexterno,asistencia) values('" + idTermporada + "', " + rut + ", " + fecha + ")";
                     cdb.statement.executeUpdate(cdb.un_sql);
-                    System.out.println("Datos guardados");
 
                 }
             } else {
-                cdb.un_sql = "Insert into trabajadorexternoinstancia values('" + idTermporada + "', " + rut + ", " + fecha + ")";
+                    cdb.un_sql = "Insert into asistenciatrabajadorexterno(reftemporada,reftrabajadorexterno,asistencia) values('" + idTermporada + "', " + rut + ", " + fecha + ")";
                 cdb.statement.executeUpdate(cdb.un_sql);
             }
         }
@@ -124,7 +115,6 @@ public class AsistenciaDA {
                 r.add(ControladorAsistencia.crearAsistencia(rut, nombre));
             }
         } else {
-            System.out.println("error");
         }
         //    cdb.close();
         return r;

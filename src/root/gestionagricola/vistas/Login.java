@@ -1,27 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import root.gestionagricola.ControladorCuenta;
 import root.gestionagricola.Cuenta;
+import root.gestionagricola.SingletonCuenta;
 
 /**
- *
- * @author Javier
+ * Permite agregar funcionalidad al login del programa.
+ * @author Los Lanzas
  */
 public class Login extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
+    private static Cuenta instanciaCuenta;
     
+    /**
+     * Constructor de la clase
+     */
     public Login() {
         initComponents();
-       // this.cuenta = new Cuenta();
     }
 
     /**
@@ -129,47 +127,35 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    /*
-    aqui se debe seleccionar el panel dependiendo de que tipo de cuenta es.
-    
-    */
+    /**
+     * Permite deribar las vistas en base a la instancia de cuenta.
+     * @param evt Recibe un <java.awt.event.ActionEvent> con el evento que
+     * gatilla la accion.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-
-        Cuenta cuenta=new Cuenta();
-        String tipo="";
-        try {
-            
-            
-             tipo =cuenta.BuscarUsuario(this.nombre_txt.getText(), this.password_txt.getText());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+        /* Se instancia una cuenta */
+        this.instanciaCuenta = SingletonCuenta.getInstance(this.nombre_txt.getText(), this.password_txt.getText(), ControladorCuenta.getTipo(this.nombre_txt.getText(), this.password_txt.getText()));
+        String tipo = this.instanciaCuenta.getTipo();
        
         if(tipo.equals("0")){
             JOptionPane.showMessageDialog(null, "Verifique sus datos, Usuario o Contraseña incorrecta.", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }else{
-            //aqui se deriva al panel correspondiente dependiendo el tipo de cuenta.
-            if(cuenta.getTipo().equals("Dueño")){
-                controladorVista.SeleccionarPanel("dueño");
-            }else if(cuenta.getTipo().equals("Administrador")){
-                controladorVista.SeleccionarPanel("admin");
-            }else if(cuenta.getTipo().equals("Supervisor")){
-                controladorVista.SeleccionarPanel("supervisor");
-            }
-
-            
+            SingletonCuenta.downInstance();
         }
         
+        /* Se derivan las vistas en base a la cuenta */
+        else{
+            if (this.instanciaCuenta.getTipo().equals("Dueño")){
+                controladorVista.SeleccionarPanel("dueño");
+            }
+            else if (this.instanciaCuenta.getTipo().equals("Administrador")){
+                controladorVista.SeleccionarPanel("admin");
+            }
+            else if (this.instanciaCuenta.getTipo().equals("Supervisor")){
+                controladorVista.SeleccionarPanel("supervisor");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
@@ -181,7 +167,20 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JPasswordField password_txt;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Permite conectar con el Controlador de Vistas.
+     * @param controladorVista Se espera una instancia de <ControladorVistas>.
+     */
     public void setControladorVista(ControladorVistas controladorVista) {
         this.controladorVista = controladorVista;
+    }
+    
+    /**
+     * Permite obtener una instancia de la cuenta actual.
+     * @return Retorna una instancia de <Cuenta> con la informacion de la
+     * cuenta que ha iniciado sesion.
+     */
+    public static Cuenta getInstancia(){
+        return Login.instanciaCuenta;
     }
 }
