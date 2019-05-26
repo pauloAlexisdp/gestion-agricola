@@ -7,8 +7,7 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import root.gestionagricola.gestioncontrato.Contrato;
-import root.gestionagricola.gestioncontrato.ControladorContrato;
+import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
 
@@ -122,7 +121,7 @@ public class AsistenciaDA {
                 int rut = cdb.resultado.getInt("rut");
                 String nombre = cdb.resultado.getString("nombre");
                 
-               // r.add(ControladorContrato.crearContrato());
+                r.add(ControladorAsistencia.crearAsistencia(rut, nombre));
             }
         } else {
             System.out.println("error");
