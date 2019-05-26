@@ -206,7 +206,7 @@ public class ModificarDatoContrato extends javax.swing.JFrame {
                     //Aqui se llama al metodo del controlador que hara la conexion con el modelo.
                     if (this.RespuestFechaTermino.getDate().after(this.RespuestFechaInicio.getDate())) {//verifico si la fecha de termino esta despues de la fecha de inicio
                         ControladorContrato.modificarContrato(this.folio_recibido, (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
-                                this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+                                this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), ControladorContrato.parseRUTtoINT(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
                         this.dispose();
                         JOptionPane.showMessageDialog(null, "Contrato Modificado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
                     } else {
