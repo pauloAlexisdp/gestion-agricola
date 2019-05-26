@@ -24,5 +24,12 @@ public class SingletonCuenta {
         else{
             return myCuenta;
         }
-    };
+    }
+    
+    /**
+     * Permite eliminar una instancia de Cuenta
+     */
+    public static void downInstance(){
+        myCuenta = null;
+    }
 }

@@ -140,6 +140,7 @@ public class Login extends javax.swing.JPanel {
        
         if(tipo.equals("0")){
             JOptionPane.showMessageDialog(null, "Verifique sus datos, Usuario o Contraseña incorrecta.", "ERROR", JOptionPane.WARNING_MESSAGE);
+            SingletonCuenta.downInstance();
         }
         
         /* Se derivan las vistas en base a la cuenta */
