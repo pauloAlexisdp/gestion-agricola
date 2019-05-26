@@ -18,7 +18,7 @@ public class ControladorCuenta {
      */
     public static String getTipo(String nombre, String password){
         try{
-            if (CuentaDA.buscar(nombre, password).getTipo() == null){
+            if (CuentaDA.buscar(nombre, password) == null){
                 return "0";
             }
             else{
