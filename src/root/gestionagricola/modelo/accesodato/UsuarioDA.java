@@ -85,7 +85,7 @@ public class UsuarioDA {
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
                //ACTUALIZACION DE LOS DATOS DE UN USUARIO
-                cdb.un_sql = "UPDATE cuenta set nombre='"+nombreUsuarioNuevo+"', set contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
+                cdb.un_sql = "UPDATE cuenta set nombre='"+nombreUsuarioNuevo+"', contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
                        "WHERE nombre='"+nombreUsuario+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
                 System.out.println("Datos actualizados");
@@ -111,7 +111,7 @@ public class UsuarioDA {
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
-               //ACTUALIZACION
+               //eliminacion
                cdb.un_sql = "DELETE FROM cuenta"+
                       " WHERE nombre='"+nombreUsuario+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
@@ -122,6 +122,27 @@ public class UsuarioDA {
         }
     }
     
+    
+    
+    public static void modificarContrasena(String nombreUsuario, String contrasenaNueva) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        
+        cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //ACTUALIZACION LA CONTRASEÑA DE USUAR
+                cdb.un_sql = "UPDATE cuenta set contrasena='"+contrasenaNueva+"'"+
+                       "WHERE nombre='"+nombreUsuario+"'";
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Contraseña actualizada");
+           }else{
+               
+           }
+        }
+
+    }
    
 
    /**

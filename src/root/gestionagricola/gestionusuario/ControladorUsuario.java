@@ -49,7 +49,15 @@ public class ControladorUsuario{
         }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
     }
    
-    
+
+    public static void ModificarContrasena(String nombreUsuario, String contrasenaNueva){
+        
+        try{
+            
+            UsuarioDA.modificarContrasena(nombreUsuario, contrasenaNueva);
+        }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
+        
+    } 
     
     
     // dudas con este método
@@ -77,6 +85,21 @@ public class ControladorUsuario{
         return false;   
     }
     
+    
+    public static boolean BuscarContrasena(String nombreUsuario, String contrasenaAntigua) throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException{
+        
+         ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        usuarios = UsuarioDA.cargar();
+      
+        for (int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getContrasena().equals(contrasenaAntigua) && usuarios.get(i).getNombreUsuario().equals(nombreUsuario)){
+                return true;
+            }
+        }
+        return false;   
+        
+    }
     
     
     /**

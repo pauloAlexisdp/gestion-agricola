@@ -5,8 +5,9 @@
  */
 package root.gestionagricola.vistas;
 
-import root.gestionagricola.vistas.administrador.*;
-import javax.swing.JComboBox;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
@@ -17,8 +18,6 @@ import root.gestionagricola.gestionusuario.ControladorUsuario;
  */
 public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
 
-    private String nombre_recibido;
-    private String contrasena_recibido;
     
     public ModificarDatoCuentaPropia() {
         initComponents();
@@ -36,7 +35,7 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        RespuestaNombreUsuario = new javax.swing.JTextField();
+        RespuestaContrasenaAntigua = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         RespuestaContrasena = new javax.swing.JTextField();
         modificar = new javax.swing.JButton();
@@ -49,22 +48,18 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Contraseña Antigua:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 130, -1));
 
-        RespuestaNombreUsuario.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(RespuestaNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 185, -1));
+        RespuestaContrasenaAntigua.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        jPanel1.add(RespuestaContrasenaAntigua, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 185, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Contraseña Nueva:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 130, -1));
 
         RespuestaContrasena.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaContrasena.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(RespuestaContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 185, -1));
 
         modificar.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
@@ -100,21 +95,33 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-    String[] datos = null;
-    datos = ControladorUsuario.getUsuario(this.nombre_recibido, this.contrasena_recibido);
-    if(datos == null){
-        JOptionPane.showMessageDialog(null, "El usuario a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
-    }
-    else{
-        this.RespuestaNombreUsuario.setText(datos[1]);
-        this.RespuestaContrasena.setText(datos[2]);
-        
-        //ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), "");
-        JOptionPane.showMessageDialog(null, "Usuario Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-
-    }
-        
-
+    
+        if(this.RespuestaContrasenaAntigua != null && this.RespuestaContrasena != null){
+            
+            try {
+                boolean datos = ControladorUsuario.BuscarContrasena(this.getName(), this.RespuestaContrasenaAntigua.getText());
+                if(datos == true){
+                    ControladorUsuario.ModificarContrasena(this.getName(), this.RespuestaContrasena.getText());
+                    this.dispose();
+                    JOptionPane.showMessageDialog(null, "Contraseña Modificada.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    this.dispose();
+                    JOptionPane.showMessageDialog(null, "La contraseña actual no es igual.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
+                    
+                }
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_modificarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -131,40 +138,19 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
     }
 
     public JTextField getRespuestaNombreUsuario() {
-        return RespuestaNombreUsuario;
+        return RespuestaContrasenaAntigua;
     }
 
     public void setRespuestaNombreUsuario(JTextField RespuestaNombreUsuario) {
-        this.RespuestaNombreUsuario = RespuestaNombreUsuario;
+        this.RespuestaContrasenaAntigua = RespuestaNombreUsuario;
     }
 
-    public String getNombre_recibido() {
-        return nombre_recibido;
-    }
+   
 
-    public void setNombre_recibido(String nombre_recibido) {
-        this.nombre_recibido = nombre_recibido;
-    }
-
-    public String getContrasena_recibido() {
-        return contrasena_recibido;
-    }
-
-    public void setContrasena_recibido(String contrasena_recibido) {
-        this.contrasena_recibido = contrasena_recibido;
-    }
-
-    
-    
-    
-    
-    
-    
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField RespuestaContrasena;
-    private javax.swing.JTextField RespuestaNombreUsuario;
+    private javax.swing.JTextField RespuestaContrasenaAntigua;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
