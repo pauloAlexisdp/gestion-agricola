@@ -2,6 +2,7 @@ package root.gestionagricola.vistas.supervisor;
 
 
 import root.gestionagricola.vistas.ControladorVistas;
+import root.gestionagricola.vistas.ModificarDatoCuentaPropia;
 
 /**
  *
@@ -10,6 +11,7 @@ import root.gestionagricola.vistas.ControladorVistas;
 public class Supervisor extends javax.swing.JPanel {
 
     private ControladorVistas controladorVistas;
+    private ModificarDatoCuentaPropia modificarDato;
 
     public Supervisor() {
         initComponents();
@@ -26,6 +28,7 @@ public class Supervisor extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         Titulo6 = new javax.swing.JLabel();
@@ -42,13 +45,28 @@ public class Supervisor extends javax.swing.JPanel {
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
         jButton4.setFocusPainted(false);
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
+
+        botonModificar.setBackground(new java.awt.Color(255, 255, 255));
+        botonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(0, 0, 0));
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/tuerca-de-opciones.png"))); // NOI18N
+        botonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonModificar.setBorderPainted(false);
+        botonModificar.setFocusPainted(false);
+        botonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonModificar.setOpaque(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+        add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 50, 60));
 
         jButton5.setBackground(new java.awt.Color(255, 255, 255));
         jButton5.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -106,10 +124,18 @@ public class Supervisor extends javax.swing.JPanel {
         this.controladorVistas.SeleccionarPanel("login");
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+
+        this.modificarDato = new ModificarDatoCuentaPropia();
+        modificarDato.setVisible(true);
+
+    }//GEN-LAST:event_botonModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo6;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;

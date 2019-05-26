@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 import root.gestionagricola.vistas.ControladorVistas;
+import root.gestionagricola.vistas.ModificarDatoCuentaPropia;
 
 /**
  *
@@ -15,6 +16,7 @@ public class Administrador extends javax.swing.JPanel {
     private ControladorVistas controladorVista;
     private crearDatosUsuario crearDatosUsuario;
     private ModificarDatoUsuario modificarDato;
+    private ModificarDatoCuentaPropia modifcarCuentaPropia;
     private EliminarDatoUsuario eliminarDato;
     private String[][] datos_para_tabla;
 
@@ -38,7 +40,8 @@ public class Administrador extends javax.swing.JPanel {
         Titulo6 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         botonEliminar = new javax.swing.JButton();
-        botonCrear = new javax.swing.JButton();
+        BotonCrear = new javax.swing.JButton();
+        BotonModificarUsuarios = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
@@ -96,35 +99,51 @@ public class Administrador extends javax.swing.JPanel {
         });
         add(botonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, 40));
 
-        botonCrear.setBackground(new java.awt.Color(255, 255, 255));
-        botonCrear.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        botonCrear.setForeground(new java.awt.Color(0, 0, 0));
-        botonCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        botonCrear.setText("Crear Usuario");
-        botonCrear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        botonCrear.setFocusPainted(false);
-        botonCrear.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        botonCrear.addActionListener(new java.awt.event.ActionListener() {
+        BotonCrear.setBackground(new java.awt.Color(255, 255, 255));
+        BotonCrear.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        BotonCrear.setForeground(new java.awt.Color(0, 0, 0));
+        BotonCrear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        BotonCrear.setText("Crear Usuario");
+        BotonCrear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        BotonCrear.setFocusPainted(false);
+        BotonCrear.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonCreaarActionPerformed(evt);
             }
         });
-        add(botonCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
+        add(BotonCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 200, 40));
+
+        BotonModificarUsuarios.setBackground(new java.awt.Color(255, 255, 255));
+        BotonModificarUsuarios.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        BotonModificarUsuarios.setForeground(new java.awt.Color(0, 0, 0));
+        BotonModificarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        BotonModificarUsuarios.setText("Modificar Usuario");
+        BotonModificarUsuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        BotonModificarUsuarios.setFocusPainted(false);
+        BotonModificarUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonModificarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarUsuariosbotonCreaarActionPerformed(evt);
+            }
+        });
+        add(BotonModificarUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 200, 40));
 
         botonModificar.setBackground(new java.awt.Color(255, 255, 255));
         botonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         botonModificar.setForeground(new java.awt.Color(0, 0, 0));
-        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        botonModificar.setText("Modificar Usuario");
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/tuerca-de-opciones.png"))); // NOI18N
         botonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonModificar.setBorderPainted(false);
         botonModificar.setFocusPainted(false);
         botonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonModificar.setOpaque(false);
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarActionPerformed(evt);
             }
         });
-        add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 200, 40));
+        add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 50, 60));
 
         Tabla.setBackground(new java.awt.Color(255, 255, 255));
         Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -266,9 +285,8 @@ public class Administrador extends javax.swing.JPanel {
     }//GEN-LAST:event_botonCreaarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-
-        this.modificarDato = new ModificarDatoUsuario();
-        modificarDato.setVisible(true);
+        this.modifcarCuentaPropia = new ModificarDatoCuentaPropia();
+        this.modifcarCuentaPropia.setVisible(true);
 
 
     }//GEN-LAST:event_botonModificarActionPerformed
@@ -277,12 +295,18 @@ public class Administrador extends javax.swing.JPanel {
         this.controladorVista.SeleccionarPanel("login");
     }//GEN-LAST:event_volverActionPerformed
 
+    private void BotonModificarUsuariosbotonCreaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarUsuariosbotonCreaarActionPerformed
+        this.modificarDato = new ModificarDatoUsuario();
+        modificarDato.setVisible(true);
+    }//GEN-LAST:event_BotonModificarUsuariosbotonCreaarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonCrear;
+    private javax.swing.JButton BotonModificarUsuarios;
     private javax.swing.JLabel Fondo;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel Titulo6;
-    private javax.swing.JButton botonCrear;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton jButton6;
