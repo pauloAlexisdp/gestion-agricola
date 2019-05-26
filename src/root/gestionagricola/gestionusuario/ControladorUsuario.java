@@ -2,6 +2,7 @@ package root.gestionagricola.gestionusuario;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.modelo.accesodato.UsuarioDA;
 
 /*
@@ -16,9 +17,7 @@ import root.gestionagricola.modelo.accesodato.UsuarioDA;
 public class ControladorUsuario{
     
     private Usuario usuario;
-    
-    
-    
+        
     /**
      * Permite ingresar un nuevo contrato a la base de datos
      * @param nombreUsuario Se espera un <String> identificador del nombre (unico).
@@ -32,10 +31,78 @@ public class ControladorUsuario{
         }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
     }
     
-    public static void ModificarUsuario(String nombreUsuario, String contrasena, String tipoCuenta){
-
+    
+    
+    /**
+     * 
+     * @param nombreUsuarioAntiguo Se espera un <String> identificador del nombre (único)
+     * @param nombreUsuarioNuevo Se espera un <String> identificador nuevo del usuario
+     * @param contrasena Se espera un <String> con la contraseña nueva asociada a un usuario.
+     * @param tipocuenta Se espera un <String> con el tipo de cuenta nueva asociada a un usuario {Administrador, Dueño, Supervisor}
+     * @throws ClassNotFoundException 
+     */
+    
+    public static void ModificarUsuario(String nombreUsuarioAntiguo, String nombreUsuarioNuevo, String contrasena, String tipocuenta) throws ClassNotFoundException{
+        
+         try{
+            UsuarioDA.modificarUsuario(nombreUsuarioAntiguo, nombreUsuarioNuevo, contrasena, tipocuenta);
+        }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
     }
    
+
+    
+    
+    public static void ModificarContrasena(String nombreUsuario, String contrasenaNueva){
+        try{
+            
+            UsuarioDA.modificarContrasena(nombreUsuario, contrasenaNueva);
+        }catch(ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception){}
+        
+    } 
+    
+    
+    // dudas con este método
+    /**
+     * 
+     * @param nombreUsuario Se espera un <String> para identificar a un Usuario (único).
+     * @return
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
+    
+    public static boolean BuscarUsuario(String nombreUsuario) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        usuarios = UsuarioDA.cargar();
+      
+        for (int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getNombreUsuario().equals(nombreUsuario)){
+                return true;
+            }
+        }
+        return false;   
+    }
+    
+    
+    public static boolean BuscarContrasena(String nombreUsuario, String contrasenaAntigua) throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException{
+        
+         ArrayList<Usuario> usuarios = new ArrayList<>();
+
+        usuarios = UsuarioDA.cargar();
+      
+        for (int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getContrasena().equals(contrasenaAntigua) && usuarios.get(i).getNombreUsuario().equals(nombreUsuario)){
+                return true;
+            }
+        }
+        return false;   
+        
+    }
+    
+    
     /**
      * Permite eliminar un Usuario de la Base de datos.
      * @param nombreUsuario Se espera un <String> identificador del nombre (unico).
@@ -57,6 +124,9 @@ public class ControladorUsuario{
         //llamada a la BD para obtener al usuario.
         return null;
     }
+    
+    
+    
     public static String[][] cargarDatos() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList<Usuario> usuarios = new ArrayList();
         usuarios = UsuarioDA.cargar();

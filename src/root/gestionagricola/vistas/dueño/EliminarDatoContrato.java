@@ -1,4 +1,3 @@
-
 package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
@@ -18,6 +17,7 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
 
     private int folio_recibido;
     private GestionDeContratos Gcontratos;
+
     public EliminarDatoContrato(GestionDeContratos gcontratos) {
         this.Gcontratos = gcontratos;
         initComponents();
@@ -25,7 +25,6 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -196,12 +195,12 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        String[] datos=null;
+        String[] datos = null;
         datos = ControladorContrato.getContrato(this.folio_recibido);
-        if(datos==null){
-             JOptionPane.showMessageDialog(null, "El contrato a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }else{
-            
+        if (datos == null) {
+            JOptionPane.showMessageDialog(null, "El contrato a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+
             ControladorContrato.eliminarContrato(this.folio_recibido);
             
             this.dispose();
@@ -211,12 +210,12 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void RespuestaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaTipoActionPerformed
-       String aux = (String)this.RespuestaTipo.getSelectedItem();
-       if(aux.equals("Planta")){
-           this.RespuestaEmpresa.setEnabled(false);
-       }else{
-           this.RespuestaEmpresa.setEnabled(true);
-       }
+        String aux = (String) this.RespuestaTipo.getSelectedItem();
+        if (aux.equals("Planta")) {
+            this.RespuestaEmpresa.setEnabled(false);
+        } else {
+            this.RespuestaEmpresa.setEnabled(true);
+        }
     }//GEN-LAST:event_RespuestaTipoActionPerformed
 
     private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
@@ -266,14 +265,14 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
     public JTextField getRespuestaEmpresa() {
         return RespuestaEmpresa;
     }
-    
+
     public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);
         temp.validate();
         requestFocusInWindow();
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
