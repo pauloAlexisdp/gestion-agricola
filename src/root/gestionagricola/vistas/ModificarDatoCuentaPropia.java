@@ -109,7 +109,7 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
         this.RespuestaNombreUsuario.setText(datos[1]);
         this.RespuestaContrasena.setText(datos[2]);
         
-        ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), "");
+        //ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), "");
         JOptionPane.showMessageDialog(null, "Usuario Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
 
     }
