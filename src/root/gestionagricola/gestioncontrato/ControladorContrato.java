@@ -255,4 +255,46 @@ public class ControladorContrato {
 
         return inicio;
     }
+    
+    /**
+     * Permite convertir el formato de un rut desde String a int
+     * @param rut Se espera un <String> con el rut que se convertira.
+     * @return Retorna un int del rut sin el digito verificador.
+     */
+    public static int parseRUTtoINT(String rut){
+        rut.replace(".", "");
+        try{
+            return Integer.parseInt(rut.split("-")[0]);
+        }
+        catch(NumberFormatException e){
+            return -1;
+        }
+    }
+    
+    /**
+     * Permite parsear un rut desde Integer a String, agrega el digito
+     * verificador.
+     * @param rut Se espera un <int> con el rut sin el digito verificador.
+     * @return Retorna un <String> con el digito verificador y sin puntos.
+     */
+    public static String parseRUTtoString(int rut){
+        String dni = String.valueOf(rut);
+        int ver = 0;
+        
+        for (int i = (dni.length() - 1); i >= 0; i --){
+            ver += (Integer.parseInt(String.valueOf(dni.charAt(i))) * ((((dni.length() - 1) - i) % 6) + 2));
+        }
+        
+        ver = (11 - (ver % 11));
+        
+        if (ver == 10){
+            return dni + "-K";
+        }
+        else if (ver == 11){
+            return dni + "-0";
+        }
+        else{
+            return dni + "-" + ver;
+        }
+    }
 }
