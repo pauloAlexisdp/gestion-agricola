@@ -296,7 +296,7 @@ public class Administrador extends javax.swing.JPanel {
     }//GEN-LAST:event_volverActionPerformed
 
     private void BotonModificarUsuariosbotonCreaarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarUsuariosbotonCreaarActionPerformed
-        this.modificarDato = new ModificarDatoUsuario();
+        this.modificarDato = new ModificarDatoUsuario(this);
         modificarDato.setVisible(true);
     }//GEN-LAST:event_BotonModificarUsuariosbotonCreaarActionPerformed
 
