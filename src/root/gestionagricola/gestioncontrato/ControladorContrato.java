@@ -44,8 +44,11 @@ public class ControladorContrato {
             ContratoDA.guardar(folio, inicio, termino, estado);
             if (nom_empresa.equals("")) {
                 TrabajadorInternoDA.guardar(rut, nombre, sueldo, folio);
-            } else {
+                HistorialDA.guardarhistorial(rut, folio, inicio, termino, estado);
+            } 
+            else {
                 TrabajadorExternoDA.guardar(rut, nombre, sueldo, folio, nom_empresa);
+                HistorialDA.guardarhistorial(rut, folio, inicio, termino, estado);
             }
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception) {
         }
@@ -99,7 +102,7 @@ public class ControladorContrato {
             datos[i][3] = contratos.get(i).getF_inicio();
             datos[i][4] = contratos.get(i).getF_termino();
             datos[i][5] = contratos.get(i).getNombre();
-            datos[i][6] = String.valueOf(contratos.get(i).getRut());
+            datos[i][6] = ControladorContrato.parseRUTtoString(contratos.get(i).getRut());
             datos[i][7] = String.valueOf(contratos.get(i).getSueldo());
             datos[i][8] = contratos.get(i).getNom_empresa();
         }
@@ -129,7 +132,7 @@ public class ControladorContrato {
                 datos[3] = contrato.getF_inicio();
                 datos[4] = contrato.getF_termino();
                 datos[5] = contrato.getNombre();
-                datos[6] = String.valueOf(contrato.getRut());
+                datos[6] = ControladorContrato.parseRUTtoString(contrato.getRut());
                 datos[7] = String.valueOf(contrato.getSueldo());
                 datos[8] = contrato.getNom_empresa();
                 return datos;
@@ -142,7 +145,7 @@ public class ControladorContrato {
                 datos[3] = contrato.getF_inicio();
                 datos[4] = contrato.getF_termino();
                 datos[5] = contrato.getNombre();
-                datos[6] = String.valueOf(contrato.getRut());
+                datos[6] = ControladorContrato.parseRUTtoString(contrato.getRut());
                 datos[7] = String.valueOf(contrato.getSueldo());
                 datos[8] = contrato.getNom_empresa();
                 return datos;
@@ -187,9 +190,11 @@ public class ControladorContrato {
 
             if (nom_empresa.equals("")) {
                 TrabajadorInternoDA.guardar(rut, nombre, sueldo, folio);
+                HistorialDA.guardarhistorial(rut, folio, inicio, termino, estado);
             } else {
 
                 TrabajadorExternoDA.guardar(rut, nombre, sueldo, folio, nom_empresa);
+                HistorialDA.guardarhistorial(rut, folio, inicio, termino, estado);
             }
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception) {
         }
@@ -262,7 +267,7 @@ public class ControladorContrato {
      * @return Retorna un int del rut sin el digito verificador.
      */
     public static int parseRUTtoINT(String rut){
-        rut.replace(".", "");
+        rut = rut.replace(".", "");
         try{
             return Integer.parseInt(rut.split("-")[0]);
         }

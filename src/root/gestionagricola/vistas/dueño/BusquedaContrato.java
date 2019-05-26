@@ -188,14 +188,13 @@ public class BusquedaContrato extends javax.swing.JFrame {
                 || this.RespuestaEmpresa.getText() != null) {
             String[][] datos = null;
             if (this.RespuestaRut.getText().equals("")) {
-
                 this.RespuestaRut.setText("0");
             }
             if (this.RespuestaValor.getText().equals("")) {
                 this.RespuestaValor.setText("0");
             }
             datos = ControladorContrato.buscarContrato((String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
-                    this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()),
+                    this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), ControladorContrato.parseRUTtoINT(this.RespuestaRut.getText()),
                     Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
             if (datos != null) {
                 this.Gcontratos.setDatos_para_tabla(datos);
