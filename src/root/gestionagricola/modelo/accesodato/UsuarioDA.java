@@ -7,7 +7,6 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import root.gestionagricola.Cuenta;
 import root.gestionagricola.gestionusuario.Usuario;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
@@ -64,6 +63,18 @@ public class UsuarioDA {
     }
     
   
+    
+    /**
+     * 
+     * @param nombreUsuario Recibe un <String> que corresponde al nick del usuario.
+     * @param nombreUsuarioNuevo Recibe un <String> que corresponde al nick nuevo del usuario o el mismo.
+     * @param contrasena Recibe un <String> con la contraseña nueva del usuario.
+     * @param tipoCuenta Recibe un <String> con el tipo de cuenta ya sea nueva o antigua del usuario.
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
         
     public static void modificarUsuario(String nombreUsuario, String nombreUsuarioNuevo, String contrasena, String tipoCuenta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         

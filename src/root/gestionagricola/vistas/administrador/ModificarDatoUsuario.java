@@ -5,6 +5,9 @@
  */
 package root.gestionagricola.vistas.administrador;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -19,8 +22,10 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
 
     private String nombre_recibido;
     private String contrasena_recibido;
-
-    public ModificarDatoUsuario() {
+    private Administrador admin;
+    
+    public ModificarDatoUsuario(Administrador admin) {
+        this.admin = admin;
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -39,7 +44,7 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
         RespuestaNombreUsuarioNuevo = new javax.swing.JTextField();
         modificar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        RespuestEstado = new javax.swing.JComboBox<>();
+        RespuestaEstado = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         RespuestaNombreUsuario = new javax.swing.JTextField();
@@ -53,12 +58,10 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre Usuario Nuevo:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 170, -1));
 
         RespuestaNombreUsuarioNuevo.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaNombreUsuarioNuevo.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(RespuestaNombreUsuarioNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 185, -1));
 
         modificar.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
@@ -79,29 +82,25 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, 135, -1));
 
-        RespuestEstado.setForeground(new java.awt.Color(0, 0, 0));
-        RespuestEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Dueño", "Supervisor" }));
-        RespuestEstado.addActionListener(new java.awt.event.ActionListener() {
+        RespuestaEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Dueño", "Supervisor" }));
+        RespuestaEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RespuestEstadoActionPerformed(evt);
+                RespuestaEstadoActionPerformed(evt);
             }
         });
-        jPanel1.add(RespuestEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 185, 21));
+        jPanel1.add(RespuestaEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 185, 21));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Tipo de Cuenta:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 120, -1));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre Usuario Antiguo: *");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 190, -1));
 
         RespuestaNombreUsuario.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaNombreUsuario.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(RespuestaNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 185, -1));
 
         GenerarContraseña.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
@@ -114,7 +113,6 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
         jPanel1.add(GenerarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 160, -1));
 
         RespuestaContrasena.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        RespuestaContrasena.setForeground(new java.awt.Color(0, 0, 0));
         RespuestaContrasena.setEnabled(false);
         RespuestaContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,20 +136,45 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        String[] datos = null;
-        datos = ControladorUsuario.getUsuario(this.nombre_recibido, this.contrasena_recibido);
-        if (datos == null) {
-            JOptionPane.showMessageDialog(null, "El usuario a modificar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else {
+        
+         // este boton es para poder modificar los datos del usuario.
+        if(this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena.getText() != null){
+            try {   
+               boolean BuscarUsuario = ControladorUsuario.BuscarUsuario(this.RespuestaNombreUsuario.getText());
+               if(BuscarUsuario == true){
+                    if(this.RespuestaNombreUsuarioNuevo.getText() == null){
+                        ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), (String)this.RespuestaEstado.getSelectedItem());
+                    }
+                    else if( this.RespuestaNombreUsuarioNuevo != null){
+                        ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuarioNuevo.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaEstado.getSelectedItem());
+                    }
+                    this.dispose();
+                    JOptionPane.showMessageDialog(null, "Cuenta de Usuario Modificada.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
 
-            this.RespuestaNombreUsuarioNuevo.setText(datos[1]);
-            this.RespuestaContrasena.setText(datos[2]);
+                    String[][] datos;
+                    datos = ControladorUsuario.cargarDatos();
+                    admin.setDatos_para_tabla(datos);
+                    admin.cargarDatosTabla();
+               
+                }
+                else{
+                   this.dispose();
+                    JOptionPane.showMessageDialog(null, "Nombre de Usuario no encontrado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
+               }
 
-            ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuarioNuevo.getText(), this.RespuestaContrasena.getText(), (String) this.RespuestEstado.getSelectedItem());
-            JOptionPane.showMessageDialog(null, "Usuario Modificado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-
-        }
-
+            } catch (ClassNotFoundException ex) {
+               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       }
+       else{
+            JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
+       }
 
     }//GEN-LAST:event_modificarActionPerformed
 
@@ -159,9 +182,9 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void RespuestEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestEstadoActionPerformed
+    private void RespuestaEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaEstadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RespuestEstadoActionPerformed
+    }//GEN-LAST:event_RespuestaEstadoActionPerformed
 
     private void GenerarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenerarContraseñaActionPerformed
         String contraseña = ControladorVistas.createRandomPassword();
@@ -173,11 +196,11 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_RespuestaContrasenaActionPerformed
 
     public JComboBox<String> getRespuestEstado() {
-        return RespuestEstado;
+        return RespuestaEstado;
     }
 
     public void setRespuestEstado(JComboBox<String> RespuestEstado) {
-        this.RespuestEstado = RespuestEstado;
+        this.RespuestaEstado = RespuestEstado;
     }
 
     public JTextField getRespuestaNombreUsuario() {
@@ -211,8 +234,8 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenerarContraseña;
-    private javax.swing.JComboBox<String> RespuestEstado;
     private javax.swing.JTextField RespuestaContrasena;
+    private javax.swing.JComboBox<String> RespuestaEstado;
     private javax.swing.JTextField RespuestaNombreUsuario;
     private javax.swing.JTextField RespuestaNombreUsuarioNuevo;
     private javax.swing.JButton jButton2;
