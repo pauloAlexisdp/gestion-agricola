@@ -1,11 +1,12 @@
-
 package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.Container;
 import java.sql.Date;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
@@ -15,13 +16,15 @@ import root.gestionagricola.gestioncontrato.ControladorContrato;
 public class EliminarDatoContrato extends javax.swing.JFrame {
 
     private int folio_recibido;
-    public EliminarDatoContrato() {
+    private GestionDeContratos Gcontratos;
+
+    public EliminarDatoContrato(GestionDeContratos gcontratos) {
+        this.Gcontratos = gcontratos;
         initComponents();
         this.setLocationRelativeTo(null);
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -192,40 +195,27 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        String[] datos=null;
+        String[] datos = null;
         datos = ControladorContrato.getContrato(this.folio_recibido);
-        if(datos==null){
-             JOptionPane.showMessageDialog(null, "El contrato a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
-        }else{
-            if(datos[0]=="Planta"){//selecciona el tipo  que aparecera en pantalla
-                this.RespuestaTipo.setSelectedIndex(0);
-            }else{
-                this.RespuestaTipo.setSelectedIndex(1);
-            }
-            if(datos[1]=="Renovado"){//selecciona el estado que aparecera en pantalla
-                this.RespuestEstado.setSelectedIndex(0);
-            }else if(datos[1]=="Activo"){
-                this.RespuestEstado.setSelectedIndex(1);
-            }else{
-                this.RespuestEstado.setSelectedIndex(2);
-            }
-            this.RespuestFechaInicio.setDate(Date.valueOf(datos[2]));
-            this.RespuestFechaTermino.setDate(Date.valueOf(datos[3]));
-            this.RespuestNombre.setText(datos[4]);
-            this.RespuestaRut.setText(datos[5]);
-            this.RespuestaValor.setText(datos[6]);
-            JOptionPane.showMessageDialog(null, "Contrato Eliminado.", "ERROR", JOptionPane.INFORMATION_MESSAGE);
+        if (datos == null) {
+            JOptionPane.showMessageDialog(null, "El contrato a eliminar no existe.", "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            ControladorContrato.eliminarContrato(this.folio_recibido);
+            
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Contrato Eliminado.", "Eliminación", JOptionPane.INFORMATION_MESSAGE);
         }
 
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void RespuestaTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RespuestaTipoActionPerformed
-       String aux = (String)this.RespuestaTipo.getSelectedItem();
-       if(aux.equals("Planta")){
-           this.RespuestaEmpresa.setEnabled(false);
-       }else{
-           this.RespuestaEmpresa.setEnabled(true);
-       }
+        String aux = (String) this.RespuestaTipo.getSelectedItem();
+        if (aux.equals("Planta")) {
+            this.RespuestaEmpresa.setEnabled(false);
+        } else {
+            this.RespuestaEmpresa.setEnabled(true);
+        }
     }//GEN-LAST:event_RespuestaTipoActionPerformed
 
     private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
@@ -240,7 +230,7 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaEmpresaActionPerformed
 
-    public JComboBox<String> getRespuestEstado1() {
+    public JComboBox<String> getRespuestEstado() {
         return RespuestEstado;
     }
 
@@ -271,7 +261,18 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
     public void setFolio_recibido(int folio_recibido) {
         this.folio_recibido = folio_recibido;
     }
-    
+
+    public JTextField getRespuestaEmpresa() {
+        return RespuestaEmpresa;
+    }
+
+    public void actualizarpantalla() {
+        Container temp = this.getContentPane();
+        SwingUtilities.updateComponentTreeUI(temp);
+        temp.validate();
+        requestFocusInWindow();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;

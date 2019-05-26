@@ -187,25 +187,25 @@ public class BusquedaContrato extends javax.swing.JFrame {
                 || this.RespuestaEmpresa.getText() != null || this.RespuestaValor.getText() != null
                 || this.RespuestaEmpresa.getText() != null) {
             String[][] datos = null;
-//            datos = ControladorContrato.buscarContrato("Subcontrato", null, this.RespuestFechaInicio.getDate(), this.RespuestFechaTermino.getDate(), "", 0, 0, null);
-            if(this.RespuestaRut.getText().equals("")){
-                
+            if (this.RespuestaRut.getText().equals("")) {
+
                 this.RespuestaRut.setText("0");
             }
-            if(this.RespuestaValor.getText().equals("")){
+            if (this.RespuestaValor.getText().equals("")) {
                 this.RespuestaValor.setText("0");
             }
-            datos = ControladorContrato.buscarContrato((String)this.RespuestaTipo.getSelectedItem(),(String)this.RespuestEstado.getSelectedItem() ,this.RespuestFechaInicio.getDate(),
-                    this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(),Integer.parseInt(this.RespuestaRut.getText()),
-                    Integer.parseInt(this.RespuestaValor.getText()),this.RespuestaEmpresa.getText());
-            if(datos!=null){
+            datos = ControladorContrato.buscarContrato((String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(), this.RespuestFechaInicio.getDate(),
+                    this.RespuestFechaTermino.getDate(), this.RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()),
+                    Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+            if (datos != null) {
                 this.Gcontratos.setDatos_para_tabla(datos);
                 this.Gcontratos.cargarDatosTabla();
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Los datos no han sido encontrados.", "ERROR", JOptionPane.WARNING_MESSAGE);
             }
-            
+
             this.dispose();
+
         } else {//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Debe llenar al menos una casilla.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
