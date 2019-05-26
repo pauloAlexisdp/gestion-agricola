@@ -6,6 +6,7 @@
 package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
+import java.util.Date;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
 
@@ -49,6 +50,26 @@ public class TemporadaDA {
             cdb.statement.executeUpdate(cdb.un_sql);
         }
 //        cdb.close();
+    }
+    
+    /**
+     * Permite obtener el identificador de la temporada actual.
+     * @return Retorna un <String> con el codigo de la temporada actual.
+     */
+    public static String getInstanciaTemporada(){
+        String id_temporada = "";
+        Date temp = new Date();
+        temp.setMonth(7);
+        Date actual = new Date();
+
+        if (actual.compareTo(temp) < 0){
+            id_temporada = "1-";
+        }
+        else{
+            id_temporada = "2-";
+        }
+
+        return id_temporada + temp.getYear();
     }
     
     
