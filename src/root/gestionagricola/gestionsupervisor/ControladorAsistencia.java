@@ -1,6 +1,12 @@
 
 package root.gestionagricola.gestionsupervisor;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import root.gestionagricola.gestioncontrato.ControladorContrato;
+import root.gestionagricola.modelo.accesodato.AsistenciaDA;
+import root.gestionagricola.modelo.accesodato.TemporadaDA;
+
 /**
  * Permite gestionar la comunicacion entre la vista de Asistencias y la 
  * Base de Datos.
@@ -14,9 +20,25 @@ public class ControladorAsistencia {
      * @return Retorna un <String[][]> con los datos solicitados.
      */
     public static String[][] getTabla (){
-        /* Se recuperan los datos desde la BD */
+        /* Inicializacion de variables necesarias */
+        ArrayList<Asistencia> planilla = new ArrayList<>();
         
-        return null;
+        /* Se recuperan los datos desde la BD */
+        try{
+            planilla = AsistenciaDA.cargarTrabajadores();
+            String[][] datos = new String[planilla.size()][2];
+            
+            for (int i = 0; i < planilla.size(); i ++){
+                datos[i][0] = ControladorContrato.parseRUTtoString(planilla.get(i).getRut());
+                datos[i][1] = planilla.get(i).getNombre();
+            }
+            
+            return datos;
+        }
+        catch(ClassNotFoundException | IllegalAccessException | 
+                InstantiationException | SQLException e){
+            return null;
+        }
     }
     
     /**
@@ -26,7 +48,14 @@ public class ControladorAsistencia {
      */
     public static void guardarAsistencia(String[][] planilla){
         /* Se guarda la planilla de asistencia en la BD */
-        
+        try{
+            for (int i = 0; i < planilla.length; i ++){
+                AsistenciaDA.guardar(TemporadaDA.getInstanciaTemporada(), 
+                        ControladorContrato.parseRUTtoINT(planilla[i][0]), planilla[i][1]);
+            }
+        }
+        catch (ClassNotFoundException | IllegalAccessException | 
+                InstantiationException | SQLException e){}
     }
     
     /**
