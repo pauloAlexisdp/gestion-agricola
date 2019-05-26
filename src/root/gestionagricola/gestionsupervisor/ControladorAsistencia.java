@@ -29,4 +29,15 @@ public class ControladorAsistencia {
         
     }
     
+    /**
+     * Permite crear una instancia de Asistencia a partir de el rut y nombre
+     * de un trabajador.
+     * @param rut Se espera un <int> con el rut del trabajador.
+     * @param nombre Se espera un <String> con el nombre del trabajador.
+     * @return Retorna una instancia del objeto Asistencia.
+     */
+    public static Asistencia crearAsistencia(int rut, String nombre){
+        return new Asistencia(rut, nombre);
+    }
+    
 }
