@@ -51,28 +51,11 @@ public class Contrato {
     }
 
     /**
-     * Permite modificar el valor del folio de un contrato.
-     * No se recomienda su uso.
-     * @param folio Recibe un <int> con el nuevo valor de folio.
-     */
-    public void setFolio(int folio) {
-        this.folio = folio;
-    }
-
-    /**
      * Permite obtener el tipo de un contrato {Subcontrato, Planta}.
      * @return Retorna un <String> con el tipo del contrato.
      */
     public String getTipo() {
         return tipo;
-    }
-
-    /**
-     * Permite modificar el valor de tipo de un contrato.
-     * @param tipo Se espera un <String> con los valores: {Subcontrato, Planta}.
-     */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     /**
@@ -84,27 +67,11 @@ public class Contrato {
     }
 
     /**
-     * Permite modificar el estado de un contrato.
-     * @param estado Se espera un <String> con los valores: {Renovado, Activo, Finalizado}.
-     */
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    /**
      * Permite obtener la fecha de inicio de un contrato.
      * @return Retorna un <String> con la fecha, formato: 'DD-MM-AAAA'.
      */
     public String getF_inicio() {
         return f_inicio;
-    }
-
-    /**
-     * Permite modificar la fecha de inicio del contrato.
-     * @param f_inicio Se espera un <String> con el formato: 'DD-MM-AAAA'.
-     */
-    public void setF_inicio(String f_inicio) {
-        this.f_inicio = f_inicio;
     }
 
     /**
@@ -116,27 +83,11 @@ public class Contrato {
     }
 
     /**
-     * Permite modificar la fecha de termino del contrato.
-     * @param f_termino Se espera un <String> con el formato: 'DD-MM-AAAA'.
-     */
-    public void setF_termino(String f_termino) {
-        this.f_termino = f_termino;
-    }
-
-    /**
      * Permite obtener el nombre del asociado.
      * @return Retorna un <String> con el nombre del asociado.
      */
     public String getNombre() {
         return nombre;
-    }
-
-    /**
-     * Permite modificar el nombre del asociado.
-     * @param nombre Se espera un <String> con el nombre del asociado.
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     /**
@@ -148,27 +99,11 @@ public class Contrato {
     }
 
     /**
-     * Permite modificar el DNI del asociado.
-     * @param rut Se espera un <int> con el DNI del asociado.
-     */
-    public void setRut(int rut) {
-        this.rut = rut;
-    }
-
-    /**
      * Permite obtener el sueldo del asociado al contrato.
      * @return Retorna un <int> con el sueldo del asociado.
      */
     public int getSueldo() {
         return sueldo;
-    }
-
-    /**
-     * Permite modificar el sueldo del asociado al contrato.
-     * @param sueldo Se espera un <int> con el sueldo del asociado.
-     */
-    public void setSueldo(int sueldo) {
-        this.sueldo = sueldo;
     }
     
     /**
@@ -177,14 +112,5 @@ public class Contrato {
      */
     public String getNom_empresa() {
         return nom_empresa;
-    }
-
-    /**
-     * Permite modificar el nombre de una empresa subcontrada.
-     * @param nom_empresa Se espera un <String> con el nuevo nombre de la empresa.
-     */
-    public void setNom_empresa(String nom_empresa) {
-        this.nom_empresa = nom_empresa;
-    }
-    
+    }    
 }
