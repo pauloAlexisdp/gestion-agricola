@@ -7,7 +7,6 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import root.gestionagricola.Cuenta;
 import root.gestionagricola.gestionusuario.Usuario;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
@@ -63,6 +62,38 @@ public class UsuarioDA {
 //        cdb.close();
     }
     
+  
+    
+    /**
+     * 
+     * @param nombreUsuario Recibe un <String> que corresponde al nick del usuario.
+     * @param nombreUsuarioNuevo Recibe un <String> que corresponde al nick nuevo del usuario o el mismo.
+     * @param contrasena Recibe un <String> con la contraseña nueva del usuario.
+     * @param tipoCuenta Recibe un <String> con el tipo de cuenta ya sea nueva o antigua del usuario.
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException 
+     */
+        
+    public static void modificarUsuario(String nombreUsuario, String nombreUsuarioNuevo, String contrasena, String tipoCuenta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        //modulo seguridad si ya hay una Usuario con ese nombre 
+        cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //ACTUALIZACION DE LOS DATOS DE UN USUARIO
+                cdb.un_sql = "UPDATE cuenta set nombre='"+nombreUsuarioNuevo+"', contrasena='"+contrasena+"', tipo='"+tipoCuenta+"'"+
+                       "WHERE nombre='"+nombreUsuario+"'";
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Datos actualizados");
+           }else{
+               
+           }
+        }
+    }
     
     /**
      * elimina un usuario de la base de datos, solo oculta la informacion del usuario
@@ -80,7 +111,7 @@ public class UsuarioDA {
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
            if(cdb.resultado.next()){
-               //ACTUALIZACION
+               //eliminacion
                cdb.un_sql = "DELETE FROM cuenta"+
                       " WHERE nombre='"+nombreUsuario+"'";
                 cdb.statement.executeUpdate(cdb.un_sql);
@@ -91,6 +122,27 @@ public class UsuarioDA {
         }
     }
     
+    
+    
+    public static void modificarContrasena(String nombreUsuario, String contrasenaNueva) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        
+        cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if(cdb.resultado!=null){
+           if(cdb.resultado.next()){
+               //ACTUALIZACION LA CONTRASEÑA DE USUAR
+                cdb.un_sql = "UPDATE cuenta set contrasena='"+contrasenaNueva+"'"+
+                       "WHERE nombre='"+nombreUsuario+"'";
+                cdb.statement.executeUpdate(cdb.un_sql);
+                System.out.println("Contraseña actualizada");
+           }else{
+               
+           }
+        }
+
+    }
    
 
    /**
@@ -113,6 +165,7 @@ public class UsuarioDA {
                 c = new Usuario();
                 c.setNombreUsuario(cdb.resultado.getString("nombre"));
                 c.setTipoCuenta(cdb.resultado.getString("tipo"));
+                c.setContrasena(cdb.resultado.getString("contrasena"));
                 r.add(c);
             }
         }else{
@@ -121,6 +174,10 @@ public class UsuarioDA {
 //        cdb.close();
       return r;
     }
+    
+    
+
+ 
 }
         
     
