@@ -97,8 +97,8 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
     
         if(this.RespuestaContrasenaAntigua != null && this.RespuestaContrasena != null){
-            
-            try {
+
+            try {   
                 boolean datos = ControladorUsuario.BuscarContrasena(this.getName(), this.RespuestaContrasenaAntigua.getText());
                 if(datos == true){
                     ControladorUsuario.ModificarContrasena(this.getName(), this.RespuestaContrasena.getText());

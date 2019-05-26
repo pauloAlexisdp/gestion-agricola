@@ -50,8 +50,9 @@ public class ControladorUsuario{
     }
    
 
+    
+    
     public static void ModificarContrasena(String nombreUsuario, String contrasenaNueva){
-        
         try{
             
             UsuarioDA.modificarContrasena(nombreUsuario, contrasenaNueva);

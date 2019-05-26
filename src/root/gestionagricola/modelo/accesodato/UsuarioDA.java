@@ -165,6 +165,7 @@ public class UsuarioDA {
                 c = new Usuario();
                 c.setNombreUsuario(cdb.resultado.getString("nombre"));
                 c.setTipoCuenta(cdb.resultado.getString("tipo"));
+                c.setContrasena(cdb.resultado.getString("contrasena"));
                 r.add(c);
             }
         }else{
