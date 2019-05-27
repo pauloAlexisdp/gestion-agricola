@@ -30,7 +30,6 @@ public class Supervisor extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         botonModificar = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         Titulo6 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -69,21 +68,6 @@ public class Supervisor extends javax.swing.JPanel {
         });
         add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 50, 60));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Busqueda.png"))); // NOI18N
-        jButton5.setText("Búsqueda");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton5.setFocusPainted(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 600, 130));
-
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jButton6.setForeground(new java.awt.Color(0, 0, 0));
@@ -120,10 +104,6 @@ public class Supervisor extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.controladorVistas.SeleccionarPanel("busqueda_supervisor");
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.controladorVistas.SeleccionarPanel("login");
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -141,7 +121,6 @@ public class Supervisor extends javax.swing.JPanel {
     private javax.swing.JLabel Titulo6;
     private javax.swing.JButton botonModificar;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

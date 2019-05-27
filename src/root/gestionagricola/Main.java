@@ -2,11 +2,11 @@
 package root.gestionagricola;
 
 import java.sql.SQLException;
-import root.gestionagricola.vistas.Busqueda;
+import root.gestionagricola.modelo.accesodato.TemporadaDA;
+import root.gestionagricola.vistas.supervisor.Busqueda;
 import root.gestionagricola.vistas.ControladorVistas;
 import root.gestionagricola.vistas.FramePrincipal;
 import root.gestionagricola.vistas.Login;
-import root.gestionagricola.vistas.ResultadoBusqueda;
 import root.gestionagricola.vistas.administrador.Administrador;
 import root.gestionagricola.vistas.dueño.Dueño;
 import root.gestionagricola.vistas.dueño.GenerarReportes;
@@ -21,10 +21,10 @@ import root.gestionagricola.vistas.supervisor.Supervisor;
 public class Main {
     
      public static void main(String[] args) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
+         TemporadaDA.crear();
          Busqueda busqueda = new Busqueda();
          FramePrincipal principal = new FramePrincipal();
          Login login = new Login();
-         ResultadoBusqueda resultado_busqueda = new ResultadoBusqueda();
          Administrador administrador = new Administrador();
          Dueño dueño = new Dueño();
          GenerarReportes reportes = new GenerarReportes();
@@ -35,13 +35,12 @@ public class Main {
          
          //se instancia el controlador con todas los paneles , para que trbaje con ellos.
          ControladorVistas controlador_vistas = new ControladorVistas(busqueda,principal,
-         login,resultado_busqueda,administrador,dueño,reportes,contratos,
+         login,administrador,dueño,reportes,contratos,
          asistencia,supervisor);
          
          //se setea el controlador de vistas en todas las vistas
          busqueda.setControladorVista(controlador_vistas);
          login.setControladorVista(controlador_vistas);
-         resultado_busqueda.setControladorVista(controlador_vistas);
          administrador.setControladorVista(controlador_vistas);
          dueño.setControladorVista(controlador_vistas);
          reportes.setControladorVista(controlador_vistas);
