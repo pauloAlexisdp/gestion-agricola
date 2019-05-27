@@ -34,6 +34,7 @@ public class VistaAsistencia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -44,9 +45,21 @@ public class VistaAsistencia extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        jButton5.setText("Búsqueda");
+        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
+        jButton5.setFocusPainted(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 550, 200, 40));
+
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/trabajadores 32px.png"))); // NOI18N
         jButton6.setText("Asistencia de Trabajadores");
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
@@ -61,7 +74,6 @@ public class VistaAsistencia extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("Confirmar");
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         jButton2.setFocusPainted(false);
@@ -84,10 +96,8 @@ public class VistaAsistencia extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
 
-        Tabla.setBackground(new java.awt.Color(255, 255, 255));
         Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
-        Tabla.setForeground(new java.awt.Color(0, 0, 0));
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -230,12 +240,17 @@ public class VistaAsistencia extends javax.swing.JPanel {
         this.controladorVista.SeleccionarPanel("supervisor");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        this.controladorVista.SeleccionarPanel("busqueda_supervisor");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JTable Tabla;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -248,13 +263,32 @@ public class VistaAsistencia extends javax.swing.JPanel {
     public void setDatos_tabla(String[][] datos_tabla) {
         this.datos_tabla = datos_tabla;
     }
-
+    
     public void cargarDatosTabla() {
         for (int i = 0; i < this.datos_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
             this.Tabla.setValueAt(this.datos_tabla[i][1], i, 1);
             
         }
+    }
+    public void cargarDatosTablaBusqueda() {
+        for (int i = 0; i < this.datos_tabla.length; i++) {
+            this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
+            this.Tabla.setValueAt(this.datos_tabla[i][1], i, 1);
+            if(datos_tabla[i][2] == null){
+                this.Tabla.setValueAt(null, i, 2);
+            }else{
+                this.Tabla.setValueAt(true, i, 2);
+            }
         
+            
+        }
+    }
+    public void reiniciarTabla(){
+        for (int i = 0; i < this.datos_tabla.length; i++) {
+            this.Tabla.setValueAt(null, i, 0);
+            this.Tabla.setValueAt(null, i, 1);
+            this.Tabla.setValueAt(null, i, 2);
+        }
     }
 }
