@@ -69,4 +69,36 @@ public class ControladorAsistencia {
         return new Asistencia(rut, nombre);
     }
     
+    
+    public static String [][] reporteEspecifico(String rutificador){
+        
+        return null;
+            
+    }
+    
+    
+    public static String[][] realizarBusqueda(String rutificador){
+        
+        int rutBusqueda = ControladorContrato.parseRUTtoINT(rutificador);
+        
+        String[][] trabajadores = getTabla();
+        String[][] busqueda = null;
+        
+        for (int i = 0; i < trabajadores.length; i++) {
+            
+            if(rutBusqueda == Integer.parseInt(trabajadores[0][i])){
+                
+                busqueda[0][0]= trabajadores[i][0];
+                busqueda[0][1]= trabajadores[i][1];
+                busqueda[0][2] = trabajadores[i][2];
+                
+                return busqueda; // retorna el nombre del trabajador que esta asociado con un contrato activo.
+            }
+            
+        }
+        return null;
+        
+    }
+    
+    
 }
