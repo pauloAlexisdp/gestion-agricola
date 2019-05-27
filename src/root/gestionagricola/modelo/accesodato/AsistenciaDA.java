@@ -103,8 +103,8 @@ public class AsistenciaDA {
         /**
          * estado para trabajador: estado para
          */
-        cdb.un_sql = "select rut, nombre from trabajadorexterno, contrato where folio=refcontrato and estado='activo' "
-                + " union select rut, nombre from trabajadorinterno, contrato where folio=refcontrato and estado='activo' ";
+        cdb.un_sql = "select rut, nombre from trabajadorexterno, contrato where folio=refcontrato and estado='Activo' "
+                + " union select rut, nombre from trabajadorinterno, contrato where folio=refcontrato and estado='Activo' ";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if (cdb.resultado != null) {
             r = new ArrayList();

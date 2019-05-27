@@ -120,7 +120,7 @@ public class Busqueda extends javax.swing.JPanel {
                 controladorVista.SeleccionarPanel("asistencia");
             }
             else{
-                JOptionPane.showMessageDialog(null, " el rut ingresado no es válido", "Búsqueda", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, " el rut ingresado no fue encontrado", "Búsqueda", JOptionPane.INFORMATION_MESSAGE);
             }
         }
         else{
