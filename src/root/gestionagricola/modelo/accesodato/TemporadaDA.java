@@ -7,6 +7,7 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.Date;
+import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
 
@@ -70,6 +71,12 @@ public class TemporadaDA {
         }
 
         return id_temporada + temp.getYear();
+    }
+    
+    public static void crear() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
+        Date fecha = new Date();
+        String id = getInstanciaTemporada();
+        guardarTemporada(id,ControladorContrato.transformarDate(fecha));
     }
     
     

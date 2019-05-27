@@ -2,6 +2,7 @@
 package root.gestionagricola;
 
 import java.sql.SQLException;
+import root.gestionagricola.modelo.accesodato.TemporadaDA;
 import root.gestionagricola.vistas.Busqueda;
 import root.gestionagricola.vistas.ControladorVistas;
 import root.gestionagricola.vistas.FramePrincipal;
@@ -21,6 +22,7 @@ import root.gestionagricola.vistas.supervisor.Supervisor;
 public class Main {
     
      public static void main(String[] args) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
+         TemporadaDA.crear();
          Busqueda busqueda = new Busqueda();
          FramePrincipal principal = new FramePrincipal();
          Login login = new Login();
