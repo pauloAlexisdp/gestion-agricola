@@ -6,6 +6,7 @@ import root.gestionagricola.vistas.administrador.Administrador;
 import root.gestionagricola.vistas.dueño.Dueño;
 import root.gestionagricola.vistas.dueño.GenerarReportes;
 import root.gestionagricola.vistas.dueño.GestionDeContratos;
+import root.gestionagricola.vistas.supervisor.Busqueda;
 import root.gestionagricola.vistas.supervisor.VistaAsistencia;
 import root.gestionagricola.vistas.supervisor.Supervisor;
 
@@ -18,7 +19,6 @@ public class ControladorVistas {
     private Busqueda busqueda;
     private FramePrincipal frame_principal;
     private Login login;
-    private ResultadoBusqueda resultado_busqueda;
     private Administrador admin;
     private Dueño dueño;
     private GenerarReportes reportes;
@@ -27,13 +27,12 @@ public class ControladorVistas {
     private Supervisor supervisor;
     private final static int LENGTH_PASS = 10;
 
-    public ControladorVistas(Busqueda busqueda, FramePrincipal frameprincipal, Login login, ResultadoBusqueda resulbusqueda, Administrador admin, Dueño dueno,
+    public ControladorVistas(Busqueda busqueda, FramePrincipal frameprincipal, Login login, Administrador admin, Dueño dueno,
             GenerarReportes reportes, GestionDeContratos contratos, VistaAsistencia asistencia, Supervisor supervisor) {
 
         this.busqueda = busqueda;
         this.frame_principal = frameprincipal;
         this.login = login;
-        this.resultado_busqueda = resulbusqueda;
         this.admin = admin;
         this.dueño = dueno;
         this.reportes = reportes;
@@ -65,10 +64,6 @@ public class ControladorVistas {
             case "busqueda_dueño"://cargar el panel de busqueda desde dueño
                 this.frame_principal.setContentPane(this.busqueda);
                 this.busqueda.setPanel_anterior("busquedadueño");//se setea que fue desde dueño
-                this.frame_principal.actualizarpantalla();
-                break;
-            case "resultadobusqueda"://cargar panel de resultadoBusqueda
-                this.frame_principal.setContentPane(this.resultado_busqueda);
                 this.frame_principal.actualizarpantalla();
                 break;
             case "admin"://cargar panel de administrador
@@ -111,9 +106,6 @@ public class ControladorVistas {
         return login;
     }
 
-    public ResultadoBusqueda getResultado_busqueda() {
-        return resultado_busqueda;
-    }
 
     public Administrador getAdmin() {
         return admin;
