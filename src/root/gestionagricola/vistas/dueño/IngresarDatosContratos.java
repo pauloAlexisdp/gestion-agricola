@@ -198,7 +198,7 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
                     if (this.RespuestFechaTermino.getDate().after(this.RespuestFechaInicio.getDate())) {//verifico si la fecha de termino esta despues de la fechad de inicio
                         ControladorContrato.ingresarContrato(Integer.parseInt(this.RespuestaFolio.getText()), (String) this.RespuestaTipo.getSelectedItem(), (String) this.RespuestEstado.getSelectedItem(),
                                 RespuestFechaInicio.getDate(), RespuestFechaTermino.getDate(),
-                                RespuestNombre.getText(), Integer.parseInt(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
+                                RespuestNombre.getText(), ControladorContrato.parseRUTtoINT(this.RespuestaRut.getText()), Integer.parseInt(this.RespuestaValor.getText()), this.RespuestaEmpresa.getText());
                         this.dispose();
                         JOptionPane.showMessageDialog(null, "Contrato Ingresado.", "Creación", JOptionPane.INFORMATION_MESSAGE);
                     }else{
