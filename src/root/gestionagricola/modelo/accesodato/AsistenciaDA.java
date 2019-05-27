@@ -59,7 +59,7 @@ public class AsistenciaDA {
         
             if (cdb.resultado != null) {
                 if (cdb.resultado.next()) {
-                    
+                    cdb.un_sql = "update into asistenciatrabajadorinterno set asistencia='"+fecha+"' where rut="+rut;
                 } else {
                     cdb.un_sql = "Insert into asistenciatrabajadorinterno(reftemporada,reftrabajadorinterno,asistencia) values('" + idTermporada + "', " + rut + ", " + fecha + ")";
                     cdb.statement.executeUpdate(cdb.un_sql);
@@ -73,7 +73,7 @@ public class AsistenciaDA {
         }else{
             if (cdb.resultado != null) {
                 if (cdb.resultado.next()) {
-                    
+                    cdb.un_sql = "update into asistenciatrabajadorexterno set asistencia='"+fecha+"' where rut="+rut;
                 } else {
                     cdb.un_sql = "Insert into asistenciatrabajadorexterno(reftemporada,reftrabajadorexterno,asistencia) values('" + idTermporada + "', " + rut + ", " + fecha + ")";
                     cdb.statement.executeUpdate(cdb.un_sql);
