@@ -54,11 +54,13 @@ public class Supervisor extends javax.swing.JPanel {
 
         botonModificar.setBackground(new java.awt.Color(255, 255, 255));
         botonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(0, 0, 0));
         botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/tuerca-de-opciones.png"))); // NOI18N
         botonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
         botonModificar.setBorderPainted(false);
         botonModificar.setFocusPainted(false);
         botonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonModificar.setOpaque(false);
         botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonModificarActionPerformed(evt);
@@ -68,6 +70,7 @@ public class Supervisor extends javax.swing.JPanel {
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Asistencia.png"))); // NOI18N
         jButton6.setText("Asistencia");
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
@@ -78,7 +81,7 @@ public class Supervisor extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 600, 130));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 600, 130));
 
         Titulo6.setBackground(new java.awt.Color(255, 255, 255));
         Titulo6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N

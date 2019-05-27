@@ -34,10 +34,10 @@ public class VistaAsistencia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonConfirmar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        botonBusqueda = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -45,21 +45,9 @@ public class VistaAsistencia extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton5.setText("Búsqueda");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton5.setFocusPainted(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 550, 200, 40));
-
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/trabajadores 32px.png"))); // NOI18N
         jButton6.setText("Asistencia de Trabajadores");
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
@@ -72,18 +60,19 @@ public class VistaAsistencia extends javax.swing.JPanel {
         });
         add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton2.setText("Confirmar");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonConfirmar.setBackground(new java.awt.Color(255, 255, 255));
+        botonConfirmar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonConfirmar.setForeground(new java.awt.Color(0, 0, 0));
+        botonConfirmar.setText("Confirmar");
+        botonConfirmar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonConfirmar.setFocusPainted(false);
+        botonConfirmar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonConfirmarActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 550, 200, 40));
+        add(botonConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 550, 200, 40));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
         jButton1.setBorderPainted(false);
@@ -96,8 +85,24 @@ public class VistaAsistencia extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
 
+        botonBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        botonBusqueda.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonBusqueda.setForeground(new java.awt.Color(0, 0, 0));
+        botonBusqueda.setText("Búsqueda");
+        botonBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonBusqueda.setFocusPainted(false);
+        botonBusqueda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBusquedaActionPerformed(evt);
+            }
+        });
+        add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 550, 200, 40));
+
+        Tabla.setBackground(new java.awt.Color(255, 255, 255));
         Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Tabla.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        Tabla.setForeground(new java.awt.Color(0, 0, 0));
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -219,7 +224,7 @@ public class VistaAsistencia extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         String[][] datos_asistencia = new String[datos_tabla.length][2];
         
         for (int i = 0; i < datos_tabla.length; i++) {
@@ -234,23 +239,27 @@ public class VistaAsistencia extends javax.swing.JPanel {
         }
         
         ControladorAsistencia.guardarAsistencia(datos_asistencia);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.controladorVista.SeleccionarPanel("supervisor");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.controladorVista.SeleccionarPanel("busqueda_supervisor");
+      
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void botonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBusquedaActionPerformed
+        this.controladorVista.SeleccionarPanel("busqueda_supervisor");
+    }//GEN-LAST:event_botonBusquedaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton botonBusqueda;
+    private javax.swing.JButton botonConfirmar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -82,15 +82,15 @@ public class ControladorAsistencia {
         int rutBusqueda = ControladorContrato.parseRUTtoINT(rutificador);
         
         String[][] trabajadores = getTabla();
-        String[][] busqueda = null;
+        String[][] busqueda = new String[1][2];
         
         for (int i = 0; i < trabajadores.length; i++) {
             
-            if(rutBusqueda == Integer.parseInt(trabajadores[0][i])){
+            System.out.println(ControladorContrato.parseRUTtoINT(trabajadores[i][0]));
+            if(rutBusqueda == ControladorContrato.parseRUTtoINT(trabajadores[i][0])){
                 
                 busqueda[0][0]= trabajadores[i][0];
                 busqueda[0][1]= trabajadores[i][1];
-                busqueda[0][2] = trabajadores[i][2];
                 
                 return busqueda; // retorna el nombre del trabajador que esta asociado con un contrato activo.
             }
