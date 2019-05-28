@@ -30,7 +30,7 @@ public class CuentaDA {
      * por el lenguaje SQL.
      */
     public void guardar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         
         cdb.un_sql = "select nombre from cuenta where nombre = '"+cuenta.getNombre()+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -67,7 +67,7 @@ public class CuentaDA {
      */
     public ArrayList cargar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         cdb.un_sql = "select * from cuenta";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
@@ -98,7 +98,7 @@ public class CuentaDA {
      */
     public static Cuenta buscar(String nombre, String password) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         
         cdb.un_sql = "select nombre,contrasena, tipo from cuenta where nombre like '"+nombre+"' and contrasena like '"+password+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
