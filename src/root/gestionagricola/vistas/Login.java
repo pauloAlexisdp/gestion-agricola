@@ -180,7 +180,10 @@ public class Login extends javax.swing.JPanel {
      * @return Retorna una instancia de <Cuenta> con la informacion de la
      * cuenta que ha iniciado sesion.
      */
-    public static Cuenta getInstancia(){
+    
+    
+    
+    public static Cuenta getInstanciaCuenta(){
         return Login.instanciaCuenta;
     }
 }
