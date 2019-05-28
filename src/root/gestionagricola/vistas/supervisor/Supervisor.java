@@ -5,8 +5,9 @@ import root.gestionagricola.vistas.ControladorVistas;
 import root.gestionagricola.vistas.ModificarDatoCuentaPropia;
 
 /**
- *
- * @author Javier
+ * Vista del supervisor que puede realizar la asistencia de los trabajadores
+ * internos y externos
+ * @author Los Lanzas
  */
 public class Supervisor extends javax.swing.JPanel {
 
@@ -14,6 +15,9 @@ public class Supervisor extends javax.swing.JPanel {
 
     private ModificarDatoCuentaPropia modificarDato;
 
+    /**
+     * Constructor Supervisor
+     */
     public Supervisor() {
         initComponents();
     }
@@ -125,6 +129,10 @@ public class Supervisor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Setea el controlador de la vista
+     * @param controladorVistas
+     */
     public void setControladorVista(ControladorVistas controladorVistas) {
         this.controladorVistas = controladorVistas;
     }
