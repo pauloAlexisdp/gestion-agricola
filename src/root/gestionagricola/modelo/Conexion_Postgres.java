@@ -1,39 +1,66 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.modelo;
 
-import java.beans.Statement;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *Clase que se puede conectar a la base de datos
- * postgres
- * @author los lanzas
+ * Clase que se puede conectar a la base de datos postgresSQL
+ * @author Los Lanzas
  */
 public class Conexion_Postgres extends Conexion {
+    
     private String opcones ;
     private static String JDBC = "jdbc:postgresql://";
     private static String DRIVER = "org.postgresql.Driver";
     private static String HOST = "localhost:5432";
+    
+    /**
+     * Instancia BD con charSet {LATIN1}.
+     * @param database Nombre de la base de datos.
+     * @param username Usuario de la base de datos.
+     * @param password Clave de la base de datos.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
+     */
     public Conexion_Postgres(String database, String username, String password) throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         super(JDBC, DRIVER, HOST, database, username, password);
         this.opcones = "charSet=LATIN1";
         
     }
     
+    /**
+     * Instancia de la base de datos.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
+     */
     public Conexion_Postgres() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException{
-        this("fruticula", "postgres", "1234");
+        this("fruticola", "postgres", "mas");
     }
+    
     /**
      * Inicializa la base de datos 
-     * @throws ClassNotFoundException
-     * @throws SQLException
-     * @throws InstantiationException
-     * @throws IllegalAccessException 
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
     @Override
     public void init() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException{
@@ -43,6 +70,4 @@ public class Conexion_Postgres extends Conexion {
         dbmd = conexion.getMetaData();
         statement =  conexion.createStatement();
     }
-    
-    
 }

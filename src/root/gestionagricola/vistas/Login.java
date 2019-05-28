@@ -1,18 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas;
 
+import javax.swing.JOptionPane;
+import root.gestionagricola.ControladorCuenta;
+import root.gestionagricola.Cuenta;
+import root.gestionagricola.SingletonCuenta;
+
 /**
- *
- * @author Javier
+ * Permite agregar funcionalidad al login del programa.
+ * @author Los Lanzas
  */
 public class Login extends javax.swing.JPanel {
 
+    private ControladorVistas controladorVista;
+    private static Cuenta instanciaCuenta;
+    
     /**
-     * Creates new form VistaLogiin
+     * Constructor de la clase.
      */
     public Login() {
         initComponents();
@@ -30,9 +34,9 @@ public class Login extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         Titulo2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombre_txt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        password_txt = new javax.swing.JPasswordField();
         Fondo = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -47,25 +51,29 @@ public class Login extends javax.swing.JPanel {
         Titulo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         Titulo2.setText("LOG IN  ");
 
-        jTextField1.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("Usuario");
-        jTextField1.setToolTipText("Nombre De Usuario");
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
+        nombre_txt.setBackground(new java.awt.Color(51, 51, 51));
+        nombre_txt.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        nombre_txt.setForeground(new java.awt.Color(255, 255, 255));
+        nombre_txt.setText("Usuario");
+        nombre_txt.setToolTipText("Nombre De Usuario");
+        nombre_txt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
 
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setFont(new java.awt.Font("Garamond", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Iniciar Sesión");
         jButton1.setFocusPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jPasswordField1.setBackground(new java.awt.Color(51, 51, 51));
-        jPasswordField1.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
-        jPasswordField1.setText("Contrasena");
-        jPasswordField1.setToolTipText("Ingrese su contrasena");
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
+        password_txt.setBackground(new java.awt.Color(51, 51, 51));
+        password_txt.setFont(new java.awt.Font("Garamond", 1, 14)); // NOI18N
+        password_txt.setForeground(new java.awt.Color(255, 255, 255));
+        password_txt.setText("Contrasena");
+        password_txt.setToolTipText("Ingrese su contrasena");
+        password_txt.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153)));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -79,12 +87,12 @@ public class Login extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(71, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1))))
+                            .addComponent(password_txt))))
                 .addGap(65, 65, 65))
         );
         jPanel2Layout.setVerticalGroup(
@@ -93,9 +101,9 @@ public class Login extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombre_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(password_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 77, Short.MAX_VALUE))
@@ -119,6 +127,35 @@ public class Login extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Permite deribar las vistas en base a la instancia de cuenta.
+     * @param evt Recibe un <java.awt.event.ActionEvent> con el evento que
+     * gatilla la accion.
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        /* Se instancia una cuenta */
+        this.instanciaCuenta = SingletonCuenta.getInstance(this.nombre_txt.getText(), this.password_txt.getText(), ControladorCuenta.getTipo(this.nombre_txt.getText(), this.password_txt.getText()));
+        String tipo = this.instanciaCuenta.getTipo();
+       
+        if(tipo.equals("0")){
+            JOptionPane.showMessageDialog(null, "Verifique sus datos, Usuario o Contraseña incorrecta.", "ERROR", JOptionPane.WARNING_MESSAGE);
+            SingletonCuenta.downInstance();
+        }
+        
+        /* Se derivan las vistas en base a la cuenta */
+        else{
+            if (this.instanciaCuenta.getTipo().equals("Dueño")){
+                controladorVista.SeleccionarPanel("dueño");
+            }
+            else if (this.instanciaCuenta.getTipo().equals("Administrador")){
+                controladorVista.SeleccionarPanel("admin");
+            }
+            else if (this.instanciaCuenta.getTipo().equals("Supervisor")){
+                controladorVista.SeleccionarPanel("supervisor");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
@@ -126,7 +163,24 @@ public class Login extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nombre_txt;
+    private javax.swing.JPasswordField password_txt;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Permite conectar con el Controlador de Vistas.
+     * @param controladorVista Se espera una instancia de <ControladorVistas>.
+     */
+    public void setControladorVista(ControladorVistas controladorVista) {
+        this.controladorVista = controladorVista;
+    }
+    
+    /**
+     * Permite obtener una instancia de la cuenta actual.
+     * @return Retorna una instancia de <Cuenta> con la informacion de la
+     * cuenta que ha iniciado sesion.
+     */
+    public static Cuenta getInstanciaCuenta(){
+        return Login.instanciaCuenta;
+    }
 }
