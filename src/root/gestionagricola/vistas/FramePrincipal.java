@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas;
 
 import java.awt.Container;
 import javax.swing.SwingUtilities;
 
 /**
- *
- * @author Javier
+ * Vista de la ventana principal.
+ * @author Los Lanzas.
  */
 public class FramePrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form FramePrincipal
+     * Creates new form FramePrincipal.
      */
     public FramePrincipal() {
         initComponents();
@@ -48,13 +44,20 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-public void actualizarpantalla() {
+
+    /**
+     * Permite actualizar el frame.
+     */
+    public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);
         temp.validate();
         requestFocusInWindow();
     }
 
+    /**
+     * Permite setear el controlador de vista.
+     */
     public void setControladorVista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
