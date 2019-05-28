@@ -1,34 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.Date;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
-import root.gestionagricola.modelo.FactoriaConexion;
+import root.gestionagricola.modelo.SingletonConexion;
 
 /**
- *  adminsitrao la temporada
- * @author len_win
+ * Adminsitra la temporada
+ * @author Los Lanzas
  */
 public class TemporadaDA {
     
     /**
-     * 
+     * Permite guardar una tempora en la base de datos.
      * @param id id de la temporada 
-     * @param fecha
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @param fecha Se espera un String con la fecha de la temporada.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
     public static void guardarTemporada(String id, String fecha) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre
 
         cdb.un_sql ="select id from instanciatemporada where id = '"+id+"'";
@@ -73,14 +73,20 @@ public class TemporadaDA {
         return id_temporada + temp.getYear();
     }
     
+    /**
+     * Permite crear una instancia de temporada.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
+     */
     public static void crear() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         Date fecha = new Date();
         String id = getInstanciaTemporada();
         guardarTemporada(id,ControladorContrato.transformarDate(fecha));
     }
-    
-    
-    
-    
-    
 }
