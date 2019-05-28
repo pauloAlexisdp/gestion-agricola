@@ -15,42 +15,53 @@ import root.gestionagricola.vistas.supervisor.VistaAsistencia;
 import root.gestionagricola.vistas.supervisor.Supervisor;
 
 /**
- *
- * @author Javier
+ * Clase principal para inicializar el programa.
+ * @author Los Lanzas
  */
 public class Main {
     
-     public static void main(String[] args) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
-         TemporadaDA.crear();
-         Busqueda busqueda = new Busqueda();
-         FramePrincipal principal = new FramePrincipal();
-         Login login = new Login();
-         Administrador administrador = new Administrador();
-         Dueño dueño = new Dueño();
-         GenerarReportes reportes = new GenerarReportes();
-         GestionDeContratos contratos = new GestionDeContratos();
-         VistaAsistencia asistencia = new VistaAsistencia();         
-         Supervisor supervisor = new Supervisor();
-         
-         
-         //se instancia el controlador con todas los paneles , para que trbaje con ellos.
-         ControladorVistas controlador_vistas = new ControladorVistas(busqueda,principal,
-         login,administrador,dueño,reportes,contratos,
-         asistencia,supervisor);
-         
-         //se setea el controlador de vistas en todas las vistas
-         busqueda.setControladorVista(controlador_vistas);
-         login.setControladorVista(controlador_vistas);
-         administrador.setControladorVista(controlador_vistas);
-         dueño.setControladorVista(controlador_vistas);
-         reportes.setControladorVista(controlador_vistas);
-         contratos.setControladorVista(controlador_vistas);
-         asistencia.setControladorVista(controlador_vistas);
-         supervisor.setControladorVista(controlador_vistas);
-         
-         
-         //se hace visible el frame principal
-         principal.setVisible(true);
-         principal.setContentPane(login); //se selecciona como frame principal el login
-     }
+    /**
+     * Inicializa las vistas, controladores y data access.
+     * @param args
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
+     */
+    public static void main(String[] args) throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException {
+        /* Instancia de elementos */
+        TemporadaDA.crear();
+        Busqueda busqueda = new Busqueda();
+        FramePrincipal principal = new FramePrincipal();
+        Login login = new Login();
+        Administrador administrador = new Administrador();
+        Dueño dueño = new Dueño();
+        GenerarReportes reportes = new GenerarReportes();
+        GestionDeContratos contratos = new GestionDeContratos();
+        VistaAsistencia asistencia = new VistaAsistencia();         
+        Supervisor supervisor = new Supervisor();
+
+        /* Instancia de controlador de paneles */
+        ControladorVistas controlador_vistas = new ControladorVistas(busqueda,principal,
+        login,administrador,dueño,reportes,contratos,
+        asistencia,supervisor);
+        
+        /* Se agrega el controlador a las vistas */
+        busqueda.setControladorVista(controlador_vistas);
+        login.setControladorVista(controlador_vistas);
+        administrador.setControladorVista(controlador_vistas);
+        dueño.setControladorVista(controlador_vistas);
+        reportes.setControladorVista(controlador_vistas);
+        contratos.setControladorVista(controlador_vistas);
+        asistencia.setControladorVista(controlador_vistas);
+        supervisor.setControladorVista(controlador_vistas);
+
+        /* Se ejecuta la vista de inicio */
+        principal.setVisible(true);
+        principal.setContentPane(login);
+    }
 }
