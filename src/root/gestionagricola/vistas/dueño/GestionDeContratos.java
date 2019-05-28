@@ -8,14 +8,12 @@ package root.gestionagricola.vistas.dueño;
 import java.sql.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author ignacioburgos
+ * Vista de contratos
+ * @author Los Lanzas
  */
 public class GestionDeContratos extends javax.swing.JPanel {
 
@@ -26,6 +24,9 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private BusquedaContrato busquedaContrato;
     private String[][] datos_para_tabla;
 
+    /**
+     * Constructor de la vista
+     */
     public GestionDeContratos() {
 
         initComponents();
@@ -374,14 +375,25 @@ public class GestionDeContratos extends javax.swing.JPanel {
         busquedaContrato.setVisible(true);
     }//GEN-LAST:event_BotonBusquedaActionPerformed
 
+    /**
+     * Obtener la tabla.
+     * @param jTable
+     */
     public void setjTable(JTable jTable) {
         this.Tabla = jTable;
     }
 
+    /**
+     * Permite setear la tabla
+     * @param datos_para_tabla
+     */
     public void setDatos_para_tabla(String[][] datos_para_tabla) {
         this.datos_para_tabla = datos_para_tabla;
     }
 
+    /**
+     * Permite cargar datos a la tabla.
+     */
     public void cargarDatosTabla() {
         
         for (int i = 0; i < this.datos_para_tabla.length; i++) {
@@ -412,6 +424,10 @@ public class GestionDeContratos extends javax.swing.JPanel {
     private javax.swing.JScrollPane TablaContratos;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Permite setear el controlador de la vista.
+     * @param controlador_vistas
+     */
     public void setControladorVista(ControladorVistas controlador_vistas) {
         this.controladorVistas = controlador_vistas;
     }
