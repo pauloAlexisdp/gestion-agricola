@@ -7,7 +7,7 @@ package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import root.gestionagricola.gestionusuario.Usuario;
+import root.gestionagricola.gestionusuario.ControladorUsuario;
 import root.gestionagricola.modelo.Conexion;
 import root.gestionagricola.modelo.FactoriaConexion;
 
@@ -17,12 +17,6 @@ import root.gestionagricola.modelo.FactoriaConexion;
  * @author ignacioburgos
  */
 public class UsuarioDA {
-        
-    private Usuario usuario;
-    
-    public UsuarioDA(Usuario usuario){
-        this.usuario = usuario;
-    }
     
     /**
      * 
@@ -33,8 +27,7 @@ public class UsuarioDA {
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws SQLException 
-     */
-    
+     */    
     public static void crearUsuario(String nombreUsuario, String contrasena, String tipoCuenta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
@@ -155,18 +148,13 @@ public class UsuarioDA {
      */
     public static ArrayList cargar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
-        Usuario c;
         Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
         cdb.un_sql = "select * from cuenta";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
             while(cdb.resultado.next()){
-                c = new Usuario();
-                c.setNombreUsuario(cdb.resultado.getString("nombre"));
-                c.setTipoCuenta(cdb.resultado.getString("tipo"));
-                c.setContrasena(cdb.resultado.getString("contrasena"));
-                r.add(c);
+                r.add(ControladorUsuario.modelUsuario(cdb.resultado.getString("nombre"), cdb.resultado.getString("tipo"), cdb.resultado.getString("contrasena")));
             }
         }else{
             System.out.println("error");

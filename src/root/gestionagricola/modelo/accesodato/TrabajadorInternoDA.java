@@ -176,6 +176,7 @@ public class TrabajadorInternoDA {
         return r;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     
     public static void guardarTrabajadorInterno(int rut, String nombre, String rol, int telefono, String estado, int num_contrato) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
@@ -232,11 +233,24 @@ public class TrabajadorInternoDA {
      /**
      * Se carga una lista de los trabajadores internos creados.
      * @return un arreglo que contienen a los trabajadores.
+=======
+    
+    /**
+     * busca contrato especifico con los parametros que se quieran pasar  
+     * @param estado estado del contrato
+     * @param inicio fecha inicio
+     * @param termino fecha termino
+     * @param nombre nombre trabajador
+     * @param rut rut del trabajador
+     * @param sueldo sueldo del trabajador a buscar
+     * @return lista de todos los trabajadores que cumplan con los criterios de busqueda
+>>>>>>> Desarrollo
      * @throws ClassNotFoundException
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws SQLException 
      */
+<<<<<<< HEAD
     public static ArrayList cargarTrabajadorInterno() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
         Trabajador t;
@@ -288,5 +302,55 @@ public class TrabajadorInternoDA {
     
     
 =======
+>>>>>>> Desarrollo
+=======
+    public static ArrayList buscarContrato( String estado,
+            String  inicio, String termino, String nombre, int rut, int sueldo) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        ArrayList r = null;
+
+        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        
+        cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado"
+                + " from trabajadorinterno, contrato where folio=refcontrato ";
+        
+        if(rut>0){
+            cdb.un_sql += " and rut ="+rut;  
+        }
+        if(sueldo>0){
+            cdb.un_sql += " and sueldo="+sueldo;
+        }
+        if(!nombre.equals("")){
+            cdb.un_sql += " and nombre like '%"+nombre+"%'";
+        }
+        if(!inicio.equals("")){
+            cdb.un_sql += " and fechainicio="+inicio;
+        }
+        if(!termino.equals("")){
+            cdb.un_sql += " and fechatermino="+termino; 
+        }
+        if(!estado.equals("")){
+            cdb.un_sql+= " and estado like '"+estado+"'";
+        }
+
+        cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
+        if (cdb.resultado != null) {
+            r = new ArrayList();
+            while (cdb.resultado.next()) {
+                String fechaInicio = cdb.resultado.getString("fechainicio");
+                String fechaTermino = cdb.resultado.getString("fechatermino");
+                int folio = cdb.resultado.getInt("folio");
+                int rut_t = cdb.resultado.getInt("rut");
+                String nombre_t = cdb.resultado.getString("nombre");
+                int sueldo_t = cdb.resultado.getInt("sueldo");
+                String estado_t = cdb.resultado.getString("estado");
+                r.add(ControladorContrato.crearContrato(folio, "interno", estado_t, fechaInicio, fechaTermino, nombre_t, rut_t, sueldo_t, ""));
+
+            }
+        } else {
+        }
+        //    cdb.close();
+      
+        return r;
+    }
 >>>>>>> Desarrollo
 }

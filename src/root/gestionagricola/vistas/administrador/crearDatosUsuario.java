@@ -5,17 +5,14 @@
  */
 package root.gestionagricola.vistas.administrador;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 
 /**
- *
- * @author ignacioburgos
+ * Vista para crear usuarios.
+ * @author Los Lanzas
  */
 public class crearDatosUsuario extends javax.swing.JFrame {
 
@@ -119,30 +116,19 @@ public class crearDatosUsuario extends javax.swing.JFrame {
 
     private void CrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioActionPerformed
         //Si las casillas estan llenas puede guardar los datos
-        
-        if(this.RespuestaNombre.getText() != null && this.RespuestaContrasena.getText() != null && this.RespuestaTipo.getSelectedItem() != null){
+        if (this.RespuestaNombre.getText() != null && this.RespuestaContrasena.getText() != null && this.RespuestaTipo.getSelectedItem() != null){
             // aqui se llama al método controlador que hara la conexion con el modelo.
             ControladorUsuario.CrearUsuario(this.RespuestaNombre.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaTipo.getSelectedItem());
             
-            try {
-                String[][] datos;
-                datos = ControladorUsuario.cargarDatos();
-                admin.setDatos_para_tabla(datos);
-                admin.cargarDatosTabla();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String[][] datos;
+            datos = ControladorUsuario.cargarDatos();
+            admin.setDatos_para_tabla(datos);
+            admin.cargarDatosTabla();
             
             this.dispose();
             JOptionPane.showMessageDialog(null, "Cuenta de Usuario Ingresada.", "Creación", JOptionPane.INFORMATION_MESSAGE);
-        }else{//si no le avisa al usuario que le faltan casillas por llenar.
+        }
+        else{//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_CrearUsuarioActionPerformed
