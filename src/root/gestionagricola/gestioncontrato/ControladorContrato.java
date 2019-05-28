@@ -237,6 +237,9 @@ public class ControladorContrato {
      * @return Retorna un <String> con la fecha formateada: '"DD-MM-AAAA"'.
      */
     public static String transformarDate(Date fecha) {
+        if (fecha == null){
+            return "";
+        }
         String inicio;
 
         if (fecha.getDate() < 10) {
