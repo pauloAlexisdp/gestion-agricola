@@ -1,15 +1,15 @@
+
 package root.gestionagricola.vistas.administrador;
 
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 import root.gestionagricola.vistas.ControladorVistas;
 import root.gestionagricola.vistas.ModificarDatoCuentaPropia;
 
 /**
- *
- * @author Javier
+ * Vista del administrador.
+ * @author Los Lanzas
  */
 public class Administrador extends javax.swing.JPanel {
 
@@ -20,6 +20,17 @@ public class Administrador extends javax.swing.JPanel {
     private EliminarDatoUsuario eliminarDato;
     private String[][] datos_para_tabla;
 
+    /**
+     * Constructor de la vista.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
+     */
     public Administrador() throws SQLException, IllegalAccessException, InstantiationException, ClassNotFoundException  {
         
         initComponents();
@@ -270,6 +281,10 @@ public class Administrador extends javax.swing.JPanel {
         
     }//GEN-LAST:event_botonEliminarActionPerformed
    
+    /**
+     * Permite setear datos de tabla
+     * @param datos_para_tabla
+     */
     public void setDatos_para_tabla(String[][] datos_para_tabla) {
         this.reiniciarTabla();
         this.datos_para_tabla = datos_para_tabla;
@@ -315,21 +330,38 @@ public class Administrador extends javax.swing.JPanel {
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Setea controlador de la vista
+     * @param controladorVistas
+     */
     public void setControladorVista(ControladorVistas controladorVistas) {
         this.controladorVista = controladorVistas;
     }
+
+    /**
+     * Carga datos de la tabla.
+     */
     public void cargarDatosTabla() {
         for (int i = 0; i < this.datos_para_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_para_tabla[i][0], i, 0);
             this.Tabla.setValueAt(this.datos_para_tabla[i][1], i, 1);
         }
     }
+
+    /**
+     * permite reiniciar la tabla.
+     */
     public void reiniciarTabla(){
         for (int i = 0; i < this.datos_para_tabla.length; i++) {
             this.Tabla.setValueAt(null, i, 0);
             this.Tabla.setValueAt(null, i, 1);
         }
     }
+
+    /**
+     * Permite setear la tabla.
+     * @param Tabla
+     */
     public void setTabla(JTable Tabla) {
         this.Tabla = Tabla;
     }

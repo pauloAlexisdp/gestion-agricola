@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.administrador;
 
 import javax.swing.JComboBox;
@@ -17,6 +13,11 @@ import root.gestionagricola.gestionusuario.ControladorUsuario;
 public class crearDatosUsuario extends javax.swing.JFrame {
 
     Administrador admin;
+
+    /**
+     * Constructor de la vista
+     * @param admin
+     */
     public crearDatosUsuario(Administrador admin) {
         this.admin = admin;
         initComponents();
@@ -141,28 +142,50 @@ public class crearDatosUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaTipoActionPerformed
 
-
-
+    /**
+     * Permite obtener la contraseña
+     * @return
+     */
     public JTextField getRespuestaContrasena() {
         return RespuestaContrasena;
     }
 
+    /**
+     * Permite setear la contraseña
+     * @param RespuestaContrasena
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
 
+    /**
+     * Permite obtener el nombre
+     * @return
+     */
     public JTextField getRespuestaNombre() {
         return RespuestaNombre;
     }
 
+    /**
+     * Permite setear el nombre.
+     * @param RespuestaNombre
+     */
     public void setRespuestaNombre(JTextField RespuestaNombre) {
         this.RespuestaNombre = RespuestaNombre;
     }
 
+    /**
+     * Permite obtener tipo.
+     * @return
+     */
     public JComboBox<String> getRespuestaTipo() {
         return RespuestaTipo;
     }
 
+    /**
+     * Permite setear tipo.
+     * @param RespuestaTipo
+     */
     public void setRespuestaTipo(JComboBox<String> RespuestaTipo) {
         this.RespuestaTipo = RespuestaTipo;
     }
