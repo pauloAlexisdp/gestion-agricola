@@ -11,8 +11,8 @@ import root.gestionagricola.vistas.supervisor.VistaAsistencia;
 import root.gestionagricola.vistas.supervisor.Supervisor;
 
 /**
- *
- * @author Javier
+ * Permite gestionar las vistas de usuarios.
+ * @author Los Lanzas
  */
 public class ControladorVistas {
 
@@ -27,6 +27,22 @@ public class ControladorVistas {
     private Supervisor supervisor;
     private final static int LENGTH_PASS = 10;
 
+    /**
+     * Constructor del controlador de vistas.
+     * @param busqueda Se espera un objeto tipo <Busqueda> con la vista de
+     * busqueda.
+     * @param frameprincipal Se espera un <FramePrincipal> con el frame 
+     * principal.
+     * @param login Se espera un <Login> con la vista del login.
+     * @param admin Se espera un <Administrador> con la vista del admin.
+     * @param dueno Se espera un <Dueño> con la vista del dueño.
+     * @param reportes Se espera un <GenerarReportes> con la vista de reportes.
+     * @param contratos Se espera un <GestionDeContratos> con la vista para
+     * gestionar contratos.
+     * @param asistencia Se espera un <VistaAsistencia> con la vista de
+     * asistencias.
+     * @param supervisor Se espera un <Supervisor> con la vista del supervisor.
+     */
     public ControladorVistas(Busqueda busqueda, FramePrincipal frameprincipal, Login login, Administrador admin, Dueño dueno,
             GenerarReportes reportes, GestionDeContratos contratos, VistaAsistencia asistencia, Supervisor supervisor) {
 
@@ -41,8 +57,9 @@ public class ControladorVistas {
         this.supervisor = supervisor;
     }
 
-    /*
-       Metodo para seleccionar el panel que se mostrara al realizar una accion.
+    /**
+     * Metodo para decidir el panel en base a la cuenta.
+     * @param panel Se espera un <String> con el nombre del panel.
      */
     public void SeleccionarPanel(String panel) {
         switch (panel) {
@@ -94,39 +111,74 @@ public class ControladorVistas {
         }
     }
 
+    /**
+     * Permite obtener el frame de busqueda.
+     * @return Retorna un frame de busqueda.
+     */
     public Busqueda getBusqueda() {
         return busqueda;
     }
-
+    
+    /**
+     * Permite obtener la vista principal
+     * @return Retorna el frame de la vista principal.
+     */
     public FramePrincipal getFrame_principal() {
         return frame_principal;
     }
 
+    /**
+     * permite obtener la vista login.
+     * @return Retorna un frame con la vista de login.
+     */
     public Login getLogin() {
         return login;
     }
 
-
+    /**
+     * Permite obtener la vista del admin.
+     * @return Retorna un frame con la vista del admin.
+     */
     public Administrador getAdmin() {
         return admin;
     }
 
+    /**
+     * permite obtener la vista del dueño.
+     * @return Retorna un frame con la vista del dueño.
+     */
     public Dueño getDueño() {
         return dueño;
     }
 
+    /**
+     * Permite obtener un frame de la vista de reportes.
+     * @return Retorna un frame con la vista de reportes.
+     */
     public GenerarReportes getReportes() {
         return reportes;
     }
 
+    /**
+     * Permite obtener la vista contratos.
+     * @return Retorna el frame con la vista contratos.
+     */
     public GestionDeContratos getContratos() {
         return contratos;
     }
 
+    /**
+     * permite obtener la vista de asistencias.
+     * @return Retorna un frame con la vista de asistencias.
+     */
     public VistaAsistencia getAsistencia() {
         return asistencia;
     }
 
+    /**
+     * Permite obtener la vista de supervisor.
+     * @return Retorna un frame con la vista del supervisor.
+     */
     public Supervisor getSupervisor() {
         return supervisor;
     }
