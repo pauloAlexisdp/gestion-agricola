@@ -71,14 +71,11 @@ public class ControladorAsistencia {
         return new Asistencia(rut, nombre);
     }
     
-    
-    public static String [][] reporteEspecifico(String rutificador){
-        
-        return null;
-            
-    }
-    
-    
+    /**
+     * Permite realizar busqueda de trabajadores para la asistencia.
+     * @param rutificador Se espera un <String> con el RUT del trabajador.
+     * @return Retorna un <String[][]> con los datos de los trabajadores.
+     */
     public static String[][] realizarBusqueda(String rutificador){
         
         int rutBusqueda = ControladorContrato.parseRUTtoINT(rutificador);
@@ -93,17 +90,17 @@ public class ControladorAsistencia {
                 busqueda[0][0]= trabajadores[i][0];
                 busqueda[0][1]= trabajadores[i][1];
                 
-                return busqueda; // retorna el nombre del trabajador que esta asociado con un contrato activo.
+                return busqueda;
             }
             
         }
         return null;
         
     }
+    
     /**
-     * Permite dar formato a una fecha. Sera usado para una fecha que no existe
+     * Permite dar formato a una fecha, sera usado para una fecha que no existe
      * para demostrar que esta inasistente.
-     *
      * @param fecha Se espera un <Date> con la fecha.
      * @return Retorna un <String> con la fecha formateada: '"DD-MM-AAAA"'.
      */
