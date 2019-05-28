@@ -204,7 +204,7 @@ public class TrabajadorInternoDA {
             cdb.un_sql += " and sueldo="+sueldo;
         }
         if(!nombre.equals("")){
-            cdb.un_sql += " and nombre="+nombre;
+            cdb.un_sql += " and nombre like '%"+nombre+"%'";
         }
         if(!inicio.equals("")){
             cdb.un_sql += " and fechainicio="+inicio;
