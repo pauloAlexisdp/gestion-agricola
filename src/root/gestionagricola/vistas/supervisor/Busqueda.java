@@ -114,6 +114,7 @@ public class Busqueda extends javax.swing.JPanel {
         if(this.RespuestaRutificador.getText() != null){
             String[][] busqueda = ControladorAsistencia.realizarBusqueda(this.RespuestaRutificador.getText());
             if(busqueda != null){
+                
                 controladorVista.getAsistencia().reiniciarTabla();
                 controladorVista.getAsistencia().setDatos_tabla(busqueda);
                 controladorVista.getAsistencia().cargarDatosTabla();
