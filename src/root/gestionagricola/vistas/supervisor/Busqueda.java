@@ -6,8 +6,9 @@ import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author Javier
+ * Vista que permite realizar la busqueda por rut de un trabajador para
+ * realizar su asistencia.
+ * @author Los Lanzas
  */
 public class Busqueda extends javax.swing.JPanel {
     
@@ -15,6 +16,10 @@ public class Busqueda extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
     private String panel_anterior;
+
+    /**
+     *Constructor 
+     */
     public Busqueda() {
         initComponents();
 
@@ -142,10 +147,18 @@ public class Busqueda extends javax.swing.JPanel {
     private javax.swing.JButton realizarBusqueda;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Setea el controladorVista
+     * @param controladorVista
+     */
     public void setControladorVista(ControladorVistas controladorVista) {
         this.controladorVista = controladorVista;
     }
 
+    /**
+     * Setea al panel anterior
+     * @param panel_anterior
+     */
     public void setPanel_anterior(String panel_anterior) {
         this.panel_anterior = panel_anterior;
     }
