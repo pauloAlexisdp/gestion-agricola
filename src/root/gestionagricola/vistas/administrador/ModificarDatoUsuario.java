@@ -5,9 +5,6 @@
  */
 package root.gestionagricola.vistas.administrador;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -15,8 +12,8 @@ import root.gestionagricola.gestionusuario.ControladorUsuario;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author ignacioburgos
+ * Vista para modificar usuarios.
+ * @author Los Lanzas
  */
 public class ModificarDatoUsuario extends javax.swing.JFrame {
 
@@ -135,48 +132,39 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Permite modificar una cuenta de usuario.
+     * @param evt Se espera un <java.awt.event.ActionEvent> con la accion
+     * del listener.
+     */
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        
-         // este boton es para poder modificar los datos del usuario.
-        if(this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena.getText() != null){
-            try {   
-               boolean BuscarUsuario = ControladorUsuario.BuscarUsuario(this.RespuestaNombreUsuario.getText());
-               if(BuscarUsuario == true){
+        /* Sucede cuando se presiona el boton de Modificar */
+        if (this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena.getText() != null){
+            boolean BuscarUsuario = ControladorUsuario.BuscarUsuario(this.RespuestaNombreUsuario.getText());
+            if (BuscarUsuario == true){
+                 if (this.RespuestaNombreUsuarioNuevo.getText().equals("")){
+                     ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), (String)this.RespuestaEstado.getSelectedItem());
+                 }
+                 else{
+                     ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuarioNuevo.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaEstado.getSelectedItem());
+                 }
+                 this.dispose();
+                 JOptionPane.showMessageDialog(null, "Cuenta de Usuario Modificada.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
 
-                    if(this.RespuestaNombreUsuarioNuevo.getText().equals("")){
-                        ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText(), (String)this.RespuestaEstado.getSelectedItem());
-                    }
-                    else{
-                        ControladorUsuario.ModificarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaNombreUsuarioNuevo.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaEstado.getSelectedItem());
-                    }
-                    this.dispose();
-                    JOptionPane.showMessageDialog(null, "Cuenta de Usuario Modificada.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
+                 String[][] datos;
+                 datos = ControladorUsuario.cargarDatos();
+                 admin.setDatos_para_tabla(datos);
+                 admin.cargarDatosTabla();
 
-                    String[][] datos;
-                    datos = ControladorUsuario.cargarDatos();
-                    admin.setDatos_para_tabla(datos);
-                    admin.cargarDatosTabla();
-               
-                }
-                else{
-                   this.dispose();
-                    JOptionPane.showMessageDialog(null, "Nombre de Usuario no encontrado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
-               }
-
-            } catch (ClassNotFoundException ex) {
-               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-               Logger.getLogger(ModificarDatoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+             }
+             else{
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Nombre de Usuario no encontrado.", "Modificación", JOptionPane.INFORMATION_MESSAGE);
             }
        }
        else{
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
        }
-
     }//GEN-LAST:event_modificarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
