@@ -7,13 +7,17 @@ import javax.swing.JTextField;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
- *
- * @author Javier
+ * Vista busqueda de cotrato.
+ * @author Los Lanzas
  */
 public class BusquedaContrato extends javax.swing.JFrame {
 
     GestionDeContratos Gcontratos;
 
+    /**
+     * Constructor de la vista
+     * @param gcontratos
+     */
     public BusquedaContrato(GestionDeContratos gcontratos) {
         this.Gcontratos = gcontratos;
         initComponents();
@@ -228,30 +232,58 @@ public class BusquedaContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestEstadoActionPerformed
 
+    /**
+     * Permite obtener el estado
+     * @return
+     */
     public JComboBox<String> getRespuestEstado1() {
         return RespuestEstado;
     }
 
+    /**
+     * Permite obtener la fecha de inicio
+     * @return
+     */
     public JDateChooser getRespuestFechaInicio() {
         return RespuestFechaInicio;
     }
 
+    /**
+     * Permite obtener la fecha de termino
+     * @return
+     */
     public JDateChooser getRespuestFechaTermino() {
         return RespuestFechaTermino;
     }
 
+    /**
+     * Permite obtener el nombre
+     * @return
+     */
     public JTextField getRespuestNombre() {
         return RespuestNombre;
     }
 
+    /**
+     * Permite obtener el rut.
+     * @return
+     */
     public JTextField getRespuestaRut() {
         return RespuestaEmpresa;
     }
 
+    /**
+     * Permite obtener el tipo.
+     * @return
+     */
     public JComboBox<String> getRespuestaTipo() {
         return RespuestaTipo;
     }
 
+    /**
+     * permite obtener el valor.
+     * @return
+     */
     public JTextField getRespuestaValor() {
         return RespuestaValor;
     }

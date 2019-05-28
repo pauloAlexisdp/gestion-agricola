@@ -14,6 +14,9 @@ public class Dueño extends javax.swing.JPanel {
     private ControladorVistas controladorVista;
     private ModificarDatoCuentaPropia modificarDato;
 
+    /**
+     * Constructor de la vista.
+     */
     public Dueño() {
         initComponents();
     }
@@ -156,6 +159,10 @@ public class Dueño extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Permite setear el controlador de la vista.
+     * @param controlador_vistas
+     */
     public void setControladorVista(ControladorVistas controlador_vistas) {
         this.controladorVista = controlador_vistas;
     }

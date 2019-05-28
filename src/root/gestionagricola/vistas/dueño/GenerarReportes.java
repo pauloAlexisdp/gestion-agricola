@@ -1,19 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.dueño;
 
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author Javier
+ * Vista de reportes
+ * @author Los Lanzas
  */
 public class GenerarReportes extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
+
+    /**
+     * Constructor de la vista.
+     */
     public GenerarReportes() {
         initComponents();
     }
@@ -216,6 +216,10 @@ public class GenerarReportes extends javax.swing.JPanel {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Permite setear el controlador de la vista.
+     * @param controlador_vistas
+     */
     public void setControladorVista(ControladorVistas controlador_vistas) {
        this.controladorVista = controlador_vistas;
     }
