@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.administrador;
 
 import javax.swing.JComboBox;
@@ -21,6 +17,10 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
     private String contrasena_recibido;
     private Administrador admin;
     
+    /**
+     *
+     * @param admin
+     */
     public ModificarDatoUsuario(Administrador admin) {
         this.admin = admin;
         initComponents();
@@ -184,38 +184,74 @@ public class ModificarDatoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaContrasenaActionPerformed
 
+    /**
+     * Permite obtener el estado.
+     * @return
+     */
     public JComboBox<String> getRespuestEstado() {
         return RespuestaEstado;
     }
 
+    /**
+     * Permite setear el estado.
+     * @param RespuestEstado
+     */
     public void setRespuestEstado(JComboBox<String> RespuestEstado) {
         this.RespuestaEstado = RespuestEstado;
     }
 
+    /**
+     * Permite obtener el nombre de usuario.
+     * @return
+     */
     public JTextField getRespuestaNombreUsuario() {
         return RespuestaNombreUsuarioNuevo;
     }
 
+    /**
+     * Permite setear el nombre usuario.
+     * @param RespuestaNombreUsuario
+     */
     public void setRespuestaNombreUsuario(JTextField RespuestaNombreUsuario) {
         this.RespuestaNombreUsuarioNuevo = RespuestaNombreUsuario;
     }
 
+    /**
+     * Permite obtener el nombre.
+     * @return
+     */
     public String getNombre_recibido() {
         return nombre_recibido;
     }
 
+    /**
+     * Permite setear el nombre.
+     * @param nombre_recibido
+     */
     public void setNombre_recibido(String nombre_recibido) {
         this.nombre_recibido = nombre_recibido;
     }
 
+    /**
+     * Permite obtener la contraseña.
+     * @return
+     */
     public String getContrasena_recibido() {
         return contrasena_recibido;
     }
 
+    /**
+     * Permite setear la contraseña
+     * @param contrasena_recibido
+     */
     public void setContrasena_recibido(String contrasena_recibido) {
         this.contrasena_recibido = contrasena_recibido;
     }
 
+    /**
+     * Permite obtener la contraseña.
+     * @param RespuestaContrasena
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
