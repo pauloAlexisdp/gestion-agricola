@@ -213,7 +213,7 @@ public class TrabajadorInternoDA {
             cdb.un_sql += " and fechatermino="+termino; 
         }
         if(!estado.equals("")){
-            cdb.un_sql+= " and estado="+estado;
+            cdb.un_sql+= " and estado like '"+estado+"'";
         }
 
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -233,6 +233,7 @@ public class TrabajadorInternoDA {
         } else {
         }
         //    cdb.close();
+      
         return r;
     }
 }

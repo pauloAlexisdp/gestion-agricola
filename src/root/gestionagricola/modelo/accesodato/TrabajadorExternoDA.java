@@ -218,10 +218,10 @@ public class TrabajadorExternoDA {
             cdb.un_sql += " and fechatermino="+termino; 
         }
         if(!estado.equals("")){
-            cdb.un_sql+= " and estado="+estado;
+            cdb.un_sql+= " and estado like '"+estado+"'";
         }
         if(!nom_empresa.equals("")){
-            cdb.un_sql += " and nombreempresa = "+nom_empresa;
+            cdb.un_sql += " and nombreempresa like '%"+nom_empresa+"%'";
         }
 
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
