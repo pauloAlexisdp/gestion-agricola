@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.supervisor;
 
 
@@ -14,14 +10,21 @@ import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author Javier
+ * Vista que muestra la tabla de asistencia mostrando trabajadores internos y externos
+ * @author Los Lanzas
  */
 public class VistaAsistencia extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
     private String[][] datos_tabla;
 
+    /**
+     *
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException
+     */
     public VistaAsistencia() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
     }
@@ -272,10 +275,18 @@ public class VistaAsistencia extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Seteo controlador Vista
+     * @param controladorVista
+     */
     public void setControladorVista(ControladorVistas controladorVista) {
         this.controladorVista = controladorVista;
     }
 
+    /**
+     * Seteo de la tabla de datos.
+     * @param datos_tabla
+     */
     public void setDatos_tabla(String[][] datos_tabla) {
         this.datos_tabla = datos_tabla;
     }
