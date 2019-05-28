@@ -16,7 +16,7 @@ public class Login extends javax.swing.JPanel {
     private static Cuenta instanciaCuenta;
     
     /**
-     * Constructor de la clase
+     * Constructor de la clase.
      */
     public Login() {
         initComponents();
@@ -180,9 +180,6 @@ public class Login extends javax.swing.JPanel {
      * @return Retorna una instancia de <Cuenta> con la informacion de la
      * cuenta que ha iniciado sesion.
      */
-    
-    
-    
     public static Cuenta getInstanciaCuenta(){
         return Login.instanciaCuenta;
     }

@@ -1,43 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import root.gestionagricola.gestionusuario.Usuario;
+import root.gestionagricola.gestionusuario.ControladorUsuario;
 import root.gestionagricola.modelo.Conexion;
-import root.gestionagricola.modelo.FactoriaConexion;
+import root.gestionagricola.modelo.SingletonConexion;
 
 
 /**
- *
- * @author ignacioburgos
+ * Permite controlar el acceso a la tabla de Usuarios.
+ * @author Los Lanzas
  */
 public class UsuarioDA {
-        
-    private Usuario usuario;
-    
-    public UsuarioDA(Usuario usuario){
-        this.usuario = usuario;
-    }
     
     /**
      * 
      * @param nombreUsuario Recibe un <String> que corresponde al nick del Usuario. 
      * @param contrasena Recibe un <String> que corresponde a la contraseña del Usuario
      * @param tipoCuenta Recibe un <String> que corresponde a la cuenta asociada a un Usuario especifico(Supervisor, Dueño , Administrador)
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
-     */
-    
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL. 
+     */    
     public static void crearUsuario(String nombreUsuario, String contrasena, String tipoCuenta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre
 
         cdb.un_sql ="select nombre from cuenta where nombre = '"+nombreUsuario+"'";
@@ -65,20 +58,24 @@ public class UsuarioDA {
   
     
     /**
-     * 
+     * Permite modificar un usuario.
      * @param nombreUsuario Recibe un <String> que corresponde al nick del usuario.
      * @param nombreUsuarioNuevo Recibe un <String> que corresponde al nick nuevo del usuario o el mismo.
      * @param contrasena Recibe un <String> con la contraseña nueva del usuario.
      * @param tipoCuenta Recibe un <String> con el tipo de cuenta ya sea nueva o antigua del usuario.
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
         
     public static void modificarUsuario(String nombreUsuario, String nombreUsuarioNuevo, String contrasena, String tipoCuenta) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una Usuario con ese nombre 
         cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -96,16 +93,15 @@ public class UsuarioDA {
     }
     
     /**
-     * elimina un usuario de la base de datos, solo oculta la informacion del usuario
+     * Elimina un usuario de la base de datos, solo oculta la informacion del usuario
      * @param nombreUsuario Recibe un <String> que corresponde al NICK del usuario.
      * @throws ClassNotFoundException
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws SQLException 
      */
-    
     public static void eliminarUsuario(String nombreUsuario) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una Usuario con ese nombre 
         cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -122,11 +118,22 @@ public class UsuarioDA {
         }
     }
     
-    
-    
+    /**
+     * Permite modificar la clave del usuario.
+     * @param nombreUsuario Se espera un <String> del nombre de usuario.
+     * @param contrasenaNueva Se espera un <String> con la nueva clave.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL. 
+     */
     public static void modificarContrasena(String nombreUsuario, String contrasenaNueva) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         
         cdb.un_sql = "select nombre from cuenta where nombre = '"+nombreUsuario+"'";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -146,27 +153,26 @@ public class UsuarioDA {
    
 
    /**
-     * cargo una lista de todos los usuarios registrados en mi cuenta
+     * Cargo una lista de todos los usuarios registrados en mi cuenta
      * @return una lista de todas las cuentas que tengo en la tabla cuenta
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL. 
      */
     public static ArrayList cargar() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
         ArrayList r = null;
-        Usuario c;
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         cdb.un_sql = "select * from cuenta";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
         if(cdb.resultado!=null){
             r = new ArrayList();
             while(cdb.resultado.next()){
-                c = new Usuario();
-                c.setNombreUsuario(cdb.resultado.getString("nombre"));
-                c.setTipoCuenta(cdb.resultado.getString("tipo"));
-                c.setContrasena(cdb.resultado.getString("contrasena"));
-                r.add(c);
+                r.add(ControladorUsuario.modelUsuario(cdb.resultado.getString("nombre"), cdb.resultado.getString("tipo"), cdb.resultado.getString("contrasena")));
             }
         }else{
             System.out.println("error");

@@ -12,7 +12,7 @@ import root.gestionagricola.Cuenta;
 import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
-import root.gestionagricola.modelo.FactoriaConexion;
+import root.gestionagricola.modelo.SingletonConexion;
 
 /**
  * clase que gestiona los contratos de un trabajador 
@@ -39,7 +39,7 @@ public class ContratoDA {
      */
     public static void guardar(int folio, String fechaInicio, String fechaTermino, String estado) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
      
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
         cdb.un_sql = "select folio from contrato where  folio = "+folio;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -71,7 +71,7 @@ public class ContratoDA {
      * @throws SQLException 
      */
     public static void eliminar(int folio) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
         cdb.un_sql = "select folio from contrato where folio = "+folio;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);

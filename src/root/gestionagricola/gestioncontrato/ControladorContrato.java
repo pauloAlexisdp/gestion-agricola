@@ -7,7 +7,6 @@ import root.gestionagricola.modelo.accesodato.*;
 
 /**
  * Permite agregar funcionalidad a la gestion de reportes.
- *
  * @author Los Lanzas
  */
 public class ControladorContrato {
@@ -116,7 +115,6 @@ public class ControladorContrato {
 
     /**
      * Permite obtener un contrato especifico.
-     *
      * @param folio Se espera un <int> con el numero unico de un contrato.
      * @return Retorna un <String[]> con la informacion del contrato.
      */
@@ -152,15 +150,13 @@ public class ControladorContrato {
             } else {
                 return null;
             }
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception) {
-        }
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException exception) {}
 
         return null;
     }
 
     /**
      * Permite modificar los atributos de un contrato.
-     *
      * @param folio Se espera un <int> identificador del contrato (unico).
      * @param tipo Se espera un <String> con el tipo de contrato {Subcontrato,
      * Planta}
@@ -202,7 +198,6 @@ public class ControladorContrato {
 
     /**
      * Permite eliminar un contrato especifico.
-     *
      * @param folio Se espera un <int> con el numero unico del contrato.
      */
     public static void eliminarContrato(int folio) {
@@ -214,7 +209,6 @@ public class ControladorContrato {
 
     /**
      * Permite crear una instancia para usar en Data Access.
-     *
      * @param folio Se espera un <int> identificador del contrato (unico).
      * @param tipo Se espera un <String> con el tipo de contrato {Subcontrato,
      * Planta}
@@ -239,11 +233,13 @@ public class ControladorContrato {
 
     /**
      * Permite dar formato a una fecha.
-     *
      * @param fecha Se espera un <Date> con la fecha.
      * @return Retorna un <String> con la fecha formateada: '"DD-MM-AAAA"'.
      */
     public static String transformarDate(Date fecha) {
+        if (fecha == null){
+            return "";
+        }
         String inicio;
 
         if (fecha.getDate() < 10) {

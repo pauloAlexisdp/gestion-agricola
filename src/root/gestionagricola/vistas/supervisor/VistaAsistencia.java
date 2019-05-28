@@ -8,6 +8,7 @@ package root.gestionagricola.vistas.supervisor;
 
 import java.sql.SQLException;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
 import root.gestionagricola.vistas.ControladorVistas;
@@ -35,8 +36,9 @@ public class VistaAsistencia extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton6 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        botonConfirmar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        botonBusqueda = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -59,19 +61,19 @@ public class VistaAsistencia extends javax.swing.JPanel {
         });
         add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Confirmar");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonConfirmar.setBackground(new java.awt.Color(255, 255, 255));
+        botonConfirmar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonConfirmar.setForeground(new java.awt.Color(0, 0, 0));
+        botonConfirmar.setText("Confirmar");
+        botonConfirmar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonConfirmar.setFocusPainted(false);
+        botonConfirmar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonConfirmarActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 550, 200, 40));
+        add(botonConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 550, 200, 40));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
         jButton1.setBorderPainted(false);
@@ -83,6 +85,20 @@ public class VistaAsistencia extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
+
+        botonBusqueda.setBackground(new java.awt.Color(255, 255, 255));
+        botonBusqueda.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonBusqueda.setForeground(new java.awt.Color(0, 0, 0));
+        botonBusqueda.setText("Búsqueda");
+        botonBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonBusqueda.setFocusPainted(false);
+        botonBusqueda.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botonBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBusquedaActionPerformed(evt);
+            }
+        });
+        add(botonBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 550, 200, 40));
 
         Tabla.setBackground(new java.awt.Color(255, 255, 255));
         Tabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -208,34 +224,49 @@ public class VistaAsistencia extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    
+    private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         String[][] datos_asistencia = new String[datos_tabla.length][2];
-        
         for (int i = 0; i < datos_tabla.length; i++) {
             datos_asistencia[i][0] = (String)this.Tabla.getValueAt(i, 0);
-            if((boolean)Tabla.getValueAt(i, 2) == true){
+            
+            //si en la asistencia esta null o false, se seteara la fecha de mentira. Para poder hacer comparaciones
+            //se hace con null ya que al principio todo esta con null y luego que pincha pasa a true o false.
+
+            if(Tabla.getValueAt(i, 2) == null || Tabla.getValueAt(i, 2).toString().equals("false")){
+                Date fecha = new Date();
+                datos_asistencia[i][1] = ControladorAsistencia.transformarDateInasistencia(fecha);
+                
+            }else{//en caso de ser true lo setea con la fecha actual.
                 java.util.Date fecha = new Date();
                 String fecha_actual = ControladorContrato.transformarDate(fecha);
                 datos_asistencia[i][1]  = fecha_actual;
-            }else{
-                datos_asistencia[i][1] = null;
             }  
         }
         
         ControladorAsistencia.guardarAsistencia(datos_asistencia);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        JOptionPane.showMessageDialog(null, " Asistencia Guardada Correctamente.", "Asistencia", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.controladorVista.SeleccionarPanel("supervisor");
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+      
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void botonBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBusquedaActionPerformed
+        this.controladorVista.SeleccionarPanel("busqueda_supervisor");
+    }//GEN-LAST:event_botonBusquedaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JTable Tabla;
+    private javax.swing.JButton botonBusqueda;
+    private javax.swing.JButton botonConfirmar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -248,13 +279,40 @@ public class VistaAsistencia extends javax.swing.JPanel {
     public void setDatos_tabla(String[][] datos_tabla) {
         this.datos_tabla = datos_tabla;
     }
-
+    /**
+     * Metodo para cargar los datos de todos los trabajadores a la tabla.
+     */
     public void cargarDatosTabla() {
         for (int i = 0; i < this.datos_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
             this.Tabla.setValueAt(this.datos_tabla[i][1], i, 1);
+            this.Tabla.setValueAt(null, i, 2);
+        }
+    }
+    /**
+     * Metodo para cargar los datos obtenidos de la busqueda desde la BD.
+     */
+    public void cargarDatosTablaBusqueda() {
+        for (int i = 0; i < this.datos_tabla.length; i++) {
+            this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
+            this.Tabla.setValueAt(this.datos_tabla[i][1], i, 1);
+            if(datos_tabla[i][2] == null){
+                this.Tabla.setValueAt(null, i, 2);
+            }else{
+                this.Tabla.setValueAt(true, i, 2);
+            }
+        
             
         }
-        
+    }
+    /**
+     * Metodo para reiniciar los datos de la tabla cuando se modifique algun dato de la vista.
+     */
+    public void reiniciarTabla(){
+        for (int i = 0; i < this.datos_tabla.length; i++) {
+            this.Tabla.setValueAt(null, i, 0);
+            this.Tabla.setValueAt(null, i, 1);
+            this.Tabla.setValueAt(null, i, 2);
+        }
     }
 }
