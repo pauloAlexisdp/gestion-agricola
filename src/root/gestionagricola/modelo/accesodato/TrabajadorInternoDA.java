@@ -13,29 +13,32 @@ import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.gestiontrabajador.ControladorTrabajador;
 import root.gestionagricola.gestiontrabajador.Trabajador;
 import root.gestionagricola.modelo.Conexion;
-import root.gestionagricola.modelo.FactoriaConexion;
+import root.gestionagricola.modelo.SingletonConexion;
 
 /**
- *
- * @author len_win
+ * Permite gestionar el acceso a la tabla del trabajador interno.
+ * @author Los Lanzas
  */
 public class TrabajadorInternoDA {
 
     /**
-     * se guardan los datos de los trabajadores interno
-     *
+     * Se guardan los datos de los trabajadores interno
      * @param rut rut del trabajador
      * @param nombre nombre del trabajador
      * @param sueldo que gana el trabajador
      * @param folio numero de contrato de trabajo
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
     public static void guardar(int rut, String nombre, int sueldo, int folio) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
         cdb.un_sql = "select rut from trabajadorInterno where rut = " + rut;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -60,19 +63,22 @@ public class TrabajadorInternoDA {
     }
 
     /**
-     * cargo una lista de todos los contratos registrados
-     *
+     * Cargo una lista de todos los contratos registrados
      * @return una lista de todas los contratos
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      *
      */
     public static ArrayList cargarContrato() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         /**
          * estado para trabajador: estado para
          */
@@ -100,13 +106,12 @@ public class TrabajadorInternoDA {
     }
 
     /**
-     * se carga un contrato en especifico
-     *
+     * Se carga un contrato en especifico
      * @param folio folio del trabajador especifico
      * @return el contrato encontrado
      */
     public static Contrato encontrarContrato(int folio) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
 
         Contrato contrato = null;
 
@@ -134,22 +139,25 @@ public class TrabajadorInternoDA {
     }
 
     /**
-     * cargo una lista de todos los contratos registrados
-     *
-     * @param inicio
-     * @param termino
+     * Cargo una lista de todos los contratos registrados
+     * @param inicio Se espera un <String> con la fecha de inicio.
+     * @param termino Se espera un <String> con la fecha de termino.
      * @return una lista de todas los contratos que coincidan con las fechas
      * correspondiente
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      *
      */
     public static ArrayList buscarContrato(String inicio, String termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         /**
          * estado para trabajador: estado para
          */
@@ -236,7 +244,7 @@ public class TrabajadorInternoDA {
 =======
     
     /**
-     * busca contrato especifico con los parametros que se quieran pasar  
+     * Busca contrato especifico con los parametros que se quieran pasar  
      * @param estado estado del contrato
      * @param inicio fecha inicio
      * @param termino fecha termino
@@ -244,11 +252,22 @@ public class TrabajadorInternoDA {
      * @param rut rut del trabajador
      * @param sueldo sueldo del trabajador a buscar
      * @return lista de todos los trabajadores que cumplan con los criterios de busqueda
+<<<<<<< HEAD
 >>>>>>> Desarrollo
      * @throws ClassNotFoundException
      * @throws InstantiationException
      * @throws IllegalAccessException
      * @throws SQLException 
+=======
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
+>>>>>>> Desarrollo
      */
 <<<<<<< HEAD
     public static ArrayList cargarTrabajadorInterno() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
@@ -308,7 +327,7 @@ public class TrabajadorInternoDA {
             String  inicio, String termino, String nombre, int rut, int sueldo) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado"
                 + " from trabajadorinterno, contrato where folio=refcontrato ";

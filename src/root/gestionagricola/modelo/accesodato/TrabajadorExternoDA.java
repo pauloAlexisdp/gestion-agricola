@@ -1,42 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import root.gestionagricola.gestioncontrato.Contrato;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.gestiontrabajador.ControladorTrabajador;
 import root.gestionagricola.gestiontrabajador.Trabajador;
 import root.gestionagricola.modelo.Conexion;
-import root.gestionagricola.modelo.FactoriaConexion;
+import root.gestionagricola.modelo.SingletonConexion;
 
 /**
- *
- * @author len_win
+ * Permite gestionar la tabla del Trabajador Externo
+ * @author Los Lanzas
  */
 public class TrabajadorExternoDA {
 
     /**
-     * se guardan los datos de los trabajadores externos
-     *
+     * Se guardan los datos de los trabajadores externos
      * @param rut rut del trabajador
      * @param nombre nombre del trabajador
-     * @param sueldo
-     * @param nombreEmpresa
+     * @param sueldo Se espera un <int> con el sueldo del trabajador.
+     * @param nombreEmpresa Se espera un <int> con el folio del contrato.
      * @param folio numero de contrato de trabajo
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
     public static void guardar(int rut, String nombre, int sueldo, int folio, String nombreEmpresa) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         //modulo seguridad si ya hay una cuenta con ese nombre 
         cdb.un_sql = "select rut from trabajadorexterno where rut = " + rut;
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
@@ -61,19 +59,22 @@ public class TrabajadorExternoDA {
     }
 
     /**
-     * se carga una lista de todos los contratos de los trabajadores externos
-     *
+     * Se carga una lista de todos los contratos de los trabajadores externos
      * @return una lista de todas los contratos
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      *
      */
     public static ArrayList cargarContrato() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         /**
          * estado para trabajador: estado para
          */
@@ -102,13 +103,12 @@ public class TrabajadorExternoDA {
     }
 
     /**
-     * se carga un contrato en especifico
-     *
+     * Se carga un contrato en especifico
      * @param folio folio del trabajador especifico
      * @return el contrato encontrado
      */
     public static Contrato encontrarContrato(int folio) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
 
         Contrato contrato = null;
 
@@ -137,9 +137,8 @@ public class TrabajadorExternoDA {
     }
 
     /**
-     * se carga una lista de todos los contratos de los trabajadores externos
+     * Se carga una lista de todos los contratos de los trabajadores externos
      * que fueron contratado en ciertas fechas
-     *
      * @param inicio fecha inicio en que esta el contrato
      * @param termino fecha de termino del contrato
      * @return una lista de todas los contratos
@@ -152,7 +151,7 @@ public class TrabajadorExternoDA {
     public static ArrayList buscarContrato(String inicio, String termino) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado, nombreempresa"
                 + " from trabajadorexterno, contrato where folio=refcontrato and fechainicio>=" + inicio + " and fechatermino<=" + termino;
 
@@ -191,7 +190,7 @@ public class TrabajadorExternoDA {
      * @param num_contrato
 =======
     /**
-     * busca contrato especifico con los parametros 
+     * Busca contrato especifico con los parametros 
      * @param estado estado del contrato
      * @param inicio fecha inicio
      * @param termino fecha termino
@@ -346,7 +345,7 @@ public class TrabajadorExternoDA {
             String nom_empresa) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
         
         cdb.un_sql = "select folio, fechainicio,fechatermino, rut, nombre, sueldo,estado, nombreempresa"
                 + " from trabajadorexterno, contrato where folio=refcontrato ";

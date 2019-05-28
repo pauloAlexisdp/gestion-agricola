@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.modelo.accesodato;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.Conexion;
-import root.gestionagricola.modelo.FactoriaConexion;
+import root.gestionagricola.modelo.SingletonConexion;
 
 /**
  *  Gestiona los registros de todos los contratos que se han hecho en la empresa 
  *  Incluye los creados, modificados y eliminados
- * @author len_win
+ * @author Los Lanzas
  */
 public class HistorialDA {
     
@@ -22,19 +17,22 @@ public class HistorialDA {
     /**
      * guarda el historial de todos los cambios hechos en un contrato
      * hace un historial de todos los cambios hecho por el usuario
-     * @param folio
-     * @param fechaInicio
-     * @param fechaTermino
-     * @param estado
-     * @throws ClassNotFoundException
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @param folio Se espera un <int> con el folio del contrato.
+     * @param fechaInicio Se espera un <String> con la fecha de incio.
+     * @param fechaTermino Se espera un <String> con la fecha de termino.
+     * @param estado Se espera un <String> con el estado.
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
     public static void guardarhistorial(int rut, int folio, String fechaInicio, String fechaTermino, String estado) throws ClassNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException{
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
-        //modulo seguridad si ya hay una cuenta con ese nombre 
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
+        /* Modulo seguridad si ya hay una cuenta con ese nombre */
         cdb.un_sql = "insert into historialcontrato(rutTrabajador, folio, estado, fechaincio,fechatermino)  "
                 + " values("+rut+","+folio+",'"+estado+"',"+fechaInicio+","+fechaTermino+")";
         cdb.statement.executeUpdate(cdb.un_sql);
@@ -43,18 +41,20 @@ public class HistorialDA {
     /**
      * Carga el historial de todos los contratos registrados en la empresa
      * @return la lista de todos los contratos
-     * @throws ClassNotFoundException
-     * @throws InstantiationException
-     * @throws IllegalAccessException
-     * @throws SQLException 
+     * @throws ClassNotFoundException En caso de que no se encuentre la clase que
+     * permite la conexion con la Base de Datos.
+     * @throws InstantiationException En caso de que no se pueda realizar la
+     * instanciacion de la Base de Datos.
+     * @throws IllegalAccessException En caso de que no se pueda establecer 
+     * conexion con la Base de Datos.
+     * @throws SQLException En caso que la consulta realizada no sea soportada
+     * por el lenguaje SQL.
      */
     public static ArrayList cargarContratos() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         ArrayList r = null;
 
-        Conexion cdb = FactoriaConexion.getInstancia().getConexiondb();
-        /**
-         * estado para trabajador: estado para
-         */
+        Conexion cdb = SingletonConexion.getInstancia().getConexiondb();
+        /* Estado para trabajador: estado para */
         cdb.un_sql = "select  folio,rutTrabajador, estado, fechainicio,fechatermino"
                 + " from historialcontrato";
         cdb.resultado = cdb.statement.executeQuery(cdb.un_sql);
