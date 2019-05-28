@@ -1,18 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package root.gestionagricola.vistas.supervisor;
 
+import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
+import root.gestionagricola.vistas.ControladorVistas;
+import root.gestionagricola.vistas.ModificarDatoCuentaPropia;
+
 /**
- *
- * @author Javier
+ * Vista del supervisor que puede realizar la asistencia de los trabajadores
+ * internos y externos
+ * @author Los Lanzas
  */
 public class Supervisor extends javax.swing.JPanel {
 
+    private ControladorVistas controladorVistas;
+
+    private ModificarDatoCuentaPropia modificarDato;
+
     /**
-     * Creates new form VistaSupervisor
+     * Constructor Supervisor
      */
     public Supervisor() {
         initComponents();
@@ -29,7 +33,7 @@ public class Supervisor extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         Titulo6 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
@@ -43,8 +47,8 @@ public class Supervisor extends javax.swing.JPanel {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/desconectarte.png"))); // NOI18N
         jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.setFocusPainted(false);
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -52,20 +56,21 @@ public class Supervisor extends javax.swing.JPanel {
         });
         add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Busqueda.png"))); // NOI18N
-        jButton5.setText("Búsqueda");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton5.setFocusPainted(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        botonModificar.setBackground(new java.awt.Color(255, 255, 255));
+        botonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(0, 0, 0));
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/tuerca-de-opciones.png"))); // NOI18N
+        botonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonModificar.setBorderPainted(false);
+        botonModificar.setFocusPainted(false);
+        botonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonModificar.setOpaque(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                botonModificarActionPerformed(evt);
             }
         });
-        add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 600, 130));
+        add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 50, 60));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -95,24 +100,40 @@ public class Supervisor extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        String[][] datos = ControladorAsistencia.getTabla();
+        this.controladorVistas.getAsistencia().setDatos_tabla(datos);
+        this.controladorVistas.getAsistencia().cargarDatosTabla();
+        this.controladorVistas.SeleccionarPanel("asistencia");
+
+
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.controladorVistas.SeleccionarPanel("login");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+
+        this.modificarDato = new ModificarDatoCuentaPropia();
+        modificarDato.setVisible(true);
+
+    }//GEN-LAST:event_botonModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo6;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Setea el controlador de la vista
+     * @param controladorVistas
+     */
+    public void setControladorVista(ControladorVistas controladorVistas) {
+        this.controladorVistas = controladorVistas;
+    }
 }

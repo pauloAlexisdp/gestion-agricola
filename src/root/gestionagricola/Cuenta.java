@@ -1,72 +1,49 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package root.gestionagricola;
 
 /**
- *
- * @author len_win
+ * Permite modelar una instancia de Cuenta
+ * @author Los Lanzas
  */
 public class Cuenta {
+    
     private String nombre;
     private String password;
     private String tipo;
     
-    
-    public Cuenta(String nombre, String password, String tipo){
+    /**
+     * Constructor protegido de la entidad Cuenta.
+     * @param nombre Se espera un <String> con el nombre de la cuenta.
+     * @param password Se espera un <String> con la clave de la cuenta.
+     * @param tipo Se espera un <String> con el tipo de cuenta.
+     */
+    protected Cuenta(String nombre, String password, String tipo){
         this.nombre = nombre;
         this.password = password;
         this.tipo = tipo;
     }
-    public Cuenta(){}
 
     /**
-     * @return the nombre
+     * Permite obtener el nombre de la cuenta.
+     * @return Retorna un <String> con el nombre de la cuenta.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
-     * @return the password
+     * Permite obtener la clave de la cuenta.
+     * @return Retorna un <String> con la clave de la cuenta.
      */
     public String getPassword() {
         return password;
     }
 
     /**
-     * @param password the password to set
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     * @return the tipo
+     * Permite obtener el tipo de cuenta.
+     * @return Retorna un <String> con el tipo de cuenta.
      */
     public String getTipo() {
         return tipo;  
-    }
-
-    /**
-     * @param tipo the tipo to set
-     */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-    
-    public String toString(){
-        return "Cuenta usuario= "+this.nombre+" psw="+this.password+" tipo="+this.tipo;
-    }
-    
+    }   
 }

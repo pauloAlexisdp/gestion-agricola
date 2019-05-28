@@ -1,25 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.dueño;
 
-import java.awt.Container;
-import javax.swing.SwingUtilities;
+import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author Javier
+ * Vista de reportes
+ * @author Los Lanzas
  */
-public class GenerarReportes extends javax.swing.JFrame {
+public class GenerarReportes extends javax.swing.JPanel {
+
+    private ControladorVistas controladorVista;
 
     /**
-     * Creates new form FramePrincipal
+     * Constructor de la vista.
      */
     public GenerarReportes() {
         initComponents();
-        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,30 +29,44 @@ public class GenerarReportes extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton8 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Volver atras.png"))); // NOI18N
         jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.setFocusPainted(false);
-        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 130, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, 229, 151));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-90, 0, 229, 151));
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(0, 0, 0));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
+        jButton8.setText("Generar");
+        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        jButton8.setFocusPainted(false);
+        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 200, 40));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -71,7 +81,7 @@ public class GenerarReportes extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
+        add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 1020, 50));
 
         jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -176,57 +186,45 @@ public class GenerarReportes extends javax.swing.JFrame {
         jTable1.setGridColor(new java.awt.Color(153, 153, 153));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 800, 360));
-
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/circulo.png"))); // NOI18N
-        jButton2.setText("Generar");
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 220, 40));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, 800, 360));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Fondo oscuro.png"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(1299, 735));
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 735));
-
-        pack();
+        add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 735));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.controladorVista.SeleccionarPanel("dueño");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-public void actualizarpantalla() {
-        Container temp = this.getContentPane();
-        SwingUtilities.updateComponentTreeUI(temp);
-        temp.validate();
-        requestFocusInWindow();
-    }
+    }//GEN-LAST:event_jButton8ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Permite setear el controlador de la vista.
+     * @param controlador_vistas
+     */
+    public void setControladorVista(ControladorVistas controlador_vistas) {
+       this.controladorVista = controlador_vistas;
+    }
+
+    
+
+    
 }

@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package root.gestionagricola.vistas.dueño;
+
+import javax.swing.JOptionPane;
+import root.gestionagricola.vistas.ControladorVistas;
+import root.gestionagricola.vistas.ModificarDatoCuentaPropia;
+import root.gestionagricola.vistas.administrador.ModificarDatoUsuario;
 
 /**
  *
@@ -11,8 +11,11 @@ package root.gestionagricola.vistas.dueño;
  */
 public class Dueño extends javax.swing.JPanel {
 
+    private ControladorVistas controladorVista;
+    private ModificarDatoCuentaPropia modificarDato;
+
     /**
-     * Creates new form Vistadueñoo
+     * Constructor de la vista.
      */
     public Dueño() {
         initComponents();
@@ -30,45 +33,47 @@ public class Dueño extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        botonModificar = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         Titulo6 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1250, 735));
 
         jPanel1.setBackground(new java.awt.Color(80, 214, 141));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/frutap.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(-100, 10, 229, 151);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-100, 10, 229, 151));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/desconectarte.png"))); // NOI18N
         jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
         jButton4.setFocusPainted(false);
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4);
-        jButton4.setBounds(1040, 20, 98, 80);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 20, -1, 80));
 
-        jButton5.setBackground(new java.awt.Color(255, 255, 255));
-        jButton5.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Busqueda.png"))); // NOI18N
-        jButton5.setText("Búsqueda");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton5.setFocusPainted(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(jButton5);
-        jButton5.setBounds(140, 580, 600, 130);
+        botonModificar.setBackground(new java.awt.Color(255, 255, 255));
+        botonModificar.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        botonModificar.setForeground(new java.awt.Color(0, 0, 0));
+        botonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/tuerca-de-opciones.png"))); // NOI18N
+        botonModificar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 153), 2));
+        botonModificar.setBorderPainted(false);
+        botonModificar.setFocusPainted(false);
+        botonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        botonModificar.setOpaque(false);
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 50, 50));
 
         jButton6.setBackground(new java.awt.Color(255, 255, 255));
         jButton6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -78,14 +83,18 @@ public class Dueño extends javax.swing.JPanel {
         jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
         jButton6.setFocusPainted(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jPanel1.add(jButton6);
-        jButton6.setBounds(140, 130, 600, 130);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 600, 130));
 
         jButton7.setBackground(new java.awt.Color(255, 255, 255));
         jButton7.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jButton7.setForeground(new java.awt.Color(0, 0, 0));
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Contratos.png"))); // NOI18N
-        jButton7.setText("Contratos");
+        jButton7.setText("Trabajadores y Contratos");
         jButton7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
         jButton7.setFocusPainted(false);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -94,38 +103,18 @@ public class Dueño extends javax.swing.JPanel {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7);
-        jButton7.setBounds(140, 430, 600, 130);
-
-        jButton8.setBackground(new java.awt.Color(255, 255, 255));
-        jButton8.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/personal.png"))); // NOI18N
-        jButton8.setText("Trabajadores");
-        jButton8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 153), 2, true));
-        jButton8.setFocusPainted(false);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jButton8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton8);
-        jButton8.setBounds(140, 280, 600, 130);
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 600, 130));
 
         Titulo6.setBackground(new java.awt.Color(255, 255, 255));
         Titulo6.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         Titulo6.setForeground(new java.awt.Color(255, 255, 255));
         Titulo6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Titulo6.setText("Dueño");
-        jPanel1.add(Titulo6);
-        Titulo6.setBounds(80, 30, 232, 83);
+        jPanel1.add(Titulo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 232, 83));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/root/gestionagricola/vistas/imagenes/Fondo oscuro.png"))); // NOI18N
         Fondo.setPreferredSize(new java.awt.Dimension(1299, 735));
-        jPanel1.add(Fondo);
-        Fondo.setBounds(0, -87, 1270, 910);
+        jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -87, 1270, 910));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -139,28 +128,43 @@ public class Dueño extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        this.controladorVista.SeleccionarPanel("contratos");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        this.controladorVista.SeleccionarPanel("login");
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        this.controladorVista.SeleccionarPanel("reportes");
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
+
+        this.modificarDato = new ModificarDatoCuentaPropia();
+        modificarDato.setVisible(true);
+
+    }//GEN-LAST:event_botonModificarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JLabel Titulo6;
+    private javax.swing.JButton botonModificar;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Permite setear el controlador de la vista.
+     * @param controlador_vistas
+     */
+    public void setControladorVista(ControladorVistas controlador_vistas) {
+        this.controladorVista = controlador_vistas;
+    }
+
 }
