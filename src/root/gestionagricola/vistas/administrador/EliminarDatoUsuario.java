@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.administrador;
 
 import javax.swing.JComboBox;
@@ -20,6 +16,10 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
     private String contrasena_recibido;
     Administrador admin;
     
+    /**
+     * Constructor de la vista.
+     * @param admin
+     */
     public EliminarDatoUsuario(Administrador admin) {
         this.admin = admin;
         initComponents();
@@ -161,35 +161,61 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaNombreUsuarioActionPerformed
 
+    /**
+     * Permite obener el nombre
+     * @return
+     */
     public String getNombre_recibido() {
         return nombre_recibido;
     }
 
+    /**
+     * Permite setear el nombre
+     * @param nombre_recibido
+     */
     public void setNombre_recibido(String nombre_recibido) {
         this.nombre_recibido = nombre_recibido;
     }
 
+    /**
+     * Permite obtener la contraseña.
+     * @return
+     */
     public JTextField getRespuestaContrasena() {
         return RespuestaContrasena;
     }
 
+    /**
+     * Permite setear la contraseña.
+     * @param RespuestaContrasena
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
 
+    /**
+     * Permite obtener la contraseña.
+     * @return
+     */
     public String getContrasena_recibido() {
         return contrasena_recibido;
     }
 
+    /**
+     * Permite setear con la contraseña
+     * @param contrasena_recibido
+     */
     public void setContrasena_recibido(String contrasena_recibido) {
         this.contrasena_recibido = contrasena_recibido;
     }
         
+    /**
+     * Permite obtener el estado.
+     * @return
+     */
     public JComboBox<String> getRespuestEstado() {
         return RespuestEstado;
     }
-
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
