@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas;
 
 import javax.swing.JOptionPane;
@@ -11,12 +7,14 @@ import root.gestionagricola.Cuenta;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 
 /**
- *
- * @author ignacioburgos
+ * Vista para modificar cuenta propia.
+ * @author Los Lanzas
  */
 public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
 
-    
+    /**
+     * Constructor de la clase.
+     */
     public ModificarDatoCuentaPropia() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -121,19 +119,34 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-  
+    /**
+     * Permite obtener la clave de cuenta desde el textfield.
+     * @return Retorna un <JTextField> con los datos.
+     */
     public JTextField getRespuestaContrasena() {
         return RespuestaContrasena;
     }
 
+    /**
+     * Permite setear la clade de la cuenta.
+     * @param RespuestaContrasena Se espera un <JTextFiel> con la respuesta.
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
 
+    /**
+     * Permite obtener el nombre de cuenta.
+     * @return Retorna el TextFiel con la respuesta.
+     */
     public JTextField getRespuestaNombreUsuario() {
         return RespuestaContrasenaAntigua;
     }
 
+    /**
+     * Permite setear el nombre.
+     * @param RespuestaNombreUsuario recibe la respuesta.
+     */
     public void setRespuestaNombreUsuario(JTextField RespuestaNombreUsuario) {
         this.RespuestaContrasenaAntigua = RespuestaNombreUsuario;
     }
