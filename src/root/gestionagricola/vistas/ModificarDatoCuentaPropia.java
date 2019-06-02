@@ -1,25 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import root.gestionagricola.Cuenta;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 
 /**
- *
- * @author ignacioburgos
+ * Vista para modificar cuenta propia.
+ * @author Los Lanzas
  */
 public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
 
-    
+    /**
+     * Constructor de la clase.
+     */
     public ModificarDatoCuentaPropia() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -95,33 +90,27 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Permite modificar la clave de la cuenta.
+     * @param evt Se espera un <java.awt.event.ActionEvent> con la accion
+     * del listener.
+     */
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         Cuenta cuenta = Login.getInstanciaCuenta();
-        if(this.RespuestaContrasenaAntigua != null && this.RespuestaContrasena != null){
-
-            try {   
-                boolean datos = ControladorUsuario.BuscarContrasena(cuenta.getNombre(), this.RespuestaContrasenaAntigua.getText());
-                if(datos == true){
-                    
-                    ControladorUsuario.ModificarContrasena(cuenta.getNombre(), this.RespuestaContrasena.getText());
-                    this.dispose();
-                    JOptionPane.showMessageDialog(null, "Contraseña Modificada.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else{
-                    this.dispose();
-                    JOptionPane.showMessageDialog(null, "La contraseña actual no es igual.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
-                    
-                }
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(ModificarDatoCuentaPropia.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if (this.RespuestaContrasenaAntigua != null && this.RespuestaContrasena != null){
+            boolean datos = ControladorUsuario.BuscarContrasena(cuenta.getNombre(), this.RespuestaContrasenaAntigua.getText());
+            if (datos == true){
+                ControladorUsuario.ModificarContrasena(cuenta.getNombre(), this.RespuestaContrasena.getText());
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Contraseña Modificada.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
             }
-        }else{
+            else{
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "La contraseña actual no es igual.", "Modificación Contraseña", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_modificarActionPerformed
@@ -130,19 +119,34 @@ public class ModificarDatoCuentaPropia extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-  
+    /**
+     * Permite obtener la clave de cuenta desde el textfield.
+     * @return Retorna un <JTextField> con los datos.
+     */
     public JTextField getRespuestaContrasena() {
         return RespuestaContrasena;
     }
 
+    /**
+     * Permite setear la clade de la cuenta.
+     * @param RespuestaContrasena Se espera un <JTextFiel> con la respuesta.
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
 
+    /**
+     * Permite obtener el nombre de cuenta.
+     * @return Retorna el TextFiel con la respuesta.
+     */
     public JTextField getRespuestaNombreUsuario() {
         return RespuestaContrasenaAntigua;
     }
 
+    /**
+     * Permite setear el nombre.
+     * @param RespuestaNombreUsuario recibe la respuesta.
+     */
     public void setRespuestaNombreUsuario(JTextField RespuestaNombreUsuario) {
         this.RespuestaContrasenaAntigua = RespuestaNombreUsuario;
     }

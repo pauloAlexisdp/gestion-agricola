@@ -1,26 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.supervisor;
 
 
 import java.sql.SQLException;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.gestionsupervisor.ControladorAsistencia;
 import root.gestionagricola.vistas.ControladorVistas;
 
 /**
- *
- * @author Javier
+ * Vista que muestra la tabla de asistencia mostrando trabajadores internos y externos
+ * @author Los Lanzas
  */
 public class VistaAsistencia extends javax.swing.JPanel {
 
     private ControladorVistas controladorVista;
     private String[][] datos_tabla;
 
+    /**
+     *
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws SQLException
+     */
     public VistaAsistencia() throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         initComponents();
     }
@@ -223,22 +227,28 @@ public class VistaAsistencia extends javax.swing.JPanel {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
         String[][] datos_asistencia = new String[datos_tabla.length][2];
-        
         for (int i = 0; i < datos_tabla.length; i++) {
             datos_asistencia[i][0] = (String)this.Tabla.getValueAt(i, 0);
-            if((boolean)Tabla.getValueAt(i, 2) == true){
+            
+            //si en la asistencia esta null o false, se seteara la fecha de mentira. Para poder hacer comparaciones
+            //se hace con null ya que al principio todo esta con null y luego que pincha pasa a true o false.
+
+            if(Tabla.getValueAt(i, 2) == null || Tabla.getValueAt(i, 2).toString().equals("false")){
+                Date fecha = new Date();
+                datos_asistencia[i][1] = ControladorAsistencia.transformarDateInasistencia(fecha);
+                
+            }else{//en caso de ser true lo setea con la fecha actual.
                 java.util.Date fecha = new Date();
                 String fecha_actual = ControladorContrato.transformarDate(fecha);
                 datos_asistencia[i][1]  = fecha_actual;
-            }else{
-                datos_asistencia[i][1] = null;
             }  
         }
         
         ControladorAsistencia.guardarAsistencia(datos_asistencia);
+        JOptionPane.showMessageDialog(null, " Asistencia Guardada Correctamente.", "Asistencia", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_botonConfirmarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -265,21 +275,34 @@ public class VistaAsistencia extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Seteo controlador Vista
+     * @param controladorVista
+     */
     public void setControladorVista(ControladorVistas controladorVista) {
         this.controladorVista = controladorVista;
     }
 
+    /**
+     * Seteo de la tabla de datos.
+     * @param datos_tabla
+     */
     public void setDatos_tabla(String[][] datos_tabla) {
         this.datos_tabla = datos_tabla;
     }
-    
+    /**
+     * Metodo para cargar los datos de todos los trabajadores a la tabla.
+     */
     public void cargarDatosTabla() {
         for (int i = 0; i < this.datos_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
             this.Tabla.setValueAt(this.datos_tabla[i][1], i, 1);
-            
+            this.Tabla.setValueAt(null, i, 2);
         }
     }
+    /**
+     * Metodo para cargar los datos obtenidos de la busqueda desde la BD.
+     */
     public void cargarDatosTablaBusqueda() {
         for (int i = 0; i < this.datos_tabla.length; i++) {
             this.Tabla.setValueAt(this.datos_tabla[i][0], i, 0);
@@ -293,6 +316,9 @@ public class VistaAsistencia extends javax.swing.JPanel {
             
         }
     }
+    /**
+     * Metodo para reiniciar los datos de la tabla cuando se modifique algun dato de la vista.
+     */
     public void reiniciarTabla(){
         for (int i = 0; i < this.datos_tabla.length; i++) {
             this.Tabla.setValueAt(null, i, 0);

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.dueño;
 
 import com.toedter.calendar.JDateChooser;
@@ -12,11 +8,14 @@ import javax.swing.JTextField;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
- *
- * @author Javier
+ * Vista de ingreso de contratos.
+ * @author Los Lanzas
  */
 public class IngresarDatosContratos extends javax.swing.JFrame {
 
+    /**
+     * Constructor de la vista.
+     */
     public IngresarDatosContratos() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -290,34 +289,66 @@ public class IngresarDatosContratos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestEstadoActionPerformed
 
+    /**
+     * Obtiene estado.
+     * @return
+     */
     public JComboBox<String> getRespuestEstado1() {
         return RespuestEstado;
     }
 
+    /**
+     * Obtener fecha inicio.
+     * @return
+     */
     public JDateChooser getRespuestFechaInicio() {
         return RespuestFechaInicio;
     }
 
+    /**
+     * Obtiene fecha termino.
+     * @return
+     */
     public JDateChooser getRespuestFechaTermino() {
         return RespuestFechaTermino;
     }
 
+    /**
+     * Permite obtener nombre.
+     * @return
+     */
     public JTextField getRespuestNombre() {
         return RespuestNombre;
     }
 
+    /**
+     * Permite obtener folio.
+     * @return
+     */
     public JTextField getRespuestaFolio() {
         return RespuestaFolio;
     }
 
+    /**
+     * Permite obtener Rut.
+     * @return
+     */
     public JTextField getRespuestaRut() {
         return RespuestaEmpresa;
     }
 
+    /**
+     * Permite obtener tipo.
+     * @return
+     */
     public JComboBox<String> getRespuestaTipo() {
         return RespuestaTipo;
     }
 
+    /**
+     * Permite obtener valor.
+     * @return
+     */
     public JTextField getRespuestaValor() {
         return RespuestaValor;
     }

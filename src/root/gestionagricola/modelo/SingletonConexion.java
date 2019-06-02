@@ -5,19 +5,19 @@ package root.gestionagricola.modelo;
  * Permite generar una instancia para el servicio de base de datos
  * @author len_win
  */
-public class FactoriaConexion {
+public class SingletonConexion {
     //puntero que hereda conexion
     private Conexion cdb;
     
-    private static FactoriaConexion instancia;
+    private static SingletonConexion instancia;
     
-    public FactoriaConexion(){
+    public SingletonConexion(){
         
     }
     
-    public static FactoriaConexion getInstancia(){
+    public static SingletonConexion getInstancia(){
         if(instancia==null){
-            instancia = new FactoriaConexion();
+            instancia = new SingletonConexion();
         }
         return instancia;
     }

@@ -10,14 +10,18 @@ import javax.swing.SwingUtilities;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 
 /**
- *
- * @author Javier
+ * Vista para eliminar contrato.
+ * @author Los Lanzas
  */
 public class EliminarDatoContrato extends javax.swing.JFrame {
 
     private int folio_recibido;
     private GestionDeContratos Gcontratos;
 
+    /**
+     * Constructor de la vista.
+     * @param gcontratos
+     */
     public EliminarDatoContrato(GestionDeContratos gcontratos) {
         this.Gcontratos = gcontratos;
         initComponents();
@@ -230,42 +234,81 @@ public class EliminarDatoContrato extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaEmpresaActionPerformed
 
+    /**
+     * Permite obtener el estado.
+     * @return
+     */
     public JComboBox<String> getRespuestEstado() {
         return RespuestEstado;
     }
 
+    /**
+     * Permite obtener fecha de inicio.
+     * @return
+     */
     public JDateChooser getRespuestFechaInicio() {
         return RespuestFechaInicio;
     }
 
+    /**
+     * Permite obtener fecha de termino.
+     * @return
+     */
     public JDateChooser getRespuestFechaTermino() {
         return RespuestFechaTermino;
     }
 
+    /**
+     * Permite obtener nombre.
+     * @return
+     */
     public JTextField getRespuestNombre() {
         return RespuestNombre;
     }
 
+    /**
+     * Permite obtener rut.
+     * @return
+     */
     public JTextField getRespuestaRut() {
         return RespuestaRut;
     }
 
+    /**
+     * Permite obtener tipo.
+     * @return
+     */
     public JComboBox<String> getRespuestaTipo() {
         return RespuestaTipo;
     }
 
+    /**
+     * Permite obtener valor.
+     * @return
+     */
     public JTextField getRespuestaValor() {
         return RespuestaValor;
     }
 
+    /**
+     * Permite obtener folio.
+     * @param folio_recibido
+     */
     public void setFolio_recibido(int folio_recibido) {
         this.folio_recibido = folio_recibido;
     }
 
+    /**
+     * Pormite obtener nombre empresa.
+     * @return
+     */
     public JTextField getRespuestaEmpresa() {
         return RespuestaEmpresa;
     }
 
+    /**
+     * Permite actualizar el frame.
+     */
     public void actualizarpantalla() {
         Container temp = this.getContentPane();
         SwingUtilities.updateComponentTreeUI(temp);

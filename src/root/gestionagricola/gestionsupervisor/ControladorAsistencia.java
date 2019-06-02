@@ -3,6 +3,7 @@ package root.gestionagricola.gestionsupervisor;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import root.gestionagricola.gestioncontrato.ControladorContrato;
 import root.gestionagricola.modelo.accesodato.AsistenciaDA;
 import root.gestionagricola.modelo.accesodato.TemporadaDA;
@@ -50,6 +51,7 @@ public class ControladorAsistencia {
         /* Se guarda la planilla de asistencia en la BD */
         try{
             for (int i = 0; i < planilla.length; i ++){
+               
                 AsistenciaDA.guardar(TemporadaDA.getInstanciaTemporada(), 
                         ControladorContrato.parseRUTtoINT(planilla[i][0]), planilla[i][1]);
             }
@@ -69,14 +71,11 @@ public class ControladorAsistencia {
         return new Asistencia(rut, nombre);
     }
     
-    
-    public static String [][] reporteEspecifico(String rutificador){
-        
-        return null;
-            
-    }
-    
-    
+    /**
+     * Permite realizar busqueda de trabajadores para la asistencia.
+     * @param rutificador Se espera un <String> con el RUT del trabajador.
+     * @return Retorna un <String[][]> con los datos de los trabajadores.
+     */
     public static String[][] realizarBusqueda(String rutificador){
         
         int rutBusqueda = ControladorContrato.parseRUTtoINT(rutificador);
@@ -86,13 +85,12 @@ public class ControladorAsistencia {
         
         for (int i = 0; i < trabajadores.length; i++) {
             
-            System.out.println(ControladorContrato.parseRUTtoINT(trabajadores[i][0]));
             if(rutBusqueda == ControladorContrato.parseRUTtoINT(trabajadores[i][0])){
                 
                 busqueda[0][0]= trabajadores[i][0];
                 busqueda[0][1]= trabajadores[i][1];
                 
-                return busqueda; // retorna el nombre del trabajador que esta asociado con un contrato activo.
+                return busqueda;
             }
             
         }
@@ -100,5 +98,28 @@ public class ControladorAsistencia {
         
     }
     
+    /**
+     * Permite dar formato a una fecha, sera usado para una fecha que no existe
+     * para demostrar que esta inasistente.
+     * @param fecha Se espera un <Date> con la fecha.
+     * @return Retorna un <String> con la fecha formateada: '"DD-MM-AAAA"'.
+     */
+    public static String transformarDateInasistencia(Date fecha) {
+        String inicio;
+
+        if (fecha.getDate() < 10) {
+            inicio = "'" + "0" + fecha.getDate();
+        } else {
+            inicio = "'" + "" + fecha.getDate();
+        }
+        if (fecha.getMonth() < 9) {
+            inicio += "-0" + (fecha.getMonth() + 1);
+        } else {
+            inicio += "-" + (fecha.getMonth() + 1);
+        }
+        inicio += "-" + (fecha.getYear() + 1000) + "'";
+
+        return inicio;
+    }
     
 }

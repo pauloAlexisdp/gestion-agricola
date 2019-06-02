@@ -1,25 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.administrador;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 
 /**
- *
- * @author ignacioburgos
+ * Vista para crear usuarios.
+ * @author Los Lanzas
  */
 public class crearDatosUsuario extends javax.swing.JFrame {
 
     Administrador admin;
+
+    /**
+     * Constructor de la vista
+     * @param admin
+     */
     public crearDatosUsuario(Administrador admin) {
         this.admin = admin;
         initComponents();
@@ -119,30 +117,19 @@ public class crearDatosUsuario extends javax.swing.JFrame {
 
     private void CrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearUsuarioActionPerformed
         //Si las casillas estan llenas puede guardar los datos
-        
-        if(this.RespuestaNombre.getText() != null && this.RespuestaContrasena.getText() != null && this.RespuestaTipo.getSelectedItem() != null){
+        if (this.RespuestaNombre.getText() != null && this.RespuestaContrasena.getText() != null && this.RespuestaTipo.getSelectedItem() != null){
             // aqui se llama al método controlador que hara la conexion con el modelo.
             ControladorUsuario.CrearUsuario(this.RespuestaNombre.getText(), this.RespuestaContrasena.getText(),(String)this.RespuestaTipo.getSelectedItem());
             
-            try {
-                String[][] datos;
-                datos = ControladorUsuario.cargarDatos();
-                admin.setDatos_para_tabla(datos);
-                admin.cargarDatosTabla();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String[][] datos;
+            datos = ControladorUsuario.cargarDatos();
+            admin.setDatos_para_tabla(datos);
+            admin.cargarDatosTabla();
             
             this.dispose();
             JOptionPane.showMessageDialog(null, "Cuenta de Usuario Ingresada.", "Creación", JOptionPane.INFORMATION_MESSAGE);
-        }else{//si no le avisa al usuario que le faltan casillas por llenar.
+        }
+        else{//si no le avisa al usuario que le faltan casillas por llenar.
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_CrearUsuarioActionPerformed
@@ -155,28 +142,50 @@ public class crearDatosUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaTipoActionPerformed
 
-
-
+    /**
+     * Permite obtener la contraseña
+     * @return
+     */
     public JTextField getRespuestaContrasena() {
         return RespuestaContrasena;
     }
 
+    /**
+     * Permite setear la contraseña
+     * @param RespuestaContrasena
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
 
+    /**
+     * Permite obtener el nombre
+     * @return
+     */
     public JTextField getRespuestaNombre() {
         return RespuestaNombre;
     }
 
+    /**
+     * Permite setear el nombre.
+     * @param RespuestaNombre
+     */
     public void setRespuestaNombre(JTextField RespuestaNombre) {
         this.RespuestaNombre = RespuestaNombre;
     }
 
+    /**
+     * Permite obtener tipo.
+     * @return
+     */
     public JComboBox<String> getRespuestaTipo() {
         return RespuestaTipo;
     }
 
+    /**
+     * Permite setear tipo.
+     * @param RespuestaTipo
+     */
     public void setRespuestaTipo(JComboBox<String> RespuestaTipo) {
         this.RespuestaTipo = RespuestaTipo;
     }

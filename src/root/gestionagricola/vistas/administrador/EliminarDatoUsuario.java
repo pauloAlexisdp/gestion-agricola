@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package root.gestionagricola.vistas.administrador;
 
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import root.gestionagricola.gestionusuario.ControladorUsuario;
 
 /**
- *
- * @author ignacioburgos
+ * Vista para eliminar un usuario.
+ * @author Los Lanzas
  */
 public class EliminarDatoUsuario extends javax.swing.JFrame {
 
@@ -23,6 +16,10 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
     private String contrasena_recibido;
     Administrador admin;
     
+    /**
+     * Constructor de la vista.
+     * @param admin
+     */
     public EliminarDatoUsuario(Administrador admin) {
         this.admin = admin;
         initComponents();
@@ -127,31 +124,27 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Permite eliminar un usuario del sistema.
+     * @param evt Se espera un <java.awt.event.ActionEvent> con el evento
+     * del listener.
+     */
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-
-        // este boton es cuando apreta Eliminar.
-        if(this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena != null){
-            // aqui se llama al método controlador que hara la conexion con el modelo.
+        /* Sucede al presionar el boton eliminar */
+        if (this.RespuestaNombreUsuario.getText() != null && this.RespuestaContrasena != null){
+            /* Se llama al controlador para conectar con el modelo */
             ControladorUsuario.EliminarUsuario(this.RespuestaNombreUsuario.getText(), this.RespuestaContrasena.getText());
-             try {
-                String[][] datos;
-                datos = ControladorUsuario.cargarDatos();
-                admin.setDatos_para_tabla(datos);
-                admin.cargarDatosTabla();
-                
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(crearDatosUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String[][] datos;
+            
+            datos = ControladorUsuario.cargarDatos();
+            admin.setDatos_para_tabla(datos);
+            admin.cargarDatosTabla();
+            
             this.dispose();
             JOptionPane.showMessageDialog(null, "Cuenta de Usuario Eliminada.", "Eliminación", JOptionPane.INFORMATION_MESSAGE);
         }
-        else{ //si no le avisa al usuario que le faltan casillas por llenar.
+        /* Faltan datos */
+        else{
             JOptionPane.showMessageDialog(null, "Faltan llenar casillas.", "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_BotonEliminarActionPerformed
@@ -168,35 +161,61 @@ public class EliminarDatoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_RespuestaNombreUsuarioActionPerformed
 
+    /**
+     * Permite obener el nombre
+     * @return
+     */
     public String getNombre_recibido() {
         return nombre_recibido;
     }
 
+    /**
+     * Permite setear el nombre
+     * @param nombre_recibido
+     */
     public void setNombre_recibido(String nombre_recibido) {
         this.nombre_recibido = nombre_recibido;
     }
 
+    /**
+     * Permite obtener la contraseña.
+     * @return
+     */
     public JTextField getRespuestaContrasena() {
         return RespuestaContrasena;
     }
 
+    /**
+     * Permite setear la contraseña.
+     * @param RespuestaContrasena
+     */
     public void setRespuestaContrasena(JTextField RespuestaContrasena) {
         this.RespuestaContrasena = RespuestaContrasena;
     }
 
+    /**
+     * Permite obtener la contraseña.
+     * @return
+     */
     public String getContrasena_recibido() {
         return contrasena_recibido;
     }
 
+    /**
+     * Permite setear con la contraseña
+     * @param contrasena_recibido
+     */
     public void setContrasena_recibido(String contrasena_recibido) {
         this.contrasena_recibido = contrasena_recibido;
     }
         
+    /**
+     * Permite obtener el estado.
+     * @return
+     */
     public JComboBox<String> getRespuestEstado() {
         return RespuestEstado;
     }
-
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
